@@ -7,13 +7,14 @@
 .. description:
 .. type: text
 
+.. class:: jumbotron
+
+Stuff about Mike
+
+Stuff about Paul
+
 There is nothing to see here. I'm figuring out how to use Nikola. Come back another time
 
 .. math::
 
    \int \frac{dx}{1+ax}=\frac{1}{a}\ln(1+ax)+C
-
-.. class:: jumbotron
-
-    EPSRC Research Software Engineering Fellows
-    <p>Lorem ipsum</p>
