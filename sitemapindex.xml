@@ -6,11 +6,11 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>http://rse-sheffield.github.io/rss.xml</loc>
-  <lastmod>2016-01-11T19:00:00Z</lastmod>
+  <loc>http://rse.shef.ac.uk/rss.xml</loc>
+  <lastmod>2016-01-11T19:05:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>http://rse-sheffield.github.io/sitemap.xml</loc>
-  <lastmod>2016-01-11T19:00:00Z</lastmod>
+  <loc>http://rse.shef.ac.uk/sitemap.xml</loc>
+  <lastmod>2016-01-11T19:05:00Z</lastmod>
  </sitemap>
 </sitemapindex>

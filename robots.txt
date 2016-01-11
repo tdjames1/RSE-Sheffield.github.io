@@ -1,4 +1,4 @@
-Sitemap: http://rse-sheffield.github.io/sitemapindex.xml
+Sitemap: http://rse.shef.ac.uk/sitemapindex.xml
 
 User-Agent: *
-Host: rse-sheffield.github.io
+Host: rse.shef.ac.uk
