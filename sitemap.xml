@@ -7,15 +7,23 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://rse.shef.ac.uk/</loc>
-  <lastmod>2016-01-21T12:32:00Z</lastmod>
+  <lastmod>2016-04-08T16:07:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/2016/</loc>
   <lastmod>2016-01-14T10:50:00Z</lastmod>
  </url>
  <url>
+  <loc>http://rse.shef.ac.uk/activites/</loc>
+  <lastmod>2016-04-08T15:55:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/activities/</loc>
+  <lastmod>2016-04-08T16:07:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-04-06T10:28:00Z</lastmod>
+  <lastmod>2016-04-08T16:05:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
