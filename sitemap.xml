@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-04-08T16:05:00Z</lastmod>
+  <lastmod>2016-04-11T08:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
@@ -39,7 +39,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-04-06T10:26:00Z</lastmod>
+  <lastmod>2016-04-11T08:07:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/building-capability-and-support-in-research-software/</loc>
@@ -48,6 +48,10 @@
  <url>
   <loc>http://rse.shef.ac.uk/blog/code-cafe-R/</loc>
   <lastmod>2016-03-10T19:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/blog/jupyter-for-chem-eng/</loc>
+  <lastmod>2016-04-11T08:08:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/linux-in-windows10-announce/</loc>
