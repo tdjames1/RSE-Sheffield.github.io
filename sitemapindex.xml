@@ -14,15 +14,19 @@
   <lastmod>2016-04-18T08:04:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>http://rse.shef.ac.uk/authors/paul-richmond.xml</loc>
+  <lastmod>2016-04-25T09:11:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://rse.shef.ac.uk/authors/stuart-mumford.xml</loc>
   <lastmod>2016-01-21T12:32:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/rss.xml</loc>
-  <lastmod>2016-04-18T08:04:00Z</lastmod>
+  <lastmod>2016-04-25T09:11:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/sitemap.xml</loc>
-  <lastmod>2016-04-21T06:11:00Z</lastmod>
+  <lastmod>2016-04-25T09:11:00Z</lastmod>
  </sitemap>
 </sitemapindex>
