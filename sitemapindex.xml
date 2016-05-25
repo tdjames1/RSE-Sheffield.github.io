@@ -6,6 +6,10 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>http://rse.shef.ac.uk/authors/david-jones.xml</loc>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://rse.shef.ac.uk/authors/ian-cottam.xml</loc>
   <lastmod>2016-04-06T10:58:00Z</lastmod>
  </sitemap>
@@ -23,10 +27,10 @@
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/rss.xml</loc>
-  <lastmod>2016-04-25T18:56:00Z</lastmod>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/sitemap.xml</loc>
-  <lastmod>2016-04-25T18:56:00Z</lastmod>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </sitemap>
 </sitemapindex>

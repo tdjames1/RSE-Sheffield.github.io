@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-04-25T09:11:00Z</lastmod>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
-  <lastmod>2016-04-25T09:11:00Z</lastmod>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/authors/david-jones/</loc>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/ian-cottam/</loc>
@@ -43,7 +47,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-04-25T09:11:00Z</lastmod>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/9_steps/</loc>
@@ -60,6 +64,10 @@
  <url>
   <loc>http://rse.shef.ac.uk/blog/code-cafe-R/</loc>
   <lastmod>2016-03-10T19:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/blog/fun-with-strace/</loc>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/jupyter-for-chem-eng/</loc>
@@ -94,12 +102,20 @@
   <lastmod>2016-02-06T07:02:00Z</lastmod>
  </url>
  <url>
+  <loc>http://rse.shef.ac.uk/resources/languages/cpp/</loc>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
+ </url>
+ <url>
   <loc>http://rse.shef.ac.uk/resources/languages/fortran/</loc>
   <lastmod>2016-02-06T07:02:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/matlab/</loc>
   <lastmod>2016-04-06T09:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/resources/languages/python/</loc>
+  <lastmod>2016-05-25T12:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/rstats/</loc>
