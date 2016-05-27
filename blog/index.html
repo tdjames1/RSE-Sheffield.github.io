@@ -71,16 +71,16 @@
             
 
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="HPC-Maple/" class="u-url">High Performance Computing with Maple</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="HPC-Maple-1/" class="u-url">High Performance Computing with Maple, Part 1</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 <a href="../authors/mike-croucher/">Mike Croucher</a>
             </span></p>
-            <p class="dateline"><a href="HPC-Maple/" rel="bookmark"><time class="published dt-published" datetime="2016-05-26T12:40:19+01:00" title="2016-05-26 12:40">2016-05-26 12:40</time></a></p>
+            <p class="dateline"><a href="HPC-Maple-1/" rel="bookmark"><time class="published dt-published" datetime="2016-05-26T12:40:19+01:00" title="2016-05-26 12:40">2016-05-26 12:40</time></a></p>
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>Many people who use <a href="http://www.maplesoft.com/">Maple</a> on Sheffield's High Performance Computing (HPC) cluster do so interactively. They connect to the system, start a graphical X-Windows session and use Maple in exactly the same way as they would use it on their laptop. Such usage does have some benefits: giving access to more CPU cores and memory than you'd get on even the most highly specified of laptops.</p>
+<p>Many people who use <a href="http://www.maplesoft.com/">Maple</a> on Sheffield's High Performance Computing (HPC) cluster do so interactively. They connect to the system, start a graphical X-Windows session and use Maple in exactly the same way as they would use it on their laptop. Such usage does have some benefits: giving access to more CPU cores and memory than you'd get on even the most highly specified of laptops, for example.</p>
 <p>Interactive usage on the HPC system also has problems. Thanks to <a href="https://en.wikipedia.org/wiki/Latency_(engineering)">network latency</a>, using a Graphical User Interface over an X-Windows connection can be a painful experience. Additionally, long calculations can tie up your computer for hours or days and if anything happens to the network connection during that time, you risk losing it all!</p>
 <p>If you spend a long time waiting for your Maple calculations to run, it's probably time to think about moving to batch processing.</p>
 <h3>Batch processing</h3>
@@ -101,7 +101,7 @@
 <li>
 <a href="../maple/hpc1/run_maple_job.sh">run_maple_job.sh</a> - Job submission script</li>
 </ul>
-<p>If you look at the <strong>.mpl</strong> file in a text editor, you will see that it contains plain text versions of all the Maple input commands.</p>
+<p>If you look at the <strong>.mpl</strong> file in a text editor, you will see that it contains plain text versions of all the Maple input commands that were present in the original worksheet.</p>
 <pre class="code literal-block"><span></span>myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
