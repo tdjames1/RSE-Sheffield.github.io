@@ -1,5 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link rel="self" type="application/rss+xml" href="http://rse.shef.ac.uk/rss.xml"></atom:link><language>en</language><lastBuildDate>Wed, 25 May 2016 12:21:36 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Fun with strace</title><link>http://rse.shef.ac.uk/blog/fun-with-strace/</link><dc:creator>David Jones</dc:creator><description>&lt;div&gt;&lt;h3&gt;How I solved a mystery with strace and bash&lt;/h3&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 27 May 2016 10:15:29 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>High Performance Computing with Maple</title><link>http://rse.shef.ac.uk/blog/HPC-Maple/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;Many people who use &lt;a href="http://www.maplesoft.com/"&gt;Maple&lt;/a&gt; on Sheffield's High Performance Computing (HPC) cluster do so interactively. They connect to the system, start a graphical X-Windows session and use Maple in exactly the same way as they would use it on their laptop. Such usage does have some benefits: giving access to more CPU cores and memory than you'd get on even the most highly specified of laptops.&lt;/p&gt;
+&lt;p&gt;Interactive usage on the HPC system also has problems. Thanks to &lt;a href="https://en.wikipedia.org/wiki/Latency_(engineering)"&gt;network latency&lt;/a&gt;, using a Graphical User Interface over an X-Windows connection can be a painful experience. Additionally, long calculations can tie up your computer for hours or days and if anything happens to the network connection during that time, you risk losing it all!&lt;/p&gt;
+&lt;p&gt;If you spend a long time waiting for your Maple calculations to run, it's probably time to think about moving to batch processing.&lt;/p&gt;
+&lt;h3&gt;Batch processing&lt;/h3&gt;
+&lt;p&gt;The idea behind batch processing is that you log in to the system, send your computation to a queue and then log out and get on with your life. The HPC system will process your computation when resources become available and email you when it's done. You can then log back in, transfer the results to your laptop and continue your analysis.&lt;/p&gt;
+&lt;p&gt;So, batch processing frees up your personal computer but it can also significantly increase your throughput. With batch processing, you can submit hundreds of computations to the queue simultaneously.  The system will automatically process as many of them as it can in parallel -- allowing you to make use of dozens of large computers at once.&lt;/p&gt;
+&lt;p&gt;Batch processing is powerful but it comes at a price and that price is complexity.&lt;/p&gt;
+&lt;h3&gt;Converting interactive worksheets to Maple language files&lt;/h3&gt;
+&lt;p&gt;You are probably used to interacting with Maple via richly formatted worksheets and documents. These have the file extension &lt;strong&gt;.mw&lt;/strong&gt; or &lt;strong&gt;.maple&lt;/strong&gt;. Unfortunately, it is not possible to run Maple worksheets in batch mode so it is necessary for us to convert them to &lt;strong&gt;maple language files&lt;/strong&gt; instead.&lt;/p&gt;
+&lt;p&gt;A &lt;a href="http://www.maplesoft.com/support/help/maple/view.aspx?path=Formats%2FMPL"&gt;Maple Language File&lt;/a&gt; has the extension &lt;strong&gt;.mpl&lt;/strong&gt; and is a pure text file. To convert a worksheet to a Maple Language File, open the worksheet and click on  &lt;strong&gt;File-&amp;gt;Export As-&amp;gt;Maple Input&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Convert to mpl" src="http://rse.shef.ac.uk/images/convert_to_mpl.png"&gt;&lt;/p&gt;
+&lt;h3&gt;An example&lt;/h3&gt;
+&lt;p&gt;Here is an example &lt;strong&gt;.maple&lt;/strong&gt; worksheet and the corresponding &lt;strong&gt;.mpl&lt;/strong&gt; Maple Language File, created using the conversion process detailed above. We also have a &lt;strong&gt;Job submission script&lt;/strong&gt; that will be explained later.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc1/series_example.maple"&gt;series_example.maple&lt;/a&gt; - Original Maple worksheet&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc1/series_example.mpl"&gt;series_example.mpl&lt;/a&gt; - Maple Language File&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc1/run_maple_job.sh"&gt;run_maple_job.sh&lt;/a&gt; - Job submission script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you look at the &lt;strong&gt;.mpl&lt;/strong&gt; file in a text editor, you will see that it contains plain text versions of all the Maple input commands.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
+poly := convert(myseries, polynom);
+plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+&lt;/pre&gt;
+
+
+&lt;p&gt;This is the file that we can run on the HPC system in batch mode.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;job submission script&lt;/strong&gt; is a set of instructions to the HPC system's scheduler. It tells the system how much memory you want to use, what program you want to run and so on.  Here is its contents&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;!/bin/bash
+# Request 4 gigabytes of real memory (mem)
+# and 4 gigabytes of virtual memory (mem)
+#$ -l mem=4G -l rmem=4G
+
+#Make Maple 2015 available
+module load apps/binapps/maple/2015
+
+#Run Maple with the input file, **series_example.mpl**
+maple &amp;lt; series_example.mpl
+&lt;/pre&gt;
+
+
+&lt;p&gt;To run the example on the system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transfer &lt;strong&gt;series_example.mpl&lt;/strong&gt; and &lt;strong&gt;run_maple_job.sh&lt;/strong&gt; to a directory on the HPC system. They both need to be in the same directory.&lt;/li&gt;
+&lt;li&gt;Log in to the system using a command line terminal and &lt;strong&gt;cd&lt;/strong&gt; to the directory containing the files.&lt;/li&gt;
+&lt;li&gt;Use the &lt;strong&gt;ls&lt;/strong&gt; command to confirm you really are in the right directory. You should see something like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ ls
+
+run_maple_job.sh  series_example.maple  series_example.mpl
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Submit the job to the queue with the &lt;strong&gt;qsub&lt;/strong&gt; command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub run_maple_job.sh
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;You should see something like&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
+
+Your job 1734126 ("run_maple_job.sh") has been submitted
+&lt;/pre&gt;
+
+
+&lt;p&gt;The job number will differ from the one above. It is automatically allocated by the system and uniquely identifies the job.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;At this point, you could log off the system and do something else if you wished but, since this is such a short job, it won't be long before the results appear. A few seconds to a minute under normal conditions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the &lt;strong&gt;ls&lt;/strong&gt; command again to see the results files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[fe1mpc@testnode02 maple_example]$ ls
+
+run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
+&lt;/pre&gt;
+
+
+&lt;p&gt;There are two new files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;run_maple_job.sh.e1734126 - contains any error messages. Hopefully empty here&lt;/li&gt;
+&lt;li&gt;run_maple_job.sh.o1734126 - Contains the results of your job&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The numbers at the end refer to the job number.&lt;/p&gt;
+&lt;p&gt;This completes your first batch submission using Maple.&lt;/p&gt;
+&lt;h3&gt;Issues with graphs in Maple batch mode&lt;/h3&gt;
+&lt;p&gt;The Maple worksheet we used in this example includes a plot command. This looks great in a Maple worksheet but looks very retro when performed in batch mode!&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+
+                                      3+                                 H     
+                                       +                                 H     
+                                       +                                HH     
+                                      2+                                H      
+                                       +                                H      
+                                       +                               HH      
+                                       +                               H       
+                                      1+    HHHHHHHHHH                 H       
+           HHHHHHHH                    +  HHH         HHH             H        
+          HH      HHH                  +HHH             HH           HH        
+  --+-+-+-*+-+--+-+-**-+-+--+-+-+--+-+-**-+-+--+-+-+--+-+-**-+-+--+-+*-+-+-+--
+   -6    H     -4     HH   -2        H0*           2       HHH 4    HH     6   
+         H             HHH         HHH +                     HHHHHHHH          
+        H                 HHHHHHHHHH -1+                                       
+        H                              +                                       
+       HH                              +                                       
+       H                               +                                       
+       H                             -2+                                       
+       H                               +                                       
+      H                                +                                       
+      H                              -3+                                       
+&lt;/pre&gt;
+
+
+&lt;p&gt;You probably want to have something that looks a little nicer. The way to do this is to modify the Maple plot command so that it specifies an output file. For example, if we want to create a .gif file, our Maple Language File becomes&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
+poly := convert(myseries, polynom);
+
+plotsetup(gif,plotoutput="plot.gif"):
+plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+&lt;/pre&gt;
+
+
+&lt;p&gt;The &lt;strong&gt;plotsetup&lt;/strong&gt; command can output a number of file types.  See Maple's &lt;a href="http://www.maplesoft.com/support/help/maple/view.aspx?path=plotsetup"&gt;plotsetup documentation&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;A full batch example for you to try is available below&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc2/series_example_fixedplot.mpl"&gt;series_example_fixedplot.mpl&lt;/a&gt; - Maple Language File&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc2/run_maple_job_2.sh"&gt;run_maple_job_2.sh&lt;/a&gt; - Job submission script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The results of transferring these files to the system and submitting with &lt;strong&gt;qsub run_maple_job_2.sh&lt;/strong&gt; should include a file called &lt;strong&gt;plot.gif&lt;/strong&gt; that looks like this&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Maple plot" src="http://rse.shef.ac.uk/maple/hpc2/plot.gif"&gt;&lt;/p&gt;
+&lt;h3&gt;Further reading&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://docs.iceberg.shef.ac.uk/en/latest/using-iceberg/sge.html"&gt;General introduction to batch processing&lt;/a&gt; - From the Iceberg documentation&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.iceberg.shef.ac.uk/en/latest/software/scheduler/index.html"&gt;A list of scheduler commands&lt;/a&gt; - &lt;strong&gt;qsub&lt;/strong&gt; is just one example of a scheduler command. Here are a few more.&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/HPC-Maple/</guid><pubDate>Thu, 26 May 2016 11:40:19 GMT</pubDate></item><item><title>Fun with strace</title><link>http://rse.shef.ac.uk/blog/fun-with-strace/</link><dc:creator>David Jones</dc:creator><description>&lt;div&gt;&lt;h3&gt;How I solved a mystery with strace and bash&lt;/h3&gt;
 &lt;p&gt;So I'm dabbling with &lt;code&gt;iceberg&lt;/code&gt;, The University of Sheffield's HPC, and
 I finally get round to putting my &lt;a href="https://github.com/drj11/dot"&gt;&lt;code&gt;.profile&lt;/code&gt;&lt;/a&gt; on there.
 And I remember that I don't like
