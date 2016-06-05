@@ -119,7 +119,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/matlab/</loc>
-  <lastmod>2016-06-05T09:31:00Z</lastmod>
+  <lastmod>2016-06-05T09:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/python/</loc>
@@ -128,6 +128,10 @@
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/rstats/</loc>
   <lastmod>2016-04-25T18:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/resources/languages/testing123/</loc>
+  <lastmod>2016-06-05T09:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/testimonials/</loc>
