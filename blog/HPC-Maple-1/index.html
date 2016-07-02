@@ -115,7 +115,7 @@
 <a href="../../maple/hpc1/run_maple_job.sh">run_maple_job.sh</a> - Job submission script</li>
 </ul>
 <p>If you look at the <strong>.mpl</strong> file in a text editor, you will see that it contains plain text versions of all the Maple input commands that were present in the original worksheet.</p>
-<pre class="code literal-block"><span></span>myseries := series(sin(x), x = 0, 10);
+<pre class="code literal-block">myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 </pre>
@@ -123,7 +123,7 @@ plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
 <p>This is the file that we can run on the HPC system in batch mode.</p>
 <p>The <strong>job submission script</strong> is a set of instructions to the HPC system's scheduler. It tells the system how much memory you want to use, what program you want to run and so on.  Here is its contents</p>
-<pre class="code literal-block"><span></span>!/bin/bash
+<pre class="code literal-block">!/bin/bash
 # Request 4 gigabytes of real memory (mem)
 # and 4 gigabytes of virtual memory (mem)
 #$ -l mem=4G -l rmem=4G
@@ -142,7 +142,7 @@ maple &lt; series_example.mpl
 <li>Log in to the system using a command line terminal and <strong>cd</strong> to the directory containing the files.</li>
 <li>Use the <strong>ls</strong> command to confirm you really are in the right directory. You should see something like this:</li>
 </ul>
-<pre class="code literal-block"><span></span>[ab1test@testnode02 maple_example]$ ls
+<pre class="code literal-block">[ab1test@testnode02 maple_example]$ ls
 
 run_maple_job.sh  series_example.maple  series_example.mpl
 </pre>
@@ -151,14 +151,14 @@ run_maple_job.sh  series_example.maple  series_example.mpl
 <ul>
 <li>Submit the job to the queue with the <strong>qsub</strong> command</li>
 </ul>
-<pre class="code literal-block"><span></span>qsub run_maple_job.sh
+<pre class="code literal-block">qsub run_maple_job.sh
 </pre>
 
 
 <ul>
 <li>You should see something like</li>
 </ul>
-<pre class="code literal-block"><span></span>[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
+<pre class="code literal-block">[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
 
 Your job 1734126 ("run_maple_job.sh") has been submitted
 </pre>
@@ -173,7 +173,7 @@ Your job 1734126 ("run_maple_job.sh") has been submitted
 <p>Run the <strong>ls</strong> command again to see the results files.</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>[fe1mpc@testnode02 maple_example]$ ls
+<pre class="code literal-block">[fe1mpc@testnode02 maple_example]$ ls
 
 run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
 </pre>
@@ -188,7 +188,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 <p>This completes your first batch submission using Maple.</p>
 <h3>Issues with graphs in Maple batch mode</h3>
 <p>The Maple worksheet we used in this example includes a plot command. This looks great in a Maple worksheet but looks very retro when performed in batch mode!</p>
-<pre class="code literal-block"><span></span>&gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+<pre class="code literal-block">&gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
                                       3+                                 H     
                                        +                                 H     
@@ -215,7 +215,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 
 
 <p>You probably want to have something that looks a little nicer. The way to do this is to modify the Maple plot command so that it specifies an output file. For example, if we want to create a .gif file, our Maple Language File becomes</p>
-<pre class="code literal-block"><span></span>myseries := series(sin(x), x = 0, 10);
+<pre class="code literal-block">myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 
 plotsetup(gif,plotoutput="plot.gif"):

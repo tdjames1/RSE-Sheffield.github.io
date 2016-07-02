@@ -10,6 +10,7 @@
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/">
+<link rel="next" href="index-1.html" type="text/html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -74,7 +75,40 @@
             
 
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="NAG_6_1/" class="u-url">NAG Fortran Compiler 6.1 released</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="the-university-of-sheffield-named-an-nvidia-gpu-education-center/" class="u-url">The University of Sheffield named an NVIDIA GPU Education Center</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                <a href="../authors/paul-richmond/">Paul Richmond</a>
+            </span></p>
+            <p class="dateline"><a href="the-university-of-sheffield-named-an-nvidia-gpu-education-center/" rel="bookmark"><time class="published dt-published" datetime="2016-07-02T17:50:04+01:00" title="2016-07-02 17:50">2016-07-02 17:50</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>This week I am very pleased to announce that the University of Sheffield has been awarded the status of an NVIDIA CUDA Education Centre.</p>
+<p>The faculty of Engineering has featured this in its latest <a href="http://www.sheffield.ac.uk/faculty/engineering/news/nvidia-1.587003">faculty newsletter</a> and the Department of Computer Science has published more details in a <a href="http://www.sheffield.ac.uk/dcs/latest-news/nvidia-1.587214">news feature</a>.</p>
+<p><img src="../images/NVIDIA_teaching.jpg" alt="Sheffield NVIDIA Education Centre" align="right" width="40%"></p>
+<h3>But what does this mean to the RSE community at Sheffield and beyond?</h3>
+<p>The recognition of being an NVIDIA education centre is a reflection of the teaching that is provided by The University of Sheffield on the subject of GPU computing. In case you are unaware of what teaching there is, I have a 4th year and Masters teaching module <a href="http://paulrichmond.shef.ac.uk/teaching/COM4521/">COM4521/COM6521</a> which ran for the first time in the 2015/2016 Spring Semester. This course will be run annually and is open to research staff as well as taught students. Last time there was roughly a 50:50 mix including senior research staff and PhD students. It is much more involved that the one or two day courses which typically give only an introduction to GPU programming. If you are a researcher looking to exploit GPU performance in your research then this course is an opportunity to learn some new skills.</p>
+<p>In the future this course will be made freely available so even researchers outside of The University of Sheffield will be able to go through the notes and worked examples (lab sheets). </p>
+<p>Some of the other benefits of being an NVIDIA Eduction (and also an NVIDIA Research) centre are;</p>
+<ul>
+<li>Access to NVIDIA GPU hardware and software (via Iceberg and in the Diamond labs) </li>
+<li>Significant discount on Tesla hardware purchases</li>
+<li>Access to NVIDIA parallel programming experts and resources</li>
+<li>Access to educational webinars and an array of teaching materials</li>
+<li>Free in the cloud GPU programming training at <a href="https://nvidia.qwiklab.com/">nvidia.qwiklab.com</a>
+</li>
+<li>Support in the form of letters of support (with contributions in kind) for research proposals with emphasis on GPU computing or deep learning</li>
+<li>Joint promotion, public relations, and press activities with NVIDIA</li>
+</ul>
+<h3>Other Training Opportunities</h3>
+<p>Through <a href="http://rse.shef.ac.uk/">RSE Sheffield</a> and <a href="http://gpucomputing.sites.sheffield.ac.uk">GPUComputing@Sheffield</a> shorter courses for GPU computing are also available. I will be announcing dates for 1-2 day CUDA courses shortly and am working with CICS in developing new Python CUDA material. </p>
+<p>For those that missed the sign-up, we are also running a two day deep learning with GPUs course in July. The places for this were in high demand and filled up within a day. This course will be repeated in due time and material from the course will be made available off-line.</p>
+<p>Other GPU announcements will be made on both this RSE blog and on the <a href="https://groups.google.com/a/sheffield.ac.uk/forum/#!forum/gpucomputing">GPUComputing@Sheffield mailing list</a>. Expect some exciting new hardware and software once the Iceberg upgrade is complete (shortly).</p>
+<p>Paul</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="NAG_6_1/" class="u-url">NAG Fortran Compiler 6.1 released</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 <a href="../authors/mike-croucher/">Mike Croucher</a>
@@ -126,7 +160,7 @@
 <a href="../maple/hpc1/run_maple_job.sh">run_maple_job.sh</a> - Job submission script</li>
 </ul>
 <p>If you look at the <strong>.mpl</strong> file in a text editor, you will see that it contains plain text versions of all the Maple input commands that were present in the original worksheet.</p>
-<pre class="code literal-block"><span></span>myseries := series(sin(x), x = 0, 10);
+<pre class="code literal-block">myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 </pre>
@@ -134,7 +168,7 @@ plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
 <p>This is the file that we can run on the HPC system in batch mode.</p>
 <p>The <strong>job submission script</strong> is a set of instructions to the HPC system's scheduler. It tells the system how much memory you want to use, what program you want to run and so on.  Here is its contents</p>
-<pre class="code literal-block"><span></span>!/bin/bash
+<pre class="code literal-block">!/bin/bash
 # Request 4 gigabytes of real memory (mem)
 # and 4 gigabytes of virtual memory (mem)
 #$ -l mem=4G -l rmem=4G
@@ -153,7 +187,7 @@ maple &lt; series_example.mpl
 <li>Log in to the system using a command line terminal and <strong>cd</strong> to the directory containing the files.</li>
 <li>Use the <strong>ls</strong> command to confirm you really are in the right directory. You should see something like this:</li>
 </ul>
-<pre class="code literal-block"><span></span>[ab1test@testnode02 maple_example]$ ls
+<pre class="code literal-block">[ab1test@testnode02 maple_example]$ ls
 
 run_maple_job.sh  series_example.maple  series_example.mpl
 </pre>
@@ -162,14 +196,14 @@ run_maple_job.sh  series_example.maple  series_example.mpl
 <ul>
 <li>Submit the job to the queue with the <strong>qsub</strong> command</li>
 </ul>
-<pre class="code literal-block"><span></span>qsub run_maple_job.sh
+<pre class="code literal-block">qsub run_maple_job.sh
 </pre>
 
 
 <ul>
 <li>You should see something like</li>
 </ul>
-<pre class="code literal-block"><span></span>[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
+<pre class="code literal-block">[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
 
 Your job 1734126 ("run_maple_job.sh") has been submitted
 </pre>
@@ -184,7 +218,7 @@ Your job 1734126 ("run_maple_job.sh") has been submitted
 <p>Run the <strong>ls</strong> command again to see the results files.</p>
 </li>
 </ul>
-<pre class="code literal-block"><span></span>[fe1mpc@testnode02 maple_example]$ ls
+<pre class="code literal-block">[fe1mpc@testnode02 maple_example]$ ls
 
 run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
 </pre>
@@ -199,7 +233,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 <p>This completes your first batch submission using Maple.</p>
 <h3>Issues with graphs in Maple batch mode</h3>
 <p>The Maple worksheet we used in this example includes a plot command. This looks great in a Maple worksheet but looks very retro when performed in batch mode!</p>
-<pre class="code literal-block"><span></span>&gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+<pre class="code literal-block">&gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
                                       3+                                 H     
                                        +                                 H     
@@ -226,7 +260,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 
 
 <p>You probably want to have something that looks a little nicer. The way to do this is to modify the Maple plot command so that it specifies an output file. For example, if we want to create a .gif file, our Maple Language File becomes</p>
-<pre class="code literal-block"><span></span>myseries := series(sin(x), x = 0, 10);
+<pre class="code literal-block">myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 
 plotsetup(gif,plotoutput="plot.gif"):
@@ -278,13 +312,13 @@ Turns out <code>LESS</code> isn't set.
 What is going wrong with my <code>.profile</code>?</p>
 <p>I'm becoming a fan of <code>strace</code> for this sort of debugging.</p>
 <p>Have a look at this. When I run this command:</p>
-<pre class="code literal-block"><span></span>strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
+<pre class="code literal-block">strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
 </pre>
 
 
 <p>I get this output (long and boring, skip and come back to the
 bits I refer to):</p>
-<pre class="code literal-block"><span></span>open("/etc/ld.so.cache", O_RDONLY)      = 3
+<pre class="code literal-block">open("/etc/ld.so.cache", O_RDONLY)      = 3
 open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
 open("/lib64/libdl.so.2", O_RDONLY)     = 3
 open("/lib64/libc.so.6", O_RDONLY)      = 3
@@ -535,26 +569,15 @@ Thanks to the visualisations on GitHub we can see how all <a href="https://githu
 <p>We will be looking to repeat this workshop later in the year, probably before term starts in late September. In the meantime, feel free to use our material and contact us if you want more information.</p>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="building-capability-and-support-in-research-software/" class="u-url">Building Capability and Support in Research Software</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                <a href="../authors/mike-croucher/">Mike Croucher</a>
-            </span></p>
-            <p class="dateline"><a href="building-capability-and-support-in-research-software/" rel="bookmark"><time class="published dt-published" datetime="2016-01-12T19:23:30Z" title="2016-01-12 19:23">2016-01-12 19:23</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <p>I'll be starting my 5 year EPSRC Research Software Engineering fellowship in March 2016. For more details of the program of work, head over to my blog, <a class="reference external" href="http://www.walkingrandomly.com/?p=5948">http://www.walkingrandomly.com/?p=5948</a></p>
-    </div>
     </article>
 </div>
 
-
-
-
-
-
-
-        </div>
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav>
+</div>
         <!--End of body content-->
 
         <footer id="footer">

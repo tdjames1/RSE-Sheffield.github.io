@@ -111,13 +111,13 @@ Turns out <code>LESS</code> isn't set.
 What is going wrong with my <code>.profile</code>?</p>
 <p>I'm becoming a fan of <code>strace</code> for this sort of debugging.</p>
 <p>Have a look at this. When I run this command:</p>
-<pre class="code literal-block"><span></span>strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
+<pre class="code literal-block">strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
 </pre>
 
 
 <p>I get this output (long and boring, skip and come back to the
 bits I refer to):</p>
-<pre class="code literal-block"><span></span>open("/etc/ld.so.cache", O_RDONLY)      = 3
+<pre class="code literal-block">open("/etc/ld.so.cache", O_RDONLY)      = 3
 open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
 open("/lib64/libdl.so.2", O_RDONLY)     = 3
 open("/lib64/libc.so.6", O_RDONLY)      = 3
