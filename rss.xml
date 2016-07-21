@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 02 Jul 2016 21:02:23 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The University of Sheffield named an NVIDIA GPU Education Center</title><link>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img src="http://rse.shef.ac.uk/images/NVIDIA_education.jpg" alt="Sheffield NVIDIA Education Centre" align="right" width="20%"&gt;&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link rel="self" href="http://rse.shef.ac.uk/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 21 Jul 2016 06:04:30 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The University of Sheffield named an NVIDIA GPU Education Center</title><link>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img src="http://rse.shef.ac.uk/images/NVIDIA_education.jpg" alt="Sheffield NVIDIA Education Centre" align="right" width="20%"&gt;&lt;/p&gt;
 &lt;p&gt;This week I am very pleased to announce that the University of Sheffield has been awarded the status of an NVIDIA CUDA Education Centre.&lt;/p&gt;
 &lt;p&gt;The faculty of Engineering has featured this in its latest &lt;a href="http://www.sheffield.ac.uk/faculty/engineering/news/nvidia-1.587003"&gt;faculty newsletter&lt;/a&gt; and the Department of Computer Science has published more details in a &lt;a href="http://www.sheffield.ac.uk/dcs/latest-news/nvidia-1.587214"&gt;news feature&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;But what does this mean to the RSE community at Sheffield and beyond?&lt;/h3&gt;
@@ -45,7 +45,7 @@
 &lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc1/run_maple_job.sh"&gt;run_maple_job.sh&lt;/a&gt; - Job submission script&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you look at the &lt;strong&gt;.mpl&lt;/strong&gt; file in a text editor, you will see that it contains plain text versions of all the Maple input commands that were present in the original worksheet.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;myseries := series(sin(x), x = 0, 10);
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 &lt;/pre&gt;
@@ -53,7 +53,7 @@ plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
 &lt;p&gt;This is the file that we can run on the HPC system in batch mode.&lt;/p&gt;
 &lt;p&gt;The &lt;strong&gt;job submission script&lt;/strong&gt; is a set of instructions to the HPC system's scheduler. It tells the system how much memory you want to use, what program you want to run and so on.  Here is its contents&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;!/bin/bash
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;!/bin/bash
 # Request 4 gigabytes of real memory (mem)
 # and 4 gigabytes of virtual memory (mem)
 #$ -l mem=4G -l rmem=4G
@@ -72,7 +72,7 @@ maple &amp;lt; series_example.mpl
 &lt;li&gt;Log in to the system using a command line terminal and &lt;strong&gt;cd&lt;/strong&gt; to the directory containing the files.&lt;/li&gt;
 &lt;li&gt;Use the &lt;strong&gt;ls&lt;/strong&gt; command to confirm you really are in the right directory. You should see something like this:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;[ab1test@testnode02 maple_example]$ ls
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ ls
 
 run_maple_job.sh  series_example.maple  series_example.mpl
 &lt;/pre&gt;
@@ -81,14 +81,14 @@ run_maple_job.sh  series_example.maple  series_example.mpl
 &lt;ul&gt;
 &lt;li&gt;Submit the job to the queue with the &lt;strong&gt;qsub&lt;/strong&gt; command&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;qsub run_maple_job.sh
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub run_maple_job.sh
 &lt;/pre&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;You should see something like&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
 
 Your job 1734126 ("run_maple_job.sh") has been submitted
 &lt;/pre&gt;
@@ -103,7 +103,7 @@ Your job 1734126 ("run_maple_job.sh") has been submitted
 &lt;p&gt;Run the &lt;strong&gt;ls&lt;/strong&gt; command again to see the results files.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;[fe1mpc@testnode02 maple_example]$ ls
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[fe1mpc@testnode02 maple_example]$ ls
 
 run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
 &lt;/pre&gt;
@@ -118,7 +118,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 &lt;p&gt;This completes your first batch submission using Maple.&lt;/p&gt;
 &lt;h3&gt;Issues with graphs in Maple batch mode&lt;/h3&gt;
 &lt;p&gt;The Maple worksheet we used in this example includes a plot command. This looks great in a Maple worksheet but looks very retro when performed in batch mode!&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&amp;gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
                                       3+                                 H     
                                        +                                 H     
@@ -145,7 +145,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 
 
 &lt;p&gt;You probably want to have something that looks a little nicer. The way to do this is to modify the Maple plot command so that it specifies an output file. For example, if we want to create a .gif file, our Maple Language File becomes&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;myseries := series(sin(x), x = 0, 10);
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 
 plotsetup(gif,plotoutput="plot.gif"):
@@ -181,13 +181,13 @@ Turns out &lt;code&gt;LESS&lt;/code&gt; isn't set.
 What is going wrong with my &lt;code&gt;.profile&lt;/code&gt;?&lt;/p&gt;
 &lt;p&gt;I'm becoming a fan of &lt;code&gt;strace&lt;/code&gt; for this sort of debugging.&lt;/p&gt;
 &lt;p&gt;Have a look at this. When I run this command:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
 &lt;/pre&gt;
 
 
 &lt;p&gt;I get this output (long and boring, skip and come back to the
 bits I refer to):&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;open("/etc/ld.so.cache", O_RDONLY)      = 3
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;open("/etc/ld.so.cache", O_RDONLY)      = 3
 open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
 open("/lib64/libdl.so.2", O_RDONLY)     = 3
 open("/lib64/libc.so.6", O_RDONLY)      = 3
