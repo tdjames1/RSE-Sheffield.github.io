@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-07-21T06:04:00Z</lastmod>
+  <lastmod>2016-09-12T00:44:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
@@ -47,7 +47,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-07-21T06:04:00Z</lastmod>
+  <lastmod>2016-09-12T00:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/9_steps/</loc>
@@ -79,7 +79,11 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/index-1.html</loc>
-  <lastmod>2016-07-21T06:04:00Z</lastmod>
+  <lastmod>2016-09-12T00:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/blog/intel-R-iceberg/</loc>
+  <lastmod>2016-09-12T00:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/jupyter-for-chem-eng/</loc>

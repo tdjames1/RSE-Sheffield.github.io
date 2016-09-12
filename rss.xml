@@ -1,5 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link type="application/rss+xml" href="http://rse.shef.ac.uk/rss.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 25 Jul 2016 18:32:02 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The University of Sheffield named an NVIDIA GPU Education Center</title><link>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img src="http://rse.shef.ac.uk/images/NVIDIA_education.jpg" alt="Sheffield NVIDIA Education Centre" align="right" width="20%"&gt;&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 12 Sep 2016 09:37:43 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Accelerated versions of R for Iceberg</title><link>http://rse.shef.ac.uk/blog/intel-R-iceberg/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;strong&gt;To Long; Didn't Read -- Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at &lt;a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html"&gt;http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If it works more quickly for you, or if you have problems, please let us know by emailing &lt;a href="mailto:rse@sheffield.ac.uk"&gt;rse@sheffield.ac.uk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I took over building &lt;a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/r.html"&gt;R for Iceberg&lt;/a&gt;, Sheffield's High Performance Computing System, around a year ago and have been incrementally improving both the install and the documentation with every release. Something that's been bothering me for a while is the lack of optimisation. The standard Iceberg build uses an ancient version of the gcc compiler and (probably) unoptimised versions of &lt;a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms"&gt;BLAS&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/LAPACK"&gt;LAPCK&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;BLAS and LAPACK are extremely important libraries -- they provide the code that programs such as R use for linear algebra: Matrix-Matrix multiplication, Cholesky decomposition, principle component analysis and so on. It's important to note that there are lots of implementations of BLAS and LAPACK: &lt;a href="http://math-atlas.sourceforge.net/"&gt;ATLAS&lt;/a&gt;, &lt;a href="http://www.openblas.net/"&gt;OpenBLAS&lt;/a&gt; and the &lt;a href="https://software.intel.com/en-us/intel-mkl"&gt;Intel MKL&lt;/a&gt; are three well-known examples. Written in Fortran, the interfaces of all of these versions are identical, which means you can use them interchangeably, but the speed of the implementation can vary considerably.&lt;/p&gt;
+&lt;p&gt;The BLAS and LAPACK implementations on Iceberg are undocumented (before my time!) which means that we have no idea what we are dealing with. Perhaps they are optimised, perhaps not. I suspected 'not'.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Building R with the Intel Compiler and MKL&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Intel Compiler Suite often produces the fastest executables of all available compilers for any given piece of Fortran or C/C++ code. Additionally, the Intel MKL is probably the fastest implementation of BLAS and LAPACK available for Intel Hardware. As such, I've had &lt;strong&gt;Build R using Intel Compilers and MKL&lt;/strong&gt; on my to-do list for some time.&lt;/p&gt;
+&lt;p&gt;Following a recent visit to the University of Lancaster, where they've been doing this for a while, I finally bit the bullet and produced some build-scripts. Thanks to Lancaster's Mike Pacey for help with this!  There are two versions (links point to the exact commits that produced the builds used in this article):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/mikecroucher/HPC_Installers/blob/ea4a9f33b705a8cae01841d9c173278fcb486061/apps/R/3.3.1/sheffield/iceberg/intel_15/install_intel_r_sequential.sh"&gt;install_intel_r_sequential.sh&lt;/a&gt; - Linked to the sequential (i.e. single-core) version of Intel MKL.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mikecroucher/HPC_Installers/blob/ea4a9f33b705a8cae01841d9c173278fcb486061/apps/R/3.3.1/sheffield/iceberg/intel_15/install_intel_r_parallel.sh"&gt;install_intel_r_parallel.sh&lt;/a&gt; - Linked to the parallel version of Intel MKL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The benchmark code is available in the Sheffield HPC examples repo &lt;a href="https://github.com/mikecroucher/HPC_Examples/"&gt;https://github.com/mikecroucher/HPC_Examples/&lt;/a&gt;. The exact commit that produced these results is &lt;a href="https://github.com/mikecroucher/HPC_Examples/blob/35de11e7c47bc278b15a64fb77c5575b074e1a47/languages/R/linear_algebra/linear_algebra_bench.r"&gt;35de11e&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It's no good having fast builds of R if they give the wrong results! To make sure that everything is OK, I ran R's installation test suite and everything passed. If you have an account on iceberg, you can see the output from the test suite at &lt;code&gt;/usr/local/packages6/apps/intel/15/R/sequential-3.3.1/install_logs/make_install_tests-R-3.3.1.log&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It's important to note that although the tests passed, there &lt;strong&gt;are&lt;/strong&gt; differences in output between this build and the reference build that R's test suite is based on. This is due to a number of factors such as the fact that &lt;a href="http://www.walkingrandomly.com/?p=5380"&gt;Floating point addition is not associative&lt;/a&gt; and that the signs of eigenvectors are arbitrary and so on.&lt;/p&gt;
+&lt;p&gt;A discussion around these differences and how they relate to R can be found &lt;a href="http://r.789695.n4.nabble.com/quot-make-check-quot-fails-on-lapack-R-and-stats-Ex-R-td4698672.html"&gt;on nabble&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How fast is it?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;So is it worth it? I ran a benchmark called &lt;a href="https://github.com/mikecroucher/HPC_Examples/blob/35de11e7c47bc278b15a64fb77c5575b074e1a47/languages/R/linear_algebra/linear_algebra_bench.r#L19"&gt;linear_algebra_bench.r&lt;/a&gt; that implemented 5 tests&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MatMul - Multiplies two random 1000 x 5000 matrices together&lt;/li&gt;
+&lt;li&gt;Chol - Cholesky decomposition of a 5000 x 5000 random matrix&lt;/li&gt;
+&lt;li&gt;SVD - Singular Value Decompisition of a 10000 x 2000 random matrix&lt;/li&gt;
+&lt;li&gt;PCA - Principle component analysis of a 10000 x 2000 random matrix&lt;/li&gt;
+&lt;li&gt;LDA - A Linear Discriminant Analysis problem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Run time of these operations compared to Iceberg's standard install of R is shown in the table below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Iceberg submission scripts for these can be found in the &lt;a href="https://github.com/mikecroucher/HPC_Examples"&gt;HPC Examples repo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Execution time in seconds (Mean of 5 independent runs) &lt;/strong&gt;&lt;/p&gt;
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+&lt;/style&gt;
+
+&lt;table class="tg"&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-yw4l"&gt;&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;MatMul&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;Chol&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;SVD&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;PCA&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;LDA&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Standard R&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;134.70&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;20.95&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;46.56&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;179.60&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;132.40&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with sequential MKL&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;12.19&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;2.24&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;9.13&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;24.58&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;31.32&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (2 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;7.21&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1.60&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;5.43&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;14.66&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;23.54&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (4 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;3.24&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1.17&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;3.34&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;7.87&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;20.63&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (8 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1.71&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;0.38&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1.99&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;5.33&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;15.82&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (16 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;0.96&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;0.28&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1.60&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;4.05&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;13.65&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img alt="" src="http://rse.shef.ac.uk/images/matmul_r_intel.png"&gt;&lt;/p&gt;
+&lt;p&gt;Another way of viewing these results is to see the speed up compared to the standard install of R. &lt;strong&gt;Even on a single CPU core, the Intel builds are between 4 and 11 times faster than the standard builds&lt;/strong&gt;.  Making use of 16 cores takes this up to &lt;strong&gt;141 times faster in the case of Matrix-Matrix Multiplication&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Speed up compared to standard R&lt;/strong&gt;&lt;/p&gt;
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+&lt;/style&gt;
+
+&lt;table class="tg"&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-yw4l"&gt; &lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;MatMul&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;Chol&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;SVD&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;PCA&lt;/th&gt;
+    &lt;th class="tg-yw4l"&gt;LDA&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Standard R&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with sequential MKL&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;11&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;9&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;5&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;7&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;4&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (2 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;19&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;13&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;9&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;12&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;6&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (4 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;42&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;18&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;14&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;23&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;6&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (8 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;79&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;55&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;23&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;34&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;8&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-yw4l"&gt;Intel R with parallel MKL (16 cores)&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;141&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;75&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;29&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;44&lt;/td&gt;
+    &lt;td class="tg-yw4l"&gt;10&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Parallel environment&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The type of parallelisation in use here is &lt;a href="http://openmp.org/wp/"&gt;OpenMP&lt;/a&gt;. As such, you need to use Iceberg's openmp environment.  That is, if you want 8 cores (say), add the following to your submission  script&lt;/p&gt;
+&lt;pre&gt;
+#$ -pe openmp 8
+export OMP_NUM_THREADS=8
+&lt;/pre&gt;
+
+&lt;p&gt;Using OpenMP limits the number of cores you can use per job to the number available on a single node. At the time of writing, this is 16.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How many cores: Finding the sweet spot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Note that everything is fastest when using 16 cores! As such, it may be tempting to always use 16 cores for your jobs. This will almost always be a mistake.
+It may be that the aspect of your code that's accelerated by this build doesn't account for much of the runtime of your problem. As such, those 16 cores will sit idle most of the time -- wasting resources.  &lt;/p&gt;
+&lt;p&gt;You'll also spend a lot longer waiting in the queue for 16 cores than you will for 2 cores which may swap any speed gains.&lt;/p&gt;
+&lt;p&gt;You should always perform scaling experiments before deciding how many cores to use for your jobs. Consider the Linear Discriminant Analysis problem, for example. Using just one core, Intel build gives us a 4 times speed-up compared to the standard build. Moving to 8 cores only makes it twice as fast again. As such, if you had lots of these jobs to do, your throughput would be higher running lots of single core jobs compared to lots of 8 core jobs.&lt;/p&gt;
+&lt;p&gt;If matrix-matrix multiply dominates your runtime, on the other hand, it may well be worth using 16 cores.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Using this version of R for your own work&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As a user, there are a few things you need to be aware of with the Intel builds of R so I've created a separate documentation page for them.  This is currently at
+&lt;a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html"&gt;http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My recommendation for using these builds is to work through the following procedure&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure that your code runs with Iceberg's standard version of R and produce a test result.&lt;/li&gt;
+&lt;li&gt;In the first instance, switch to the sequential version of the Intel R build. In the best case, this will just require changing the module. You may also need to install some of your packages since the Intel build has a separate packages directory to the standard build.&lt;/li&gt;
+&lt;li&gt;If you see speed-up &lt;strong&gt;and&lt;/strong&gt; the results are consistent with your test result, try the parallel version. Initially start with 2 cores and move upwards to find the sweet spot.&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/intel-R-iceberg/</guid><pubDate>Mon, 12 Sep 2016 00:31:35 GMT</pubDate></item><item><title>The University of Sheffield named an NVIDIA GPU Education Center</title><link>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img src="http://rse.shef.ac.uk/images/NVIDIA_education.jpg" alt="Sheffield NVIDIA Education Centre" align="right" width="20%"&gt;&lt;/p&gt;
 &lt;p&gt;This week I am very pleased to announce that the University of Sheffield has been awarded the status of an NVIDIA CUDA Education Centre.&lt;/p&gt;
 &lt;p&gt;The faculty of Engineering has featured this in its latest &lt;a href="http://www.sheffield.ac.uk/faculty/engineering/news/nvidia-1.587003"&gt;faculty newsletter&lt;/a&gt; and the Department of Computer Science has published more details in a &lt;a href="http://www.sheffield.ac.uk/dcs/latest-news/nvidia-1.587214"&gt;news feature&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;But what does this mean to the RSE community at Sheffield and beyond?&lt;/h3&gt;
@@ -347,18 +537,4 @@ system alien to their day-to-day computing environment&lt;/li&gt;
 &lt;li&gt;Mike Croucher, one of Sheffield's RSE Fellows, writes about the announcement on his blog: &lt;a href="http://www.walkingrandomly.com/?p=6011"&gt;http://www.walkingrandomly.com/?p=6011&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Lots more detail from Microsoft's Scott Hanselman &lt;a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx"&gt;http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/linux-in-windows10-announce/</guid><pubDate>Wed, 06 Apr 2016 10:25:37 GMT</pubDate></item><item><title>Our first Code Cafe: First steps with R</title><link>http://rse.shef.ac.uk/blog/code-cafe-R/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;We ran a 'Code Cafe' event for Coffee Revolution for Researchers who wanted to take their first steps with R. Details and class materials are at &lt;a href="http://www.walkingrandomly.com/?p=5981"&gt;http://www.walkingrandomly.com/?p=5981&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="R Code Cafe" src="http://www.walkingrandomly.com/wp-content/uploads/2016/03/CdIBvyEW8AAIUAA.jpg"&gt;&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/code-cafe-R/</guid><pubDate>Thu, 10 Mar 2016 19:06:37 GMT</pubDate></item><item><title>Open Astronomy / Software Carpentry Workshop</title><link>http://rse.shef.ac.uk/blog/openastronomy-workshop/</link><dc:creator>Stuart Mumford</dc:creator><description>&lt;div&gt;&lt;p&gt;Last week (11-15th January 2016) saw the first Open Astronomy workshop held at The University of Sheffield for the UK astronomy and solar physics communities. The first two days of the &lt;a href="http://openastronomy.org/2016-01-11-Sheffield/"&gt;workshop&lt;/a&gt; consisted of the core syllabus of &lt;a href="http://software-carpentry.org/"&gt;Software Carpentry&lt;/a&gt;, covering git, bash and an introduction to programming with Python. The last three days provided an introduction to carrying out research in astronomy using Python. The attendees were mostly PhD students in Astrophysics from the University of Sheffield, however there were also representation of other fields (mathematics, medicine, ecology), from other universities (St. Andrews, Reading) and at different stages in their careers (post-docs).&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://rse.shef.ac.uk/images/openastronomy_workshop.jpg" alt="David teaching bash" align="right" width="40%"&gt;&lt;/p&gt;
-&lt;p&gt;The workshop was taught by four different instructors (&lt;a href="https://github.com/CyclingNinja"&gt;Sam&lt;/a&gt;, &lt;a href="https://github.com/drewleonard42"&gt;Drew&lt;/a&gt;, &lt;a href="https://github.com/cadair"&gt;Stuart&lt;/a&gt; and &lt;a href="https://github.com/dpshelio"&gt;David&lt;/a&gt;) with the help of &lt;a href="https://github.com/astrofrog/"&gt;Tom&lt;/a&gt; (an Astropy developer) on Thursday.
-We all brought different expertise and shared the teaching out to keep the workshop lively over a gruelling five days none of us taught more than three hours in one go, and we alternated days between teaching and assisting.
-We used the red-green post-it technique suggested by software carpentry as a way to know how people were getting on during the sessions, also, for every session the learners were asked to use these post-it notes to give us feedback on the session (green for something good you've learnt, red for something that can be improved).
-This not just helped us for the next workshop, but it also helped to the next instructor that day!&lt;/p&gt;
-&lt;p&gt;As usual there were some software setup issues at the beginning of the week, however we were very close!
-Only one person from the whole class had trouble with the Jupyter notebook - it simply was not able to execute any command within. We didn't manage to fix the problem, but probably it was the oldest laptop (running Windows 7) in the class.
-Beside that case, we come across a couple of other problems with other windows machines, in one of them &lt;code&gt;git log&lt;/code&gt; was blocking the screen and the other could not open the text editor (Notepad++ in this case) when executing &lt;code&gt;commit&lt;/code&gt; (or &lt;code&gt;merge&lt;/code&gt; with the default message).&lt;/p&gt;
-&lt;p&gt;Each day we updated the &lt;a href="https://github.com/OpenAstronomy/2016-01-11_Sheffield_Notes"&gt;official repository&lt;/a&gt; with lesson templates in Jupyter notebook format, where an outline of the class was available, and the code cells were empty to be filled in while following the lecture. Once we completed a session, the notes can be browsed &lt;a href="http://nbviewer.jupyter.org/github/OpenAstronomy/2016-01-11_Sheffield_Notes/blob/master/index.ipynb"&gt;here&lt;/a&gt;.
-In this way everyone had to &lt;code&gt;fork&lt;/code&gt; our repository on github, then &lt;code&gt;pull&lt;/code&gt; at the start of every session from &lt;code&gt;upstream&lt;/code&gt; and &lt;code&gt;push&lt;/code&gt; at the end to their &lt;code&gt;origin&lt;/code&gt;.
-This cemented the work at the start of the week on git+GitHub, while making sure everyone had a backup of all the work they had completed during the week and learning the usual git workflow of contributing to a larger project on GitHub.
-Thanks to the visualisations on GitHub we can see how all &lt;a href="https://github.com/OpenAstronomy/2016-01-11_Sheffield_Notes/network"&gt;these forks evolved&lt;/a&gt;, and see if the participants keep using GitHub!!&lt;/p&gt;
-&lt;p&gt;During one of the sessions we discovered a bug in the latest release of SunPy. We used the opportunity to demonstrate what to do in these cases: fill an issue on GitHub and provide the information needed so the developers can replicate such error.&lt;/p&gt;
-&lt;p&gt;We will be looking to repeat this workshop later in the year, probably before term starts in late September. In the meantime, feel free to use our material and contact us if you want more information.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/openastronomy-workshop/</guid><pubDate>Thu, 21 Jan 2016 12:15:51 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;img alt="R Code Cafe" src="http://www.walkingrandomly.com/wp-content/uploads/2016/03/CdIBvyEW8AAIUAA.jpg"&gt;&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/code-cafe-R/</guid><pubDate>Thu, 10 Mar 2016 19:06:37 GMT</pubDate></item></channel></rss>
