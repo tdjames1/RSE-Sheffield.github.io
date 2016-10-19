@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-10-02T08:05:00Z</lastmod>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
-  <lastmod>2016-05-25T12:21:00Z</lastmod>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/authors/avgoustinos-vouros/</loc>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/david-jones/</loc>
@@ -47,7 +51,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-10-02T08:05:00Z</lastmod>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/9_steps/</loc>
@@ -83,11 +87,15 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/index-1.html</loc>
-  <lastmod>2016-10-02T08:05:00Z</lastmod>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/intel-R-iceberg/</loc>
   <lastmod>2016-09-12T00:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/blog/julia-manchester-2016/</loc>
+  <lastmod>2016-10-19T12:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/jupyter-for-chem-eng/</loc>
