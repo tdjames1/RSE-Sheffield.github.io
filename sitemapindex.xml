@@ -10,6 +10,10 @@
   <lastmod>2016-10-19T12:07:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>http://rse.shef.ac.uk/authors/christopher-handley.xml</loc>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://rse.shef.ac.uk/authors/david-jones.xml</loc>
   <lastmod>2016-09-12T00:57:00Z</lastmod>
  </sitemap>
@@ -23,7 +27,7 @@
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/authors/mozhgan-kabiri-chimeh.xml</loc>
-  <lastmod>2016-10-28T08:11:00Z</lastmod>
+  <lastmod>2016-10-28T09:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/authors/paul-richmond.xml</loc>
@@ -35,10 +39,10 @@
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/rss.xml</loc>
-  <lastmod>2016-10-28T08:11:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://rse.shef.ac.uk/sitemap.xml</loc>
-  <lastmod>2016-10-28T08:11:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </sitemap>
 </sitemapindex>

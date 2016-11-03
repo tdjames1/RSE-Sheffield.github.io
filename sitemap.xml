@@ -19,15 +19,19 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-10-28T08:11:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
-  <lastmod>2016-10-28T08:07:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/avgoustinos-vouros/</loc>
   <lastmod>2016-10-19T12:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/authors/christopher-handley/</loc>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/david-jones/</loc>
@@ -55,7 +59,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-10-28T08:07:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/9_steps/</loc>
@@ -91,7 +95,7 @@
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/index-1.html</loc>
-  <lastmod>2016-10-28T08:11:00Z</lastmod>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/intel-R-iceberg/</loc>
@@ -120,6 +124,10 @@
  <url>
   <loc>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</loc>
   <lastmod>2016-07-21T06:04:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://rse.shef.ac.uk/blog/windows_bash_materials/</loc>
+  <lastmod>2016-11-03T17:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/categories/</loc>
