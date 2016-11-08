@@ -7,198 +7,190 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://rse.shef.ac.uk/</loc>
-  <lastmod>2016-09-05T13:12:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/2016/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/activities/</loc>
-  <lastmod>2016-04-08T16:07:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/archive.html</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/avgoustinos-vouros/</loc>
-  <lastmod>2016-10-19T12:06:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/christopher-handley/</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/david-jones/</loc>
-  <lastmod>2016-05-25T12:21:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/ian-cottam/</loc>
-  <lastmod>2016-04-06T10:57:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/mike-croucher/</loc>
-  <lastmod>2016-01-21T12:32:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/mozhgan-kabiri-chimeh/</loc>
-  <lastmod>2016-10-28T08:07:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/paul-richmond/</loc>
-  <lastmod>2016-04-25T09:11:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/authors/stuart-mumford/</loc>
-  <lastmod>2016-01-21T12:32:00Z</lastmod>
+  <lastmod>2016-11-08T13:29:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/9_steps/</loc>
-  <lastmod>2016-04-18T08:05:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/HPC-Maple-1/</loc>
-  <lastmod>2016-05-27T10:21:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/NAG_6_1/</loc>
-  <lastmod>2016-06-16T13:36:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/RSE_gpu_role_2016/</loc>
-  <lastmod>2016-04-25T09:11:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/building-capability-and-support-in-research-software/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/code-cafe-R/</loc>
-  <lastmod>2016-03-10T19:09:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/coffee-and-cakes-event/</loc>
-  <lastmod>2016-10-02T08:05:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/fun-with-strace/</loc>
-  <lastmod>2016-05-25T12:21:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/index-1.html</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/intel-R-iceberg/</loc>
-  <lastmod>2016-09-12T00:43:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/julia-manchester-2016/</loc>
-  <lastmod>2016-10-19T12:06:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/jupyter-for-chem-eng/</loc>
-  <lastmod>2016-04-11T08:20:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/linux-in-windows10-announce/</loc>
-  <lastmod>2016-04-06T10:26:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/mozhgankch_intro/</loc>
-  <lastmod>2016-10-28T08:07:00Z</lastmod>
+  <lastmod>2016-11-08T13:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/openastronomy-workshop/</loc>
-  <lastmod>2016-01-21T12:32:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/the-university-of-sheffield-named-an-nvidia-gpu-education-center/</loc>
-  <lastmod>2016-07-21T06:04:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/blog/windows_bash_materials/</loc>
-  <lastmod>2016-11-03T17:43:00Z</lastmod>
+  <lastmod>2016-11-08T13:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/categories/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/community/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/contact/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/forged/</loc>
-  <lastmod>2016-01-14T10:50:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/</loc>
-  <lastmod>2016-02-06T07:02:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/NAG/</loc>
-  <lastmod>2016-07-25T18:32:00Z</lastmod>
- </url>
- <url>
-  <loc>http://rse.shef.ac.uk/resources/languages/cpp/</loc>
-  <lastmod>2016-05-25T12:21:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/fortran/</loc>
-  <lastmod>2016-02-06T07:02:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/maple/</loc>
-  <lastmod>2016-05-31T12:13:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/mathematica/</loc>
-  <lastmod>2016-10-11T09:53:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/matlab/</loc>
-  <lastmod>2016-06-05T09:39:00Z</lastmod>
- </url>
- <url>
-  <loc>http://rse.shef.ac.uk/resources/languages/python/</loc>
-  <lastmod>2016-05-25T12:21:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/resources/languages/rstats/</loc>
-  <lastmod>2016-04-25T18:56:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/testimonials/</loc>
-  <lastmod>2016-06-01T09:53:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/training/</loc>
-  <lastmod>2016-10-18T10:42:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/training/COM605/</loc>
-  <lastmod>2016-10-18T10:47:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/training/COM605/COM605reg/</loc>
-  <lastmod>2016-10-18T10:47:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
  <url>
   <loc>http://rse.shef.ac.uk/training/schedule/</loc>
-  <lastmod>2016-10-18T09:34:00Z</lastmod>
+  <lastmod>2016-10-25T15:33:00Z</lastmod>
  </url>
 </urlset>
