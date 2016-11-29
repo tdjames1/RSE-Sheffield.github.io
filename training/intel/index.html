@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intel Training Workshop | RSE at Sheffield</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://rse.shef.ac.uk/training/intel/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Mike Croucher and Paul Richmond">
+<meta property="og:site_name" content="RSE at Sheffield">
+<meta property="og:title" content="Intel Training Workshop">
+<meta property="og:url" content="http://rse.shef.ac.uk/training/intel/">
+<meta property="og:description" content="About
+This workshop comprises two half-day sessions that will show you how to program multicore (e.g. Xeon) and massively multicore (e.g. Xeon Phi) computers using C++. The course is delivered by Chri">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-12-19T18:38:02Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://rse.shef.ac.uk/">
+
+                <span id="blog-title">RSE at Sheffield</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../activities">What we do</a>
+                </li>
+<li>
+<a href="../../training">Training</a>
+                </li>
+<li>
+<a href="../../blog">Blog</a>
+                </li>
+<li>
+<a href="../../community">Community</a>
+                </li>
+<li>
+<a href="../../resources">Resources</a>
+                </li>
+<li>
+<a href="../../forged">Forged in Sheffield</a>
+                </li>
+<li>
+<a href="../../testimonials">Testimonials</a>
+                </li>
+<li>
+<a href="../../contact">Contact Us</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Intel Training Workshop</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>About</h2>
+<p>This workshop comprises two half-day sessions that will show you how to program multicore (e.g. Xeon) and massively multicore (e.g. Xeon Phi) computers using C++. The course is delivered by <a href="http://www.bristol.ac.uk/brissynbio/people/person/christopher-j-woods/index.html">Christopher Woods</a> (RSE FEllows) from Research Software Engineering group at the University of Bristol. The course is facilitated by <a href="http://paulrichmond.shef.ac.uk/">Paul Richmond</a> and Mozhgan Chimeh(http://rse.shef.ac.uk/blog/mozhgankch_intro/) from RSE Sheffield.</p>
+<p>The course will run in Computer Room ALG04 (40) in Bartolomé House, Winter Street, Sheffield, S3 7ND (Sheffield University Building number 101 - <a href="https://www.sheffield.ac.uk/polopoly_fs/1.656475!/file/campus-map-a-z-oct16.gif">see campus map</a>)</p>
+<h2>Getting started with Iceberg</h2>
+<p>The workshop will utilise Iceberg, the University of Sheffield HPC system. Everyone should have completed the user-name request form and as a result you have been added to a special project group and queue. This will enable us to access some dedicated nodes which have been put aside for us to use. If you did not supply your user-name you can still take part however you may need to queue (wait) for an interactive session if the rest of iceberg is busy.</p>
+<p>To log into iceberg use SSH from Linux use the following command where <em>username</em> is your CICS and iceberg username.</p>
+<pre class="code literal-block"><span></span>ssh username@iceberg.shef.ac.uk
+</pre>
+
+
+<p>To log into Iceberg from Windows use the Putty SSH client. Putty should be available from the software centre on managed desktop. You only need to enter <code>iceberg.shef.ac.uk</code> into the Host Name (or IP address) box in the session view and then click Open. You will be promoted for your username and password.</p>
+<p>You should now be connected to a head (login) node. Do not use the head node for any of the exercises! You should instead use the dedicated nodes by requesting an interactive session. This requires specifying the special project group (<code>-P</code>) and queue (<code>-q</code>). As we are running parallel code we will also need to request more than a single processing core using the <code>-pe openmp [number of cores]</code> command. E.g.</p>
+<pre class="code literal-block"><span></span>qrsh -pe openmp 4 -P training -q training.q
+</pre>
+
+
+<p>Your command window will change from the head node to one of the dedicated nodes. I.e.</p>
+<pre class="code literal-block"><span></span>[co1pr@iceberg-login1 ~]$
+</pre>
+
+
+<p>Will change to </p>
+<pre class="code literal-block"><span></span>[co1pr@node119 ~]$
+</pre>
+
+
+<p>This indicates that you are on Node 119. </p>
+<h2>Getting the Source Material</h2>
+<p>Each of the course content links below provide a downloadable link containing the starting code. You can either download this on your desktop and upload it to iceberg using SFTP (port 22) or fetch it directly from  the web using wget. E.g. From your interactive session type:</p>
+<pre class="code literal-block"><span></span>wget https://github.com/chryswoods/siremol.org/raw/master/chryswoods.com/vector_c%2B%2B/workshop.tgz
+</pre>
+
+
+<h2>Modules Required</h2>
+<p>Once you are in an interactive session you will need to load a number of modules to set up the compilers and libraries used in the exercises. Load a GCC compiler with the following command (other version are availble but are untested).</p>
+<pre class="code literal-block"><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">5.4</span>
+</pre>
+
+
+<p>Load the Intel TBB library with the following command</p>
+<pre class="code literal-block"><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">binlibs</span><span class="o">/</span><span class="n">intel-tbb</span><span class="o">/</span><span class="mf">2017.0</span>
+</pre>
+
+
+<p>Ok. Now your ready to get started on the workshop exercises.</p>
+<h2>Day 1: 30th November, 2pm-5pm - Parallel Programming with C++</h2>
+<p>This is a short course that will give you a taste of functional programming in C++ and how it can be used to write efficient parallel code. It will show how functional programming enables you to take advantage of modern parallel libraries, such as Intel's Threading Building Blocks. This enables you to express your program as a set of tasks, with associated dependencies between tasks. These tasks are then passed to the parallel library, which manages efficient scheduling and processing of those tasks across all of the cores available in your computer.</p>
+<p>Course Material is available at <a href="http://chryswoods.com/parallel_c%2b%2b/">http://chryswoods.com/parallel_c++/</a></p>
+<h2>Day 2: Session 2 - 1st December, 10am-1pm - Efficient Vectorisation with C++</h2>
+<p>This session will show you how to efficiently vectorise your C++ code. This will allow your software to make good use of the increasingly larger vector units that are appearing on modern multicore and massively multicore processors. It will show you how vectorisation can be performed at multiple levels, from simple compiler flags and pragmas, via libraries, or via direct use of vector intrinsics. You will learn why processor manufacturers are increasingly turning to vector units to improve performance, and how to best lay your program data out in memory to ensure optimal vector performance. By combining efficient vectorisation with parallel programming, you will ensure that your program makes optimal use of modern processors such as Xeon and Xeon Phi.</p>
+<p>Course Material is available at <a href="http://chryswoods.com/vector_c%2b%2b/">http://chryswoods.com/vector_c++/</a></p>
+<h2>Other information</h2>
+<p>Lunch is not provided. Refreshments are available throughout the day from  Bartolomé Café on the basement level.</p>
+</div>
+    </div>
+    
+
+</article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016         <a href="mailto:rse@sheffield.ac.uk">Mike Croucher and Paul Richmond</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

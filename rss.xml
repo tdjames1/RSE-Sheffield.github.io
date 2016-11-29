@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link rel="self" type="application/rss+xml" href="http://rse.shef.ac.uk/rss.xml"></atom:link><language>en</language><lastBuildDate>Thu, 03 Nov 2016 17:43:15 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Bashing down Windows for Materials Science</title><link>http://rse.shef.ac.uk/blog/windows_bash_materials/</link><dc:creator>Christopher Handley</dc:creator><description>&lt;div&gt;&lt;p&gt;In the last few months Windows 10 has had an interesting new capability – &lt;a href="http://www.walkingrandomly.com/?p=6187"&gt;Bash&lt;/a&gt;. Originally the Linux Subsystem was only available for those on the developer loop, but since the Windows 10 Anniversary edition this subsystem has been available to all users who activate it. The subsystem is not an emulator, but a way for Windows 10 to run Linux applications, and to use the Linux Bash environment, through the use of dynamic maps between Linux system calls and Windows ones.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 29 Nov 2016 17:31:52 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Bashing down Windows for Materials Science</title><link>http://rse.shef.ac.uk/blog/windows_bash_materials/</link><dc:creator>Christopher Handley</dc:creator><description>&lt;div&gt;&lt;p&gt;In the last few months Windows 10 has had an interesting new capability – &lt;a href="http://www.walkingrandomly.com/?p=6187"&gt;Bash&lt;/a&gt;. Originally the Linux Subsystem was only available for those on the developer loop, but since the Windows 10 Anniversary edition this subsystem has been available to all users who activate it. The subsystem is not an emulator, but a way for Windows 10 to run Linux applications, and to use the Linux Bash environment, through the use of dynamic maps between Linux system calls and Windows ones.&lt;/p&gt;
 &lt;p&gt;As a computational chemist working in the &lt;a href="http://www.sheffield.ac.uk/materials"&gt;Department of Materials Science and Engineering&lt;/a&gt; this is really an excellent and exciting new way that Windows has evolved.
 There are a great many tools for my research. Some work on Windows, and are well designed for that OS, given that they are applications aimed at the people that make and analyse their materials. These tools help users visualize crystal structures in 3D, or predict from crystal structures experimental observables, such as transition electron microscopy. For computational chemists, these tools are often also invaluable as they allow us to construct visually the crystal structures that we wish to then simulate using quantum mechanics or classical force fields.
 More often than not, the programs designed for running such chemical simulations, have no GUI, and run in a Unix environment. &lt;a href="http://www.castep.org/"&gt;CASTEP&lt;/a&gt; is a UK created Density Functional Theory simulation package, which is free for all UK academics, and is used extensively by those researchers wishing to simulated solid state materials, such as batteries, piezoelectric materials, and solar power materials. Previously, to run CASTEP on a Windows machine, &lt;a href="https://www.cygwin.com/"&gt;Cygwin&lt;/a&gt; or a &lt;a href="https://en.wikipedia.org/wiki/Virtual_machine"&gt;virtual machine&lt;/a&gt; were required. However, with the new subsystem, CASTEP installs out of the box as if you were running any other Linux computer.
@@ -273,7 +273,7 @@ It may be that the aspect of your code that's accelerated by this build doesn't 
 &lt;li&gt;&lt;a href="http://rse.shef.ac.uk/maple/hpc1/run_maple_job.sh"&gt;run_maple_job.sh&lt;/a&gt; - Job submission script&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you look at the &lt;strong&gt;.mpl&lt;/strong&gt; file in a text editor, you will see that it contains plain text versions of all the Maple input commands that were present in the original worksheet.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
+&lt;pre class="code literal-block"&gt;myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 &lt;/pre&gt;
@@ -281,7 +281,7 @@ plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
 &lt;p&gt;This is the file that we can run on the HPC system in batch mode.&lt;/p&gt;
 &lt;p&gt;The &lt;strong&gt;job submission script&lt;/strong&gt; is a set of instructions to the HPC system's scheduler. It tells the system how much memory you want to use, what program you want to run and so on.  Here is its contents&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;!/bin/bash
+&lt;pre class="code literal-block"&gt;!/bin/bash
 # Request 4 gigabytes of real memory (mem)
 # and 4 gigabytes of virtual memory (mem)
 #$ -l mem=4G -l rmem=4G
@@ -300,7 +300,7 @@ maple &amp;lt; series_example.mpl
 &lt;li&gt;Log in to the system using a command line terminal and &lt;strong&gt;cd&lt;/strong&gt; to the directory containing the files.&lt;/li&gt;
 &lt;li&gt;Use the &lt;strong&gt;ls&lt;/strong&gt; command to confirm you really are in the right directory. You should see something like this:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ ls
+&lt;pre class="code literal-block"&gt;[ab1test@testnode02 maple_example]$ ls
 
 run_maple_job.sh  series_example.maple  series_example.mpl
 &lt;/pre&gt;
@@ -309,14 +309,14 @@ run_maple_job.sh  series_example.maple  series_example.mpl
 &lt;ul&gt;
 &lt;li&gt;Submit the job to the queue with the &lt;strong&gt;qsub&lt;/strong&gt; command&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub run_maple_job.sh
+&lt;pre class="code literal-block"&gt;qsub run_maple_job.sh
 &lt;/pre&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;You should see something like&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
+&lt;pre class="code literal-block"&gt;[ab1test@testnode02 maple_example]$ qsub run_maple_job.sh
 
 Your job 1734126 ("run_maple_job.sh") has been submitted
 &lt;/pre&gt;
@@ -331,7 +331,7 @@ Your job 1734126 ("run_maple_job.sh") has been submitted
 &lt;p&gt;Run the &lt;strong&gt;ls&lt;/strong&gt; command again to see the results files.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[fe1mpc@testnode02 maple_example]$ ls
+&lt;pre class="code literal-block"&gt;[fe1mpc@testnode02 maple_example]$ ls
 
 run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
 &lt;/pre&gt;
@@ -346,7 +346,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 &lt;p&gt;This completes your first batch submission using Maple.&lt;/p&gt;
 &lt;h3&gt;Issues with graphs in Maple batch mode&lt;/h3&gt;
 &lt;p&gt;The Maple worksheet we used in this example includes a plot command. This looks great in a Maple worksheet but looks very retro when performed in batch mode!&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
+&lt;pre class="code literal-block"&gt;&amp;gt; plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 
                                       3+                                 H     
                                        +                                 H     
@@ -373,7 +373,7 @@ run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_e
 
 
 &lt;p&gt;You probably want to have something that looks a little nicer. The way to do this is to modify the Maple plot command so that it specifies an output file. For example, if we want to create a .gif file, our Maple Language File becomes&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;myseries := series(sin(x), x = 0, 10);
+&lt;pre class="code literal-block"&gt;myseries := series(sin(x), x = 0, 10);
 poly := convert(myseries, polynom);
 
 plotsetup(gif,plotoutput="plot.gif"):
@@ -409,13 +409,13 @@ Turns out &lt;code&gt;LESS&lt;/code&gt; isn't set.
 What is going wrong with my &lt;code&gt;.profile&lt;/code&gt;?&lt;/p&gt;
 &lt;p&gt;I'm becoming a fan of &lt;code&gt;strace&lt;/code&gt; for this sort of debugging.&lt;/p&gt;
 &lt;p&gt;Have a look at this. When I run this command:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
+&lt;pre class="code literal-block"&gt;strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
 &lt;/pre&gt;
 
 
 &lt;p&gt;I get this output (long and boring, skip and come back to the
 bits I refer to):&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;open("/etc/ld.so.cache", O_RDONLY)      = 3
+&lt;pre class="code literal-block"&gt;open("/etc/ld.so.cache", O_RDONLY)      = 3
 open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
 open("/lib64/libdl.so.2", O_RDONLY)     = 3
 open("/lib64/libc.so.6", O_RDONLY)      = 3
