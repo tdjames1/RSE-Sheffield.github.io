@@ -2,7 +2,6 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://rse.shef.ac.uk/blog/intel-R-iceberg/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accelerated versions of R for Iceberg | RSE at Sheffield</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -16,7 +15,7 @@
 <meta property="og:title" content="Accelerated versions of R for Iceberg">
 <meta property="og:url" content="http://rse.shef.ac.uk/blog/intel-R-iceberg/">
 <meta property="og:description" content="To Long; Didn't Read -- Summary
-I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at http://docs.iceberg.shef.ac.uk/en/latest/softw">
+I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at http://docs.hpc.shef.ac.uk/en/latest/iceberg/s">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2016-09-12T00:31:35Z">
 </head>
@@ -95,10 +94,10 @@ I've built a version of R on Iceberg that is faster than the standard version fo
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p><strong>To Long; Didn't Read -- Summary</strong></p>
-<p>I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at <a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html">http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html</a>.</p>
+<p>I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at <a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html">http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html</a>.</p>
 <p>If it works more quickly for you, or if you have problems, please let us know by emailing <a href="mailto:rse@sheffield.ac.uk">rse@sheffield.ac.uk</a></p>
 <p><strong>Background</strong></p>
-<p>I took over building <a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/r.html">R for Iceberg</a>, Sheffield's High Performance Computing System, around a year ago and have been incrementally improving both the install and the documentation with every release. Something that's been bothering me for a while is the lack of optimisation. The standard Iceberg build uses an ancient version of the gcc compiler and (probably) unoptimised versions of <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">BLAS</a> and <a href="https://en.wikipedia.org/wiki/LAPACK">LAPCK</a>.</p>
+<p>I took over building <a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html">R for Iceberg</a>, Sheffield's High Performance Computing System, around a year ago and have been incrementally improving both the install and the documentation with every release. Something that's been bothering me for a while is the lack of optimisation. The standard Iceberg build uses an ancient version of the gcc compiler and (probably) unoptimised versions of <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">BLAS</a> and <a href="https://en.wikipedia.org/wiki/LAPACK">LAPCK</a>.</p>
 <p>BLAS and LAPACK are extremely important libraries -- they provide the code that programs such as R use for linear algebra: Matrix-Matrix multiplication, Cholesky decomposition, principle component analysis and so on. It's important to note that there are lots of implementations of BLAS and LAPACK: <a href="http://math-atlas.sourceforge.net/">ATLAS</a>, <a href="http://www.openblas.net/">OpenBLAS</a> and the <a href="https://software.intel.com/en-us/intel-mkl">Intel MKL</a> are three well-known examples. Written in Fortran, the interfaces of all of these versions are identical, which means you can use them interchangeably, but the speed of the implementation can vary considerably.</p>
 <p>The BLAS and LAPACK implementations on Iceberg are undocumented (before my time!) which means that we have no idea what we are dealing with. Perhaps they are optimised, perhaps not. I suspected 'not'.</p>
 <p><strong>Building R with the Intel Compiler and MKL</strong></p>
@@ -277,7 +276,7 @@ It may be that the aspect of your code that's accelerated by this build doesn't 
 <p>If matrix-matrix multiply dominates your runtime, on the other hand, it may well be worth using 16 cores.</p>
 <p><strong>Using this version of R for your own work</strong></p>
 <p>As a user, there are a few things you need to be aware of with the Intel builds of R so I've created a separate documentation page for them.  This is currently at
-<a href="http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html">http://docs.iceberg.shef.ac.uk/en/latest/software/apps/intel_r.html</a></p>
+<a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/intel_r.html">http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/intel_r.html</a></p>
 <p>My recommendation for using these builds is to work through the following procedure</p>
 <ul>
 <li>Ensure that your code runs with Iceberg's standard version of R and produce a test result.</li>
