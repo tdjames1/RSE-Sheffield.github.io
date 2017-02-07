@@ -75,7 +75,111 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="linuistics_grant_2016/" class="u-url">£1 million grant to shed light on how we learn languages</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="willfurnass_intro/" class="u-url">Will Furnass joins to work on Jupyter and Grid Engine integration</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                <a href="../authors/will-furnass/">Will Furnass</a>
+            </span></p>
+            <p class="dateline"><a href="willfurnass_intro/" rel="bookmark"><time class="published dt-published" datetime="2017-01-30T10:56:00Z" title="2017-01-30 10:56">2017-01-30 10:56</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<img alt="Will Furnass" class="align-right" src="../images/willfurnass.png"><p>The Research Software Engineering team at the University of Sheffield has gained a new member!
+I joined at the start of January and
+will primarily be working on <a class="reference external" href="http://opendreamkit.org/">OpenDreamKit</a>
+which is a <a class="reference external" href="https://ec.europa.eu/programmes/horizon2020/">Horizon 2020</a>
+European <a class="reference external" href="https://ec.europa.eu/programmes/horizon2020/en/h2020-section/european-research-infrastructures-including-e-infrastructures">Research Infrastructure</a> project
+with the aim of furthering the open-source computational mathematics ecosystem.</p>
+<p>My contribution to this project is to extend work previously started at the University of Sheffield
+to allow researchers to more easily run interactive workflows on <a class="reference external" href="https://en.wikipedia.org/wiki/High-performance_computing">High-Performance Computing</a> clusters,
+specifically to make it easy, robust and intuitive to run <a class="reference external" href="http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Jupyter Notebooks</a> on
+clusters running job scheduling software from the <a class="reference external" href="https://arc.liv.ac.uk/trac/SGE">Grid Engine</a> family.</p>
+<p>Jupyter Notebooks are <strong>runnable documents</strong> containing code snippets
+that are viewed and manipulated from a web browser.
+They are an increasingly popular way of encapsulating, presenting and sharing a coding-oriented workflow.
+A Notebook comprises a column of cells, where each cell can contain:</p>
+<ul class="simple">
+<li>some code or</li>
+<li>explanatory text (that can be formatted using <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>) and/or mathematical expressions (formatted using <a class="reference external" href="https://www.mathjax.org/">MathJax</a>).</li>
+</ul>
+<p>When a code cell is executed by the user it can return anything renderable by a modern web browser:</p>
+<ul class="simple">
+<li>a single value,</li>
+<li>a table of data,</li>
+<li>a figure or</li>
+<li>a mathematical expression.</li>
+</ul>
+<p>For example:</p>
+<img alt="/images/jupyter_notebook_example.png" src="../images/jupyter_notebook_example.png"><p>The code cells of a Notebook can be (re)run in any order, so Notebooks are very useful for interactive exploration.</p>
+<p>The structure of Jupyter is typically as follows:</p>
+<pre class="literal-block">
+[Notebook in browser] &lt;---&gt; [Jupyter server] &lt;---&gt; [Kernel]
+</pre>
+<p>where the kernel is the part that executes code cells.  There are <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">kernels for many different programming languages</a>!</p>
+<p>The server and kernel can run on the same machine as the web browser
+but the architecture allows them to also run on remote machines.
+These remote systems could be:</p>
+<ul class="simple">
+<li>a research group's central server,</li>
+<li>a Jupyter-aware cloud service (e.g. <a class="reference external" href="https://cloud.sagemath.com/settings">SageMathCloud</a> or <a class="reference external" href="https://notebooks.azure.com/">Azure Notebooks</a>) or ...</li>
+<li>
+<strong>the HPC clusters operated by so many academic institutions</strong>.</li>
+</ul>
+<p>This is where my part of OpenDreamKit comes in.
+Computer clusters such as <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/index.html">Iceberg</a> and <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/sharc/index.html">ShARC</a> here at the University of Sheffield allow users to
+run computational jobs with more resources than typically available in researchers' own machines.
+Jobs can have parallel threads of execution running on up to sixteen cores per node
+and/or running over multiple nodes,
+jobs can use hundreds of MB of RAM and
+can make use of the latest generation of GPUs for things like
+accelerated <a class="reference external" href="http://www.acrc.com/deep-learning/">deep learning workflows</a>.
+However, the need to request resources, then submit and monitor jobs from the command-line can be a steep barrier to entry for some.
+Being able to easily run Jupyter Notebooks on our clusters and
+request the necessary resources for our interactive explorations via an intuitive web interface
+could help make HPC more accessible and useful to those without a strong understanding of Linux and the command-line.</p>
+<p>We already have <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/accessing/jupyterhub.html">an instance of JupyterHub running</a> to allow users to start Jupyter sessions on our <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/index.html">Iceberg</a> cluster
+thanks to the efforts of <a class="reference external" href="http://stuartmumford.uk/">Stuart Mumford</a>.
+I will be working on:</p>
+<ul class="simple">
+<li>Upgrading this to use the latest version of JupyterHub;</li>
+<li>Setting up JupyterHub on our new cluster (<a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/sharc/index.html">ShARC</a>);</li>
+<li>Developing a mechanism for easily requesting resources (more RAM / CPU cores / GPUs) from the Grid Engine scheduler;</li>
+<li>Making the JupyterHub and Grid Engine integration more robust.</li>
+<li>Looking at how JupyterHub could be set up on HPC clusters at other institutions (possibly using different schedulers) for research/teaching.</li>
+</ul>
+<p>I'm rather excited about this new role.  One nice aspect to it is that I am now according to my contract officially a <a class="reference external" href="http://www.rse.ac.uk/">Research Software Engineer</a>:</p>
+<blockquote>
+<p>Dear Dr Furnass</p>
+<p>Further to recent discussions, I am pleased to confirm the change in your appointment with the University of Sheffield.
+The details of your offer are provided below:</p>
+<p>Appointment Details:
+You, Dr William Furnass, shall be employed by the University of Sheffield as a Research Software Engineer
+in the Department of Computer Science with effect from 1 January 2017.
+This position is offered on a fixed term basis.</p>
+</blockquote>
+<p>This demonstrates that research institutions have started recognising <a class="reference external" href="http://www.rse.ac.uk/who.html">Research Software Engineering</a> as an alternative career path in academia
+(something the <a class="reference external" href="https://www.software.ac.uk/">Software Sustainability Institute</a> have been pushing for for some time) and
+RSEs aren't simply post-doctoral researchers who happen to write software.</p>
+<p>The path to this point has not been particularly direct:
+I have a <a class="reference external" href="https://engineering.leeds.ac.uk/computing">computer scence degree</a>,
+worked as a IT systems engineer in the film industry,
+have a PhD plus post-doc experience in <a class="reference external" href="http://www.shef.ac.uk/civil/">water engineering</a>
+(where I developed semi-physical and data-driven models of water quality in water distribution networks) and
+I have provided support to the users of the University of Sheffield's <a class="reference external" href="http://docs.hpc.shef.ac.uk/">HPC clusters</a>.
+In addition I taught or helped run RSE, water engineering and study skills workshops.</p>
+<p>My interests include
+helping researchers optimise data analysis workflows (primarily using higher-level languages),
+providing training in RSE best practices and
+systems administration.
+You can contact me via:</p>
+<ul class="simple">
+<li>Email: w.furnass (at) sheffield.ac.uk</li>
+<li>Twitter: <a class="reference external" href="https://twitter.com/willfurnass">@willfurnass</a>
+</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="linuistics_grant_2016/" class="u-url">£1 million grant to shed light on how we learn languages</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 <a href="../authors/mike-croucher/">Mike Croucher</a>
@@ -595,151 +699,6 @@ plot(poly, x = -2*Pi .. 2*Pi, y = -3 .. 3);
 <li>
 <a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/scheduler/index.html">A list of scheduler commands</a> - <strong>qsub</strong> is just one example of a scheduler command. Here are a few more.</li>
 </ul>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="fun-with-strace/" class="u-url">Fun with strace</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                <a href="../authors/david-jones/">David Jones</a>
-            </span></p>
-            <p class="dateline"><a href="fun-with-strace/" rel="bookmark"><time class="published dt-published" datetime="2016-05-23T10:26:51+01:00" title="2016-05-23 10:26">2016-05-23 10:26</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<h3>How I solved a mystery with strace and bash</h3>
-<p>So I'm dabbling with <code>iceberg</code>, The University of Sheffield's HPC, and
-I finally get round to putting my <a href="https://github.com/drj11/dot"><code>.profile</code></a> on there.
-And I remember that I don't like
-the way <code>less</code> clears the screen when I've finished reading a <code>man</code> page.</p>
-<p>I need to set my <code>LESS</code> environment variable to <code>-X</code>.
-So I <a href="https://github.com/drj11/dot/commit/7d097ba875e2cca186b8d659d3510c2af5c8df1b">add that to my <code>.profile</code></a>.
-I do <code>exec bash -l</code> to emulate logging back in.</p>
-<p>Doesn't work.
-Still clears screen when reading man pages.
-Turns out <code>LESS</code> isn't set.
-What is going wrong with my <code>.profile</code>?</p>
-<p>I'm becoming a fan of <code>strace</code> for this sort of debugging.</p>
-<p>Have a look at this. When I run this command:</p>
-<pre class="code literal-block"><span></span>strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
-</pre>
-
-
-<p>I get this output (long and boring, skip and come back to the
-bits I refer to):</p>
-<pre class="code literal-block"><span></span>open("/etc/ld.so.cache", O_RDONLY)      = 3
-open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
-open("/lib64/libdl.so.2", O_RDONLY)     = 3
-open("/lib64/libc.so.6", O_RDONLY)      = 3
-open("/dev/tty", O_RDWR|O_NONBLOCK)     = 3
-open("/usr/lib/locale/locale-archive", O_RDONLY) = 3
-open("/proc/meminfo", O_RDONLY|O_CLOEXEC) = 3
-open("/usr/lib64/gconv/gconv-modules.cache", O_RDONLY) = 3
-open("/etc/profile", O_RDONLY)          = 3
-open("/etc/profile.d/", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/colorls.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/cvs.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/ge.sh", O_RDONLY)  = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/glib2.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/lang.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/less.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/modules.sh", O_RDONLY) = 3
-open("/usr/share/Modules/init/bash", O_RDONLY) = 3
-open("/usr/share/Modules/init/bash_completion", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/qt.sh", O_RDONLY)  = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/set-bmc-url.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/shef-login.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/udisks-bash-completion.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/vim.sh", O_RDONLY) = 3
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/usr/share/locale/locale.alias", O_RDONLY) = 3
-open("/usr/share/locale/en_GB.UTF-8/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/locale/en_GB.utf8/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/locale/en_GB/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/locale/en.UTF-8/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/locale/en.utf8/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/locale/en/LC_MESSAGES/bash.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
-open("/etc/profile.d/which2.sh", O_RDONLY) = 3
-open("/home/md1xdrj/.bash_profile", O_RDONLY) = 3
-open("/home/md1xdrj/.bashrc", O_RDONLY) = 3
-open("/etc/bashrc", O_RDONLY)           = 3
-open("/etc/profile.d/modules.sh", O_RDONLY) = 3
-open("/usr/share/Modules/init/bash", O_RDONLY) = 3
-open("/usr/share/Modules/init/bash_completion", O_RDONLY) = 3
-SCRIPT GOT HERE
-+++ exited with 0 +++
-</pre>
-
-
-<p><code>strace</code> runs a command and <em>traces</em> the <em>system calls</em>
-(so I suppose <code>strace</code> is short for <strong>S</strong>ystem <strong>Trace</strong>).
-I'm running the command line <code>bash -l -c 'echo SCRIPT GOT HERE'</code> under <code>strace</code>.
-<code>bash -l</code> is a <em>login</em> shell, so it should source my <code>.profile</code>.</p>
-<p>First thing to notice about running things with <code>strace</code> is that you get lots of output.
-And that's after I've used two options to reduce the ammount of output.
-The <code>-e open</code> option to <code>strace</code> restricts it so that it only shows <code>open()</code> system calls;
-normally it will show all system calls, which is <em>way</em> more output.
-The <code>-e signal=</code> option to <code>strace</code> means that it won't show any signals, without it you see all signals.
-Most programs don't see many signals,
-but in this case there are a fair number of child process management signals
-that are not particularly interesting.</p>
-<p>The first few files are related to C runtimes and dynamic linking (<code>/etc/ld.so.cache</code>, <code>/lib64/libc.so.6</code>, and so on).
-Then we get <code>/etc/profile</code>. Aha!
-<code>bash</code> is reading the system wide profile file.
-Which it turns out causes it to reading the bag of little profile scripts kept in <code>/etc/profile.d/</code> (most of which are specific to the Sheffield HPC).</p>
-<p>(I've no idea what the obsession with opening <code>/dev/null</code> in between every script is by the way; some crazy <code>bash</code> thing. whatever)</p>
-<p>Then, eventually, near the bottom, we see bash opening <code>/home/md1xdrj/.bash_profile</code>.
-And this is the culprit.
-I'm like "wait, WAT!?", "I have a <code>.bash_profile</code>?"</p>
-<p>It turns out that, yes, I do have a <code>.bash_profile</code>.
-I wasn't expecting that (it wasn't created by me).
-A quick perusal of <code>man bash</code>[*1] reveals that
-if <code>~/.bash_profile</code> exists then it will be sourced and <code>.profile</code> will not.</p>
-<p>So I remove my <code>~/.bash_profile</code> and life is good again.</p>
-<h3>Reflection</h3>
-<p><code>strace</code> is a great tool and well worth exploring a little bit
-(fun fact: you can attach to already running processes with <code>strace -p</code>).
-So in this case I could've read the manual and inspected the file system to see what files <code>bash</code> would source,
-but <code>strace</code> is more direct.
-The manual might be out of date, misunderstood, or just plain wrong.
-But <code>strace</code> cannot lie, it shows me what system calls a tool is actually making.</p>
-<p>The Truth.</p>
-<p>Of course The Truth that <code>strace</code> provides is really just <em>a</em> truth.
-There is a whole world of complexity that <code>strace</code> hides from us.
-Most obviously, we don't get to see all the instructions
-that get executed in between the system calls.
-We probably don't want to.
-<code>strace</code> is serving up an abstraction, and that's a useful Truth
-to deal with.</p>
-<h3>Fanzine!</h3>
-<p>If you liked this, then you should check out this <a href="http://jvns.ca/blog/2015/04/14/strace-zine/">strace
-fanzine</a>.
-I cannot recommend it enough.
-It's enthusiastic, witty, fun to read, and you will learn
-something about <code>strace</code> and system calls (I did!).</p>
-<h3>Footnotes</h3>
-<ol>
-<li>
-<p>This is what I call "a joke". Everyone should read <code>man bash</code>, but it is like Joyce's Ulysses: better read the Cliffs Notes[*2].</p>
-</li>
-<li>
-<p>There are no Cliffs Notes for <code>bash</code>.</p>
-</li>
-</ol>
 </div>
     </div>
     </article>
