@@ -163,7 +163,7 @@ cs1wf has deleted job <span class="m">217834</span>
 
 <p><strong>Important</strong>: using <code>qalter</code> in this fashion will change <strong>all</strong> resource requests for the job so here we need to re-specify the <code>rmem</code> request.</p>
 <h3>Job validation at submission time</h3>
-<p>You can also perform the same type of job validation <strong>at job submission time</strong> using:</p>
+<p>You can also perform the same type of job validation <strong>at job submission time</strong> using <code>-w v</code> e.g.</p>
 <pre class="code literal-block"><span></span>qsub -w v -l <span class="m">1000</span>:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G myjobscript.sge
 </pre>
 
@@ -179,7 +179,7 @@ instead of requesting 1000 hours of runtime
 you ask for 100 GPUs, 9999GB of RAM or 10000 cores 
 you'll observe the same behaviour: jobs that make requests unsatisfiable under the current cluster configuration can be submitted but will never run.</p>
 <p>Again, job validation can help here but depending on the type of resource the validation error messages can be more or less cryptic.<br>
-For example, if you try to validate a 100000-'slot' (core) MPI job you get the following:</p>
+For example, if you try to validate a 100000-'slot' (core) MPI job using <code>-w v</code> you get the following:</p>
 <pre class="code literal-block"><span></span>qsub -pe mpi 100000 -w v somejob.sge
 ...
 Job 311838 cannot run in PE "mpi" because it only offers 0 slots
@@ -191,7 +191,8 @@ Job 311838 cannot run in PE "mpi" because it only offers 0 slots
 <p>Another type of validation is <em>poke</em> validation, 
 which checks if a job could be run under the current cluster <em>load</em> 
 i.e. with many of the cluster's resources already in use.<br>
-See <code>man qsub</code> for more information on the different types of validation.</p>
+See <code>man qsub</code> and search for <code>-w</code> 
+for more information on the different types of validation.</p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
