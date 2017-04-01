@@ -76,9 +76,105 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sge-job-validation/" class="u-url">Job validation with Grid Engine</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="mpi_placement/" class="u-url">Determining MPI placement on the HPC clusters</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/mike-croucher/">Mike Croucher</a>
+            </span></p>
+            <p class="dateline"><a href="mpi_placement/" rel="bookmark"><time class="published dt-published" datetime="2017-04-01T16:03:00Z" title="2017-04-01 16:03">2017-04-01 16:03</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>Say you request a 16 slot MPI job on ShARC with 3GB per-process using a submission script like the one below:</p>
+<table class="codehilitetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td>
+<td class="code">
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
+<span class="c1">#$ -l h_rt=1:00:00</span>
+<span class="c1">#Request 16 slots</span>
+<span class="c1">#$ -pe mpi 16</span>
+<span class="c1">#Request 3 Gigabytes per slot</span>
+<span class="c1">#$ -l rmem=3G</span>
+
+<span class="c1">#Load gcc 4.9.4 and OpenMPI 2.0.1</span>
+module load dev/gcc/4.9.4
+module load mpi/openmpi/2.0.1/gcc-4.9.4
+
+mpirun  ./MPI_hello_world
+</pre>
+</td>
+</tr></table>
+<p>The scheduler is free to decide where on the system your 16 slots get placed. You may have all 16 slots running on one node, one slot per node for 16 nodes or anything in between. The exact placement of your jobs may affect runtime.</p>
+<p>We can find out where the scheculer placed your MPI processes using the <code>$PE_HOSTFILE</code> environment variable. When your job starts running, this points to a file that contains placement information. We make use of it in a submission script as follows</p>
+<table class="codehilitetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td>
+<td class="code">
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
+<span class="c1">#$ -l h_rt=1:00:00</span>
+<span class="c1">#Request 16 slots</span>
+<span class="c1">#$ -pe mpi 16</span>
+<span class="c1">#Request 3 Gigabytes per slot</span>
+<span class="c1">#$ -l rmem=3G</span>
+
+<span class="c1">#Load gcc 4.9.4 and OpenMPI 2.0.1</span>
+module load dev/gcc/4.9.4
+module load mpi/openmpi/2.0.1/gcc-4.9.4
+
+<span class="c1">#Put placement information into node_info.txt</span>
+cat <span class="nv">$PE_HOSTFILE</span>  &gt; node_info.txt
+
+mpirun  ./MPI_hello_world
+</pre>
+</td>
+</tr></table>
+<p>You'll now get a file called <code>node_info.txt</code> that contains information about which nodes your MPI slots were placed. For example</p>
+<pre class="code literal-block"><span></span>sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
+sharc-node069.shef.ac.uk 1 shortint.q@sharc-node069.shef.ac.uk UNDEFINED
+sharc-node112.shef.ac.uk 1 shortint.q@sharc-node112.shef.ac.uk UNDEFINED
+sharc-node108.shef.ac.uk 1 shortint.q@sharc-node108.shef.ac.uk UNDEFINED
+sharc-node081.shef.ac.uk 1 shortint.q@sharc-node081.shef.ac.uk UNDEFINED
+sharc-node090.shef.ac.uk 2 shortint.q@sharc-node090.shef.ac.uk UNDEFINED
+sharc-node080.shef.ac.uk 2 shortint.q@sharc-node080.shef.ac.uk UNDEFINED
+sharc-node050.shef.ac.uk 3 shortint.q@sharc-node050.shef.ac.uk UNDEFINED
+sharc-node059.shef.ac.uk 4 shortint.q@sharc-node059.shef.ac.uk UNDEFINED
+</pre>
+
+
+<p>In the above example, 4 slots were placed on node059, 3 slots on node 50, 2 slots on nodes 080 and 090 and one slot on the other listed nodes. </p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sge-job-validation/" class="u-url">Job validation with Grid Engine</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/will-furnass/">Will Furnass</a>
             </span></p>
             <p class="dateline"><a href="sge-job-validation/" rel="bookmark"><time class="published dt-published" datetime="2017-03-20T10:44:00Z" title="2017-03-20 10:44">2017-03-20 10:44</time></a></p>
@@ -188,7 +284,7 @@ for more information on the different types of validation.</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="icms-2017/" class="u-url">Computational Mathematics with Jupyter workshop</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/will-furnass/">Will Furnass</a>
             </span></p>
             <p class="dateline"><a href="icms-2017/" rel="bookmark"><time class="published dt-published" datetime="2017-03-12T22:00:00Z" title="2017-03-12 22:00">2017-03-12 22:00</time></a></p>
@@ -367,7 +463,7 @@ Looking forward to meeting up with the OpenDreamKit gang again!</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="tania_allard/" class="u-url">A new member of the team: Tania Allard</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/tania-allard/">Tania Allard</a>
             </span></p>
             <p class="dateline"><a href="tania_allard/" rel="bookmark"><time class="published dt-published" datetime="2017-02-09T21:37:12Z" title="2017-02-09 21:37">2017-02-09 21:37</time></a></p>
@@ -398,7 +494,7 @@ Looking forward to meeting up with the OpenDreamKit gang again!</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="willfurnass_intro/" class="u-url">Will Furnass joins to work on Jupyter and Grid Engine integration</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/will-furnass/">Will Furnass</a>
             </span></p>
             <p class="dateline"><a href="willfurnass_intro/" rel="bookmark"><time class="published dt-published" datetime="2017-01-30T10:56:00Z" title="2017-01-30 10:56">2017-01-30 10:56</time></a></p>
@@ -502,7 +598,7 @@ You can contact me via:</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="linuistics_grant_2016/" class="u-url">£1 million grant to shed light on how we learn languages</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/mike-croucher/">Mike Croucher</a>
             </span></p>
             <p class="dateline"><a href="linuistics_grant_2016/" rel="bookmark"><time class="published dt-published" datetime="2017-01-03T15:22:11Z" title="2017-01-03 15:22">2017-01-03 15:22</time></a></p>
@@ -520,7 +616,7 @@ You can contact me via:</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="windows_bash_materials/" class="u-url">Bashing down Windows for Materials Science</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/christopher-handley/">Christopher Handley</a>
             </span></p>
             <p class="dateline"><a href="windows_bash_materials/" rel="bookmark"><time class="published dt-published" datetime="2016-11-03T16:33:11Z" title="2016-11-03 16:33">2016-11-03 16:33</time></a></p>
@@ -541,7 +637,7 @@ The same is equally true of <a href="https://nanochemistry.curtin.edu.au/gulp/">
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="mozhgankch_intro/" class="u-url">A new member of the team: Mozhgan Kabiri Chimeh</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/mozhgan-kabiri-chimeh/">Mozhgan Kabiri Chimeh</a>
             </span></p>
             <p class="dateline"><a href="mozhgankch_intro/" rel="bookmark"><time class="published dt-published" datetime="2016-10-28T08:09:22Z" title="2016-10-28 08:09">2016-10-28 08:09</time></a></p>
@@ -555,7 +651,7 @@ The same is equally true of <a href="https://nanochemistry.curtin.edu.au/gulp/">
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="julia-manchester-2016/" class="u-url">Manchester Julia Workshop</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/avgoustinos-vouros/">Avgoustinos Vouros</a>
             </span></p>
             <p class="dateline"><a href="julia-manchester-2016/" rel="bookmark"><time class="published dt-published" datetime="2016-10-19T11:46:11Z" title="2016-10-19 11:46">2016-10-19 11:46</time></a></p>
@@ -596,7 +692,7 @@ The same is equally true of <a href="https://nanochemistry.curtin.edu.au/gulp/">
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="coffee-and-cakes-event/" class="u-url">Coffee and Cakes Event</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/paul-richmond/">Paul Richmond</a>
             </span></p>
             <p class="dateline"><a href="coffee-and-cakes-event/" rel="bookmark"><time class="published dt-published" datetime="2016-09-26T15:42:42+01:00" title="2016-09-26 15:42">2016-09-26 15:42</time></a></p>
@@ -605,207 +701,6 @@ The same is equally true of <a href="https://nanochemistry.curtin.edu.au/gulp/">
     <div>
 <p>RSE Sheffield is hosting its first coffee and cakes event on <strong>4th October 2016 at 10:00 in the Ada Lovelace</strong> room on 1st floor of the Computer Science Department (Regents Court East). Attendance is free and you don't need to register (or bring coffee and cake with you). Simply call in and take the opportunity to come and have an informal chat about research software.</p>
 <p>The event is a community event for anyone not just computer science or members of the RSE team. If you work on software development are an RSE or simply want to talk about some aspect of software or software in teaching then come along.</p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="intel-R-iceberg/" class="u-url">Accelerated versions of R for Iceberg</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                <a href="../authors/mike-croucher/">Mike Croucher</a>
-            </span></p>
-            <p class="dateline"><a href="intel-R-iceberg/" rel="bookmark"><time class="published dt-published" datetime="2016-09-12T00:31:35Z" title="2016-09-12 00:31">2016-09-12 00:31</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p><strong>To Long; Didn't Read -- Summary</strong></p>
-<p>I've built a version of R on Iceberg that is faster than the standard version for various operations. Documentation is at <a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html">http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html</a>.</p>
-<p>If it works more quickly for you, or if you have problems, please let us know by emailing <a href="mailto:rse@sheffield.ac.uk">rse@sheffield.ac.uk</a></p>
-<p><strong>Background</strong></p>
-<p>I took over building <a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/r.html">R for Iceberg</a>, Sheffield's High Performance Computing System, around a year ago and have been incrementally improving both the install and the documentation with every release. Something that's been bothering me for a while is the lack of optimisation. The standard Iceberg build uses an ancient version of the gcc compiler and (probably) unoptimised versions of <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">BLAS</a> and <a href="https://en.wikipedia.org/wiki/LAPACK">LAPCK</a>.</p>
-<p>BLAS and LAPACK are extremely important libraries -- they provide the code that programs such as R use for linear algebra: Matrix-Matrix multiplication, Cholesky decomposition, principle component analysis and so on. It's important to note that there are lots of implementations of BLAS and LAPACK: <a href="http://math-atlas.sourceforge.net/">ATLAS</a>, <a href="http://www.openblas.net/">OpenBLAS</a> and the <a href="https://software.intel.com/en-us/intel-mkl">Intel MKL</a> are three well-known examples. Written in Fortran, the interfaces of all of these versions are identical, which means you can use them interchangeably, but the speed of the implementation can vary considerably.</p>
-<p>The BLAS and LAPACK implementations on Iceberg are undocumented (before my time!) which means that we have no idea what we are dealing with. Perhaps they are optimised, perhaps not. I suspected 'not'.</p>
-<p><strong>Building R with the Intel Compiler and MKL</strong></p>
-<p>The Intel Compiler Suite often produces the fastest executables of all available compilers for any given piece of Fortran or C/C++ code. Additionally, the Intel MKL is probably the fastest implementation of BLAS and LAPACK available for Intel Hardware. As such, I've had <strong>Build R using Intel Compilers and MKL</strong> on my to-do list for some time.</p>
-<p>Following a recent visit to the University of Lancaster, where they've been doing this for a while, I finally bit the bullet and produced some build-scripts. Thanks to Lancaster's Mike Pacey for help with this!  There are two versions (links point to the exact commits that produced the builds used in this article):</p>
-<ul>
-<li>
-<a href="https://github.com/mikecroucher/HPC_Installers/blob/ea4a9f33b705a8cae01841d9c173278fcb486061/apps/R/3.3.1/sheffield/iceberg/intel_15/install_intel_r_sequential.sh">install_intel_r_sequential.sh</a> - Linked to the sequential (i.e. single-core) version of Intel MKL.</li>
-<li>
-<a href="https://github.com/mikecroucher/HPC_Installers/blob/ea4a9f33b705a8cae01841d9c173278fcb486061/apps/R/3.3.1/sheffield/iceberg/intel_15/install_intel_r_parallel.sh">install_intel_r_parallel.sh</a> - Linked to the parallel version of Intel MKL.</li>
-</ul>
-<p>The benchmark code is available in the Sheffield HPC examples repo <a href="https://github.com/mikecroucher/HPC_Examples/">https://github.com/mikecroucher/HPC_Examples/</a>. The exact commit that produced these results is <a href="https://github.com/mikecroucher/HPC_Examples/blob/35de11e7c47bc278b15a64fb77c5575b074e1a47/languages/R/linear_algebra/linear_algebra_bench.r">35de11e</a></p>
-<p><strong>Testing</strong></p>
-<p>It's no good having fast builds of R if they give the wrong results! To make sure that everything is OK, I ran R's installation test suite and everything passed. If you have an account on iceberg, you can see the output from the test suite at <code>/usr/local/packages6/apps/intel/15/R/sequential-3.3.1/install_logs/make_install_tests-R-3.3.1.log</code>.</p>
-<p>It's important to note that although the tests passed, there <strong>are</strong> differences in output between this build and the reference build that R's test suite is based on. This is due to a number of factors such as the fact that <a href="http://www.walkingrandomly.com/?p=5380">Floating point addition is not associative</a> and that the signs of eigenvectors are arbitrary and so on.</p>
-<p>A discussion around these differences and how they relate to R can be found <a href="http://r.789695.n4.nabble.com/quot-make-check-quot-fails-on-lapack-R-and-stats-Ex-R-td4698672.html">on nabble</a>.</p>
-<p><strong>How fast is it?</strong></p>
-<p>So is it worth it? I ran a benchmark called <a href="https://github.com/mikecroucher/HPC_Examples/blob/35de11e7c47bc278b15a64fb77c5575b074e1a47/languages/R/linear_algebra/linear_algebra_bench.r#L19">linear_algebra_bench.r</a> that implemented 5 tests</p>
-<ul>
-<li>MatMul - Multiplies two random 1000 x 5000 matrices together</li>
-<li>Chol - Cholesky decomposition of a 5000 x 5000 random matrix</li>
-<li>SVD - Singular Value Decompisition of a 10000 x 2000 random matrix</li>
-<li>PCA - Principle component analysis of a 10000 x 2000 random matrix</li>
-<li>LDA - A Linear Discriminant Analysis problem</li>
-</ul>
-<p>Run time of these operations compared to Iceberg's standard install of R is shown in the table below.</p>
-<ul>
-<li>Iceberg submission scripts for these can be found in the <a href="https://github.com/mikecroucher/HPC_Examples">HPC Examples repo</a>
-</li>
-</ul>
-<p><strong>Execution time in seconds (Mean of 5 independent runs) </strong></p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-yw4l{vertical-align:top}
-</style>
-<table class="tg">
-<tr>
-<th class="tg-yw4l"></th>
-    <th class="tg-yw4l">MatMul</th>
-    <th class="tg-yw4l">Chol</th>
-    <th class="tg-yw4l">SVD</th>
-    <th class="tg-yw4l">PCA</th>
-    <th class="tg-yw4l">LDA</th>
-  </tr>
-<tr>
-<td class="tg-yw4l">Standard R</td>
-    <td class="tg-yw4l">134.70</td>
-    <td class="tg-yw4l">20.95</td>
-    <td class="tg-yw4l">46.56</td>
-    <td class="tg-yw4l">179.60</td>
-    <td class="tg-yw4l">132.40</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with sequential MKL</td>
-    <td class="tg-yw4l">12.19</td>
-    <td class="tg-yw4l">2.24</td>
-    <td class="tg-yw4l">9.13</td>
-    <td class="tg-yw4l">24.58</td>
-    <td class="tg-yw4l">31.32</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (2 cores)</td>
-    <td class="tg-yw4l">7.21</td>
-    <td class="tg-yw4l">1.60</td>
-    <td class="tg-yw4l">5.43</td>
-    <td class="tg-yw4l">14.66</td>
-    <td class="tg-yw4l">23.54</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (4 cores)</td>
-    <td class="tg-yw4l">3.24</td>
-    <td class="tg-yw4l">1.17</td>
-    <td class="tg-yw4l">3.34</td>
-    <td class="tg-yw4l">7.87</td>
-    <td class="tg-yw4l">20.63</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (8 cores)</td>
-    <td class="tg-yw4l">1.71</td>
-    <td class="tg-yw4l">0.38</td>
-    <td class="tg-yw4l">1.99</td>
-    <td class="tg-yw4l">5.33</td>
-    <td class="tg-yw4l">15.82</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (16 cores)</td>
-    <td class="tg-yw4l">0.96</td>
-    <td class="tg-yw4l">0.28</td>
-    <td class="tg-yw4l">1.60</td>
-    <td class="tg-yw4l">4.05</td>
-    <td class="tg-yw4l">13.65</td>
-  </tr>
-</table>
-<p><img alt="" src="../images/matmul_r_intel.png"></p>
-<p>Another way of viewing these results is to see the speed up compared to the standard install of R. <strong>Even on a single CPU core, the Intel builds are between 4 and 11 times faster than the standard builds</strong>.  Making use of 16 cores takes this up to <strong>141 times faster in the case of Matrix-Matrix Multiplication</strong>!</p>
-<p><strong>Speed up compared to standard R</strong></p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-yw4l{vertical-align:top}
-</style>
-<table class="tg">
-<tr>
-<th class="tg-yw4l"> </th>
-    <th class="tg-yw4l">MatMul</th>
-    <th class="tg-yw4l">Chol</th>
-    <th class="tg-yw4l">SVD</th>
-    <th class="tg-yw4l">PCA</th>
-    <th class="tg-yw4l">LDA</th>
-  </tr>
-<tr>
-<td class="tg-yw4l">Standard R</td>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">1</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with sequential MKL</td>
-    <td class="tg-yw4l">11</td>
-    <td class="tg-yw4l">9</td>
-    <td class="tg-yw4l">5</td>
-    <td class="tg-yw4l">7</td>
-    <td class="tg-yw4l">4</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (2 cores)</td>
-    <td class="tg-yw4l">19</td>
-    <td class="tg-yw4l">13</td>
-    <td class="tg-yw4l">9</td>
-    <td class="tg-yw4l">12</td>
-    <td class="tg-yw4l">6</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (4 cores)</td>
-    <td class="tg-yw4l">42</td>
-    <td class="tg-yw4l">18</td>
-    <td class="tg-yw4l">14</td>
-    <td class="tg-yw4l">23</td>
-    <td class="tg-yw4l">6</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (8 cores)</td>
-    <td class="tg-yw4l">79</td>
-    <td class="tg-yw4l">55</td>
-    <td class="tg-yw4l">23</td>
-    <td class="tg-yw4l">34</td>
-    <td class="tg-yw4l">8</td>
-  </tr>
-<tr>
-<td class="tg-yw4l">Intel R with parallel MKL (16 cores)</td>
-    <td class="tg-yw4l">141</td>
-    <td class="tg-yw4l">75</td>
-    <td class="tg-yw4l">29</td>
-    <td class="tg-yw4l">44</td>
-    <td class="tg-yw4l">10</td>
-  </tr>
-</table>
-<p><strong>Parallel environment</strong></p>
-<p>The type of parallelisation in use here is <a href="http://openmp.org/wp/">OpenMP</a>. As such, you need to use Iceberg's openmp environment.  That is, if you want 8 cores (say), add the following to your submission  script</p>
-<pre>
-#$ -pe openmp 8
-export OMP_NUM_THREADS=8
-</pre>
-
-<p>Using OpenMP limits the number of cores you can use per job to the number available on a single node. At the time of writing, this is 16.</p>
-<p><strong>How many cores: Finding the sweet spot</strong></p>
-<p>Note that everything is fastest when using 16 cores! As such, it may be tempting to always use 16 cores for your jobs. This will almost always be a mistake.
-It may be that the aspect of your code that's accelerated by this build doesn't account for much of the runtime of your problem. As such, those 16 cores will sit idle most of the time -- wasting resources.  </p>
-<p>You'll also spend a lot longer waiting in the queue for 16 cores than you will for 2 cores which may swap any speed gains.</p>
-<p>You should always perform scaling experiments before deciding how many cores to use for your jobs. Consider the Linear Discriminant Analysis problem, for example. Using just one core, Intel build gives us a 4 times speed-up compared to the standard build. Moving to 8 cores only makes it twice as fast again. As such, if you had lots of these jobs to do, your throughput would be higher running lots of single core jobs compared to lots of 8 core jobs.</p>
-<p>If matrix-matrix multiply dominates your runtime, on the other hand, it may well be worth using 16 cores.</p>
-<p><strong>Using this version of R for your own work</strong></p>
-<p>As a user, there are a few things you need to be aware of with the Intel builds of R so I've created a separate documentation page for them.  This is currently at
-<a href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/intel_r.html">http://docs.hpc.shef.ac.uk/en/latest/iceberg/software/apps/intel_r.html</a></p>
-<p>My recommendation for using these builds is to work through the following procedure</p>
-<ul>
-<li>Ensure that your code runs with Iceberg's standard version of R and produce a test result.</li>
-<li>In the first instance, switch to the sequential version of the Intel R build. In the best case, this will just require changing the module. You may also need to install some of your packages since the Intel build has a separate packages directory to the standard build.</li>
-<li>If you see speed-up <strong>and</strong> the results are consistent with your test result, try the parallel version. Initially start with 2 cores and move upwards to find the sweet spot.</li>
-</ul>
 </div>
     </div>
     </article>
