@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield (Posts by Mike Croucher)</title><link>http://rse.shef.ac.uk/</link><description></description><atom:link href="http://rse.shef.ac.uk/authors/mike-croucher.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sat, 01 Apr 2017 22:19:14 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Determining MPI placement on the HPC clusters</title><link>http://rse.shef.ac.uk/blog/mpi_placement/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;Say you request a 16 slot MPI job on ShARC with 3GB per-process using a submission script like the one below:&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield (Posts by Mike Croucher)</title><link>http://rse.shef.ac.uk/</link><description></description><atom:link href="http://rse.shef.ac.uk/authors/mike-croucher.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Wed, 05 Apr 2017 11:52:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Determining MPI placement on the HPC clusters</title><link>http://rse.shef.ac.uk/blog/mpi_placement/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;Say you request a 16 slot MPI job on ShARC with 3GB per-process using a submission script like the one below:&lt;/p&gt;
 &lt;table class="codehilitetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
@@ -357,7 +357,7 @@ Your job 1734126 ("run_maple_job.sh") has been submitted
 &lt;p&gt;Run the &lt;strong&gt;ls&lt;/strong&gt; command again to see the results files.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[fe1mpc@testnode02 maple_example]$ ls
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[te1st@testnode02 maple_example]$ ls
 
 run_maple_job.sh  run_maple_job.sh.e1734126  run_maple_job.sh.o1734126  series_example.maple  series_example.mpl
 &lt;/pre&gt;
