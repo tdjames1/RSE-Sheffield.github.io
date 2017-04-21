@@ -15,9 +15,10 @@
 <meta property="og:site_name" content="RSE at Sheffield">
 <meta property="og:title" content="Job validation with Grid Engine">
 <meta property="og:url" content="http://rse.shef.ac.uk/blog/sge-job-validation/">
-<meta property="og:description" content="Computer cluster job scheduling software is fantastic at managing resources 
+<meta property="og:description" content="(Edit: caveats are listed in a more recent post)
+Computer cluster job scheduling software is fantastic at managing resources 
 and permitting many jobs to run efficiently and simultaneously.
-However, schedulers aren't always great at giving end-users">
+However, s">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-03-20T10:44:00Z">
 </head>
@@ -95,6 +96,7 @@ However, schedulers aren't always great at giving end-users">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
+<p>(<strong>Edit</strong>: caveats are listed in a <a href="../sge-job-validation-2">more recent post</a>)</p>
 <p>Computer cluster job scheduling software is fantastic at managing resources 
 and permitting many jobs to run efficiently and simultaneously.<br>
 However, schedulers aren't always great at giving end-users feedback 
@@ -106,13 +108,13 @@ For example, let's use <a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/schedul
 to submit a job where we ask for 1000 hours of run time and 4 GiB of RAM:</p>
 <pre class="code literal-block"><span></span><span class="o">[</span>will@mysofa ~<span class="o">]</span>$ ssh sharc
 ...
-<span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qsub -l <span class="nv">h_rt</span><span class="o">=</span>1000:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
+<span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qsub -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">1000</span>:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
 
 Your job <span class="m">236268</span> <span class="o">(</span><span class="s2">"STDIN"</span><span class="o">)</span> has been submitted
 <span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qstat -u <span class="nv">$USER</span>
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
- <span class="m">217834</span> 0.00000 longtask   te1st        qw    03/20/2017 10:48:39                                    <span class="m">1</span>        
+ <span class="m">217834</span> <span class="m">0</span>.00000 longtask   te1st        qw    <span class="m">03</span>/20/2017 <span class="m">10</span>:48:39                                    <span class="m">1</span>        
 </pre>
 
 
@@ -158,14 +160,14 @@ te1st has deleted job <span class="m">217834</span>
 
 <p>...then consult the cluster's documentation to discover the maximum possible run-time and resubmit using more sensible resource requests.  </p>
 <p>Alternatively we can use <strong>qalter</strong> to modify the resource requests associated with a queueing job:</p>
-<pre class="code literal-block"><span></span>qalter -l <span class="nv">h_rt</span><span class="o">=</span>96:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G <span class="m">217834</span> 
+<pre class="code literal-block"><span></span>qalter -l <span class="nv">h_rt</span><span class="o">=</span><span class="m">96</span>:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G <span class="m">217834</span> 
 </pre>
 
 
 <p><strong>Important</strong>: using <code>qalter</code> in this fashion will change <strong>all</strong> resource requests for the job so here we need to re-specify the <code>rmem</code> request.</p>
 <h3>Job validation at submission time</h3>
 <p>You can also perform the same type of job validation <strong>at job submission time</strong> using <code>-w v</code> e.g.</p>
-<pre class="code literal-block"><span></span>qsub -w v -l 1000:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G myjobscript.sge
+<pre class="code literal-block"><span></span>qsub -w v -l <span class="m">1000</span>:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G myjobscript.sge
 </pre>
 
 
@@ -173,7 +175,8 @@ te1st has deleted job <span class="m">217834</span>
 <h3>Why is validation not performed by default?</h3>
 <p>You may ask why such validation is not enabled by default for all jobs; 
 one reason for this is that it is believed it would place undue burden on the scheduler.</p>
-<p>Another is that sometimes a validation attempt results in a false negative that can be difficult to automatically identify.</p>
+<p>Another is that sometimes a validation attempt results in a false negative that can be difficult to automatically identify
+(<strong>edit</strong>: see this <a href="../sge-job-validation-2">more recent post</a> for details).</p>
 <h3>Other types of resources</h3>
 <p>If you repeat the experiment outlined above but 
 instead of requesting 1000 hours of runtime 

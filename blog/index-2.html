@@ -77,7 +77,48 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="coffee-and-cakes-event/" class="u-url">Coffee and Cakes Event</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="julia-manchester-2016/" class="u-url">Manchester Julia Workshop</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/avgoustinos-vouros/">Avgoustinos Vouros</a>
+            </span></p>
+            <p class="dateline"><a href="julia-manchester-2016/" rel="bookmark"><time class="published dt-published" datetime="2016-10-19T11:46:11Z" title="2016-10-19 11:46">2016-10-19 11:46</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>A few weeks ago (19-20th September 2016) I had the chance to attend the very first Julia workshop in the UK held at the University of Manchester by the <a href="http://www.maths.manchester.ac.uk/~siam/">SIAM Student Chapter</a>. The first day of the <a href="http://www.maths.manchester.ac.uk/~siam/julia16/">workshop</a> consisted of a basic tutorial of Julia, installation instructions and around five hours of hackathon. The second day provided an introduction to carrying out research in various fields such as data analysis, material science, natural language processing and bioinformatics using Julia. The attendees were a mixture of PhD students, post-docs and lecturers mainly from the University of Manchester as well as other universities and institutes (Warwick, Glasgow, Reading, MIT, Imperial College London, Earlham Institute).</p>
+<h2>Day 1: Tutorial and Hackathon</h2>
+<p>There are several ways to <a href="http://julialang.org/downloads/">run Julia</a> in any OS, including command line version, <a href="http://junolab.org/">Juno</a> IDE and Jupyter notebook (<a href="https://github.com/JuliaLang/IJulia.jl">IJulia</a>). In case you want to avoid any installation process then there is also the  browser based <a href="https://www.juliabox.com/">JuliaBox.com</a>. I was surprised that the whole process was smooth without any software setup issues!</p>
+<p>The tutorial consisted of some very basic demonstration of Julia mostly on linear algebra and statistics and after a short break we were left to explore Julia, collaborate and exchange ideas. There were also two Exercises proposed to us:</p>
+<ul>
+<li>
+<a href="https://www.kaggle.com/c/street-view-getting-started-with-julia">First Steps With Julia</a> by <a href="https://www.kaggle.com/">kaggle</a> which teaches some basics of image processing and machine learning to identify the character from pictures.</li>
+<li>
+<a href="https://docs.google.com/document/d/1NYQFLeORdMCHl2hncOkhNNPNJUWGAoGcR_tCs-KF-D0/edit#heading=h.262rsr2l8kb4">Bio.jl Exercises</a> by Ben J. Ward which provides simple examples of using the <a href="https://github.com/BioJulia/Bio.jl">Bio.jl</a> to do simple operations and manipulations of biological sequences.</li>
+</ul>
+<p>As I wanted to try as many libraries as possible from image processing and data visualization to embedded Java, I ended up using a lot of different packages so I found these commands (self-explanatory) for package managing the most useful for me:<code>Pkg.add("PackageName")</code>, <code>Pkg.status()</code>, <code>Pkg.update()</code>. Here of course, I detected some compatibility issues. I was running Julia version 0.4.6 but it appears that most of the attendees were using the version 0.4.5. Some commands seemed to have changed between these versions; for example in the kaggle's exercise the command <code>float32sc(img)</code> which converts an image to float values was not working for me instead I had to use the <code>float32(img)</code> command. A minor issue for a new-born language.</p>
+<h2>Day 2: Talks</h2>
+<p>The talks were centred around specific fields with heavy scientific computing (automatic differentiation, molecular modelling, natural language processing, bioinformatics and computational biology) and how Julia influence these fields. Each speaker presented his field of research and his Julia implementations which ended up as another package for the Julia community. More information about the speakers can be found on the <a href="http://www.maths.manchester.ac.uk/~siam/julia16/">Manchester Julia Workshop webpage</a> and a list of the presented packages can be found below:</p>
+<ul>
+<li>Data analysis and visualization: <a href="http://distributionsjl.readthedocs.io/en/latest/">Distributions.jl</a>, <a href="https://github.com/JuliaStats/DataFrames.jl">DataFrames.jl</a>, <a href="https://github.com/JuliaStats/GLM.jl">GLM.jl</a>
+</li>
+<li>Embed other languages with Julia (Python, R): <a href="https://github.com/JuliaPy/PyCall.jl">PyCall.jl</a>, <a href="https://github.com/JuliaStats/RCall.jl">RCall.jl</a>.</li>
+<li>Automatic differentiation: <a href="https://github.com/JuliaDiff/ForwardDiff.jl">ForwardDiff.jl</a>.</li>
+<li>Molecular modelling: <a href="https://github.com/libAtoms/JuLIP.jl">JuLIP.jl</a>.</li>
+<li>Bioinformatics and computational biology: <a href="https://github.com/BioJulia/Bio.jl">bio.jl</a>.</li>
+</ul>
+<h2>Final words</h2>
+<p>Overall I was very satisfied with the Julia experience and I am waiting for its first official release (v1.0) which will probably be next year. Here are the main advantages which led me to believe that Julia can be the next on demand programming language for scientific computing:</p>
+<ul>
+<li>Combines the productivity of dynamic languages (Java, Python) and the performance of static languages (C, Fortran). In other words: very easy to write optimized code and run your program fast at the same time. <a href="https://jiahao.github.io/">Dr Jiahao Chen</a> from MIT in his <a href="http://www.slideshare.net/acidflask/programming-languages-history-relativity-and-design">talk</a> mentioned the following referring to Julia's speed, "<em>You can define many methods for a generic function. If the compiler can figure out exactly which method you need to use when you invoke a function, then it generates optimized code</em>".</li>
+<li>Deals with the two language problem: base library and functionality is written in Julia itself.</li>
+<li>It is free and open source (MIT licensed), high advantageous for the scientific community to share code or expand existing one.</li>
+<li>A great and friendly community and users from various fields which constantly expand the existing Julia library.</li>
+</ul>
+<p><strong>Fun fact:</strong> The system for variable declaration accepts any <a href="http://docs.julialang.org/en/release-0.5/manual/unicode-input/">Unicode character</a>: <code>\delta[tab] = 2</code> results in <code>δ = 2</code>, <code>\:smiley: = 4</code> results in <code>😃 = 4.</code> Although, apart from some April Fool's pranks, Julia's <a href="http://docs.julialang.org/en/release-0.5/manual/variables/">stylistic conventions</a> is advised to be followed when defining variable names!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="coffee-and-cakes-event/" class="u-url">Coffee and Cakes Event</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/paul-richmond/">Paul Richmond</a>

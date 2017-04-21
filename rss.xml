@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Wed, 19 Apr 2017 10:33:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Introduction to Modern Fortran</title><link>http://rse.shef.ac.uk/blog/ModernFortran2017/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;In February, the Research Software Engineering group hosted an ‘Introduction to Modern Fortran Course’ taught by EPSRC Research Software Engineering Fellow, &lt;a href="http://www.walkingrandomly.com/?p=6006"&gt;Ian Bush&lt;/a&gt;. The course material is available at &lt;a href="https://www.oerc.ox.ac.uk/introduction-modern-fortran-course-materials"&gt;https://www.oerc.ox.ac.uk/introduction-modern-fortran-course-materials&lt;/a&gt;.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Fri, 21 Apr 2017 14:24:55 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Job validation with Grid Engine: false negatives</title><link>http://rse.shef.ac.uk/blog/sge-job-validation-2/</link><dc:creator>Will Furnass</dc:creator><description>&lt;div&gt;&lt;p&gt;In &lt;a href="http://rse.shef.ac.uk/blog/sge-job-validation"&gt;a previous post&lt;/a&gt;, 
+I noted that if you're not sure if a Sun Grid Engine (SGE) job can ever run on an &lt;a href="https://en.wikipedia.org/wiki/Supercomputer"&gt;HPC cluster&lt;/a&gt;
+you can perform 'dry-run' job validation:
+by passing &lt;code&gt;-w v&lt;/code&gt; as arguments to &lt;code&gt;qrsh&lt;/code&gt;/&lt;code&gt;qrshx&lt;/code&gt;/&lt;code&gt;qsh&lt;/code&gt;/&lt;code&gt;qalter&lt;/code&gt; you can ask the SGE scheduler software 
+if your job could ever run if the cluster were entirely empty of other jobs.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    qsub -pe smp 2 -l rmem=10000G -w v myjob.sge
+&lt;/pre&gt;
+
+
+&lt;p&gt;would most likely tell you that your job could not be run in any of the cluster's job queues 
+(due to the size of the resource request).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;But beware:&lt;/strong&gt; 
+as mentioned in my earlier post 
+this his job validation mechanism sometimes results in &lt;em&gt;false negatives&lt;/em&gt; i.e. you are told that a job cannot run even though though in reality it can.&lt;br&gt;
+This is something that the HPC sysadmin team at the University of Leeds alerted us to.&lt;/p&gt;
+&lt;p&gt;Here's an example of a false positive (using our &lt;a href="https://docs.hpc.shef.ac.uk/en/latest/sharc/"&gt;ShARC&lt;/a&gt; cluster.&lt;br&gt;
+If you ask for a single-core interactive session with access to four GPUs then dry-run validation fails:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 -w v
+    ...
+    verification: no suitable queues
+&lt;/pre&gt;
+
+
+&lt;p&gt;yet (without validation) the resource request can be satisfied:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 
+    [te1st@sharc-node100 ~]$   # works!
+&lt;/pre&gt;
+
+
+&lt;p&gt;The &lt;strong&gt;reason for this&lt;/strong&gt; appears to be that the validation is performed 
+without running any &lt;a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/jsv.html"&gt;Job Submission Verifier&lt;/a&gt; (JSV) scripts.
+These scripts are run (typically on the SGE master machine) on every submitted job to 
+centrally modify or reject job requests post-submission.&lt;/p&gt;
+&lt;p&gt;On ShARC the main JSV script changes a job's &lt;a href="http://gridscheduler.sourceforge.net/htmlman/htmlman5/project.html?pathrev=V62u5_TAG"&gt;Project&lt;/a&gt; 
+from a generic one 
+to &lt;code&gt;gpu&lt;/code&gt; 
+if &lt;code&gt;x &amp;gt; 0&lt;/code&gt; GPUs have been requested using &lt;code&gt;-l gpu=x&lt;/code&gt;.
+The job can then be assigned to (GPU-equipped) nodes associated with that project.
+So, if the JSV is not run before job validation (using &lt;code&gt;-w v&lt;/code&gt;) then 
+validation of jobs that request GPUs will fail as 
+no nodes (more accurately &lt;em&gt;queue instances&lt;/em&gt;) will be found that can satisfy the resource request 
+given the (default) project of jobs.  &lt;/p&gt;
+&lt;p&gt;The workaround here is to explicitly request a Project (using e.g. &lt;code&gt;-P gpu&lt;/code&gt;) 
+when trying to validate a job using &lt;code&gt;-w v&lt;/code&gt; 
+i.e. partly duplicate the logic in the (bypassed) JSV,
+but this requires that you know have read and understood the JSV.&lt;br&gt;
+This is something that users may not want to do and adds complexity, 
+when the whole point of investigating job validation in the first place was to 
+find a simple way by which users could check if if their jobs could run on a given SGE cluster.&lt;/p&gt;
+&lt;p&gt;In summary, SGE's job validation mechanism is not a fool-proof option for users as 
+it does not take into consideration changes made to a job by Job Submission Verifier scripts post-submission.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/sge-job-validation-2/</guid><pubDate>Wed, 19 Apr 2017 10:15:00 GMT</pubDate></item><item><title>Introduction to Modern Fortran</title><link>http://rse.shef.ac.uk/blog/ModernFortran2017/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;In February, the Research Software Engineering group hosted an ‘Introduction to Modern Fortran Course’ taught by EPSRC Research Software Engineering Fellow, &lt;a href="http://www.walkingrandomly.com/?p=6006"&gt;Ian Bush&lt;/a&gt;. The course material is available at &lt;a href="https://www.oerc.ox.ac.uk/introduction-modern-fortran-course-materials"&gt;https://www.oerc.ox.ac.uk/introduction-modern-fortran-course-materials&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;During the day, Ian recommended a bunch of books (below)&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="http://rse.shef.ac.uk/images/fortran_books.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;We’ve been working with the University library and I’m happy to announce that all of these are now available to borrow. Search for them using the &lt;a href="https://find.shef.ac.uk/primo_library/libweb/action/search.do"&gt;University catalogue&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/ModernFortran2017/</guid><pubDate>Wed, 19 Apr 2017 10:12:51 GMT</pubDate></item><item><title>Determining MPI placement on the HPC clusters</title><link>http://rse.shef.ac.uk/blog/mpi_placement/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;Say you request a 16 slot MPI job on ShARC with 3GB per-process using a submission script like the one below:&lt;/p&gt;
@@ -80,7 +131,8 @@ sharc-node059.shef.ac.uk 4 shortint.q@sharc-node059.shef.ac.uk UNDEFINED
 &lt;/pre&gt;
 
 
-&lt;p&gt;In the above example, 4 slots were placed on node059, 3 slots on node 50, 2 slots on nodes 080 and 090 and one slot on the other listed nodes. &lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/mpi_placement/</guid><pubDate>Sat, 01 Apr 2017 16:03:00 GMT</pubDate></item><item><title>Job validation with Grid Engine</title><link>http://rse.shef.ac.uk/blog/sge-job-validation/</link><dc:creator>Will Furnass</dc:creator><description>&lt;div&gt;&lt;p&gt;Computer cluster job scheduling software is fantastic at managing resources 
+&lt;p&gt;In the above example, 4 slots were placed on node059, 3 slots on node 50, 2 slots on nodes 080 and 090 and one slot on the other listed nodes. &lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/mpi_placement/</guid><pubDate>Sat, 01 Apr 2017 16:03:00 GMT</pubDate></item><item><title>Job validation with Grid Engine</title><link>http://rse.shef.ac.uk/blog/sge-job-validation/</link><dc:creator>Will Furnass</dc:creator><description>&lt;div&gt;&lt;p&gt;(&lt;strong&gt;Edit&lt;/strong&gt;: caveats are listed in a &lt;a href="http://rse.shef.ac.uk/blog/sge-job-validation-2"&gt;more recent post&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Computer cluster job scheduling software is fantastic at managing resources 
 and permitting many jobs to run efficiently and simultaneously.&lt;br&gt;
 However, schedulers aren't always great at giving end-users feedback 
 when things go wrong.  &lt;/p&gt;
@@ -91,13 +143,13 @@ For example, let's use &lt;a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/sche
 to submit a job where we ask for 1000 hours of run time and 4 GiB of RAM:&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;will@mysofa ~&lt;span class="o"&gt;]&lt;/span&gt;$ ssh sharc
 ...
-&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qsub -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
+&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qsub -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
 
 Your job &lt;span class="m"&gt;236268&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"STDIN"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; has been submitted
 &lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qstat -u &lt;span class="nv"&gt;$USER&lt;/span&gt;
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
- &lt;span class="m"&gt;217834&lt;/span&gt; 0.00000 longtask   te1st        qw    03/20/2017 10:48:39                                    &lt;span class="m"&gt;1&lt;/span&gt;        
+ &lt;span class="m"&gt;217834&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;.00000 longtask   te1st        qw    &lt;span class="m"&gt;03&lt;/span&gt;/20/2017 &lt;span class="m"&gt;10&lt;/span&gt;:48:39                                    &lt;span class="m"&gt;1&lt;/span&gt;        
 &lt;/pre&gt;
 
 
@@ -143,14 +195,14 @@ te1st has deleted job &lt;span class="m"&gt;217834&lt;/span&gt;
 
 &lt;p&gt;...then consult the cluster's documentation to discover the maximum possible run-time and resubmit using more sensible resource requests.  &lt;/p&gt;
 &lt;p&gt;Alternatively we can use &lt;strong&gt;qalter&lt;/strong&gt; to modify the resource requests associated with a queueing job:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;96:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;96&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
 &lt;/pre&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt;: using &lt;code&gt;qalter&lt;/code&gt; in this fashion will change &lt;strong&gt;all&lt;/strong&gt; resource requests for the job so here we need to re-specify the &lt;code&gt;rmem&lt;/code&gt; request.&lt;/p&gt;
 &lt;h3&gt;Job validation at submission time&lt;/h3&gt;
 &lt;p&gt;You can also perform the same type of job validation &lt;strong&gt;at job submission time&lt;/strong&gt; using &lt;code&gt;-w v&lt;/code&gt; e.g.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -w v -l 1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -w v -l &lt;span class="m"&gt;1000&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
 &lt;/pre&gt;
 
 
@@ -158,7 +210,8 @@ te1st has deleted job &lt;span class="m"&gt;217834&lt;/span&gt;
 &lt;h3&gt;Why is validation not performed by default?&lt;/h3&gt;
 &lt;p&gt;You may ask why such validation is not enabled by default for all jobs; 
 one reason for this is that it is believed it would place undue burden on the scheduler.&lt;/p&gt;
-&lt;p&gt;Another is that sometimes a validation attempt results in a false negative that can be difficult to automatically identify.&lt;/p&gt;
+&lt;p&gt;Another is that sometimes a validation attempt results in a false negative that can be difficult to automatically identify
+(&lt;strong&gt;edit&lt;/strong&gt;: see this &lt;a href="http://rse.shef.ac.uk/blog/sge-job-validation-2"&gt;more recent post&lt;/a&gt; for details).&lt;/p&gt;
 &lt;h3&gt;Other types of resources&lt;/h3&gt;
 &lt;p&gt;If you repeat the experiment outlined above but 
 instead of requesting 1000 hours of runtime 
@@ -466,30 +519,4 @@ The same is equally true of &lt;a href="https://nanochemistry.curtin.edu.au/gulp
 &lt;p&gt;By being able to now run many of these simulation packages through the Windows Bash Linux subsystem there are minimal hoops to jump through. All students now have easy access to a machine that can run the simulation programs, and without having to switch OS, or log into a dedicated UNIX server which is maintained for PhD and postdoc research. That lack of need to use a virtual machine, or emulator, also means much less impact on resources on personal machines, and less peculiarities with the allocation of computing resources on those machine. Furthermore, with respect to workflows, inputs and outputs from those simulation packages all can happen under the one roof of the Windows 10 OS, and lead to greater productivity.&lt;/p&gt;
 &lt;p&gt;Bash in Windows 10 has trampled down a barrier which makes the use of the OS far more competitive, cost effective and productive for computational chemistry.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/windows_bash_materials/</guid><pubDate>Thu, 03 Nov 2016 16:33:11 GMT</pubDate></item><item><title>A new member of the team: Mozhgan Kabiri Chimeh</title><link>http://rse.shef.ac.uk/blog/mozhgankch_intro/</link><dc:creator>Mozhgan Kabiri Chimeh</dc:creator><description>&lt;div&gt;&lt;p&gt;My name is &lt;strong&gt;Mozhgan Kabiri Chimeh&lt;/strong&gt; and I am a &lt;a href="http://www.rse.ac.uk/"&gt;Research Associate/Research Software Engineer&lt;/a&gt; who specialises in performance acceleration targeting Many-core and Multi-core architectures. Research is my passion and I have carefully developed my education with research and teaching in mind. I completed my PhD in computer science in 2016 at the University of Glasgow where my area of research was accelerating logic gate circuit simulation targeting heterogeneous architectures.  As part of my PhD project, I optimised and accelerated simulation algorithms and applied them to various parallel architectures (SIMD enabled machines, clusters, and GPUs). I have practical experience with parallel programming using High Performance Computing languages and models including OpenMP and CUDA.&lt;/p&gt;
 &lt;p&gt;I am glad to be a part of RSE team as well as working as a researcher in Computer Graphic and simulation modelling group here at the University of Sheffield. Feel free to get in touch with me via my email address (m.kabiri-chimeh (at) sheffield.ac.uk) or my &lt;a href="https://uk.linkedin.com/in/mozhgankch"&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;When not working I divide my time between family, movie, artwork and macro-photography!&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/mozhgankch_intro/</guid><pubDate>Fri, 28 Oct 2016 08:09:22 GMT</pubDate></item><item><title>Manchester Julia Workshop</title><link>http://rse.shef.ac.uk/blog/julia-manchester-2016/</link><dc:creator>Avgoustinos Vouros</dc:creator><description>&lt;div&gt;&lt;p&gt;A few weeks ago (19-20th September 2016) I had the chance to attend the very first Julia workshop in the UK held at the University of Manchester by the &lt;a href="http://www.maths.manchester.ac.uk/~siam/"&gt;SIAM Student Chapter&lt;/a&gt;. The first day of the &lt;a href="http://www.maths.manchester.ac.uk/~siam/julia16/"&gt;workshop&lt;/a&gt; consisted of a basic tutorial of Julia, installation instructions and around five hours of hackathon. The second day provided an introduction to carrying out research in various fields such as data analysis, material science, natural language processing and bioinformatics using Julia. The attendees were a mixture of PhD students, post-docs and lecturers mainly from the University of Manchester as well as other universities and institutes (Warwick, Glasgow, Reading, MIT, Imperial College London, Earlham Institute).&lt;/p&gt;
-&lt;h2&gt;Day 1: Tutorial and Hackathon&lt;/h2&gt;
-&lt;p&gt;There are several ways to &lt;a href="http://julialang.org/downloads/"&gt;run Julia&lt;/a&gt; in any OS, including command line version, &lt;a href="http://junolab.org/"&gt;Juno&lt;/a&gt; IDE and Jupyter notebook (&lt;a href="https://github.com/JuliaLang/IJulia.jl"&gt;IJulia&lt;/a&gt;). In case you want to avoid any installation process then there is also the  browser based &lt;a href="https://www.juliabox.com/"&gt;JuliaBox.com&lt;/a&gt;. I was surprised that the whole process was smooth without any software setup issues!&lt;/p&gt;
-&lt;p&gt;The tutorial consisted of some very basic demonstration of Julia mostly on linear algebra and statistics and after a short break we were left to explore Julia, collaborate and exchange ideas. There were also two Exercises proposed to us:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.kaggle.com/c/street-view-getting-started-with-julia"&gt;First Steps With Julia&lt;/a&gt; by &lt;a href="https://www.kaggle.com/"&gt;kaggle&lt;/a&gt; which teaches some basics of image processing and machine learning to identify the character from pictures.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.google.com/document/d/1NYQFLeORdMCHl2hncOkhNNPNJUWGAoGcR_tCs-KF-D0/edit#heading=h.262rsr2l8kb4"&gt;Bio.jl Exercises&lt;/a&gt; by Ben J. Ward which provides simple examples of using the &lt;a href="https://github.com/BioJulia/Bio.jl"&gt;Bio.jl&lt;/a&gt; to do simple operations and manipulations of biological sequences.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As I wanted to try as many libraries as possible from image processing and data visualization to embedded Java, I ended up using a lot of different packages so I found these commands (self-explanatory) for package managing the most useful for me:&lt;code&gt;Pkg.add("PackageName")&lt;/code&gt;, &lt;code&gt;Pkg.status()&lt;/code&gt;, &lt;code&gt;Pkg.update()&lt;/code&gt;. Here of course, I detected some compatibility issues. I was running Julia version 0.4.6 but it appears that most of the attendees were using the version 0.4.5. Some commands seemed to have changed between these versions; for example in the kaggle's exercise the command &lt;code&gt;float32sc(img)&lt;/code&gt; which converts an image to float values was not working for me instead I had to use the &lt;code&gt;float32(img)&lt;/code&gt; command. A minor issue for a new-born language.&lt;/p&gt;
-&lt;h2&gt;Day 2: Talks&lt;/h2&gt;
-&lt;p&gt;The talks were centred around specific fields with heavy scientific computing (automatic differentiation, molecular modelling, natural language processing, bioinformatics and computational biology) and how Julia influence these fields. Each speaker presented his field of research and his Julia implementations which ended up as another package for the Julia community. More information about the speakers can be found on the &lt;a href="http://www.maths.manchester.ac.uk/~siam/julia16/"&gt;Manchester Julia Workshop webpage&lt;/a&gt; and a list of the presented packages can be found below:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Data analysis and visualization: &lt;a href="http://distributionsjl.readthedocs.io/en/latest/"&gt;Distributions.jl&lt;/a&gt;, &lt;a href="https://github.com/JuliaStats/DataFrames.jl"&gt;DataFrames.jl&lt;/a&gt;, &lt;a href="https://github.com/JuliaStats/GLM.jl"&gt;GLM.jl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Embed other languages with Julia (Python, R): &lt;a href="https://github.com/JuliaPy/PyCall.jl"&gt;PyCall.jl&lt;/a&gt;, &lt;a href="https://github.com/JuliaStats/RCall.jl"&gt;RCall.jl&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Automatic differentiation: &lt;a href="https://github.com/JuliaDiff/ForwardDiff.jl"&gt;ForwardDiff.jl&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Molecular modelling: &lt;a href="https://github.com/libAtoms/JuLIP.jl"&gt;JuLIP.jl&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Bioinformatics and computational biology: &lt;a href="https://github.com/BioJulia/Bio.jl"&gt;bio.jl&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Final words&lt;/h2&gt;
-&lt;p&gt;Overall I was very satisfied with the Julia experience and I am waiting for its first official release (v1.0) which will probably be next year. Here are the main advantages which led me to believe that Julia can be the next on demand programming language for scientific computing:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Combines the productivity of dynamic languages (Java, Python) and the performance of static languages (C, Fortran). In other words: very easy to write optimized code and run your program fast at the same time. &lt;a href="https://jiahao.github.io/"&gt;Dr Jiahao Chen&lt;/a&gt; from MIT in his &lt;a href="http://www.slideshare.net/acidflask/programming-languages-history-relativity-and-design"&gt;talk&lt;/a&gt; mentioned the following referring to Julia's speed, "&lt;em&gt;You can define many methods for a generic function. If the compiler can figure out exactly which method you need to use when you invoke a function, then it generates optimized code&lt;/em&gt;".&lt;/li&gt;
-&lt;li&gt;Deals with the two language problem: base library and functionality is written in Julia itself.&lt;/li&gt;
-&lt;li&gt;It is free and open source (MIT licensed), high advantageous for the scientific community to share code or expand existing one.&lt;/li&gt;
-&lt;li&gt;A great and friendly community and users from various fields which constantly expand the existing Julia library.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Fun fact:&lt;/strong&gt; The system for variable declaration accepts any &lt;a href="http://docs.julialang.org/en/release-0.5/manual/unicode-input/"&gt;Unicode character&lt;/a&gt;: &lt;code&gt;\delta[tab] = 2&lt;/code&gt; results in &lt;code&gt;δ = 2&lt;/code&gt;, &lt;code&gt;\:smiley: = 4&lt;/code&gt; results in &lt;code&gt;😃 = 4.&lt;/code&gt; Although, apart from some April Fool's pranks, Julia's &lt;a href="http://docs.julialang.org/en/release-0.5/manual/variables/"&gt;stylistic conventions&lt;/a&gt; is advised to be followed when defining variable names!&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/julia-manchester-2016/</guid><pubDate>Wed, 19 Oct 2016 11:46:11 GMT</pubDate></item></channel></rss>
+&lt;p&gt;When not working I divide my time between family, movie, artwork and macro-photography!&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/mozhgankch_intro/</guid><pubDate>Fri, 28 Oct 2016 08:09:22 GMT</pubDate></item></channel></rss>
