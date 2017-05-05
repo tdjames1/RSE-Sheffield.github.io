@@ -9,6 +9,11 @@
 
 Here you'll find details of hardware and software resources that will be of interest to computational researchers and research software engineers at The University of Sheffield.
 
+Premium access to Sheffield's HPC systems
+-----------------------------------------
+For those who need access to more computational resources than those generally available on Sheffield's HPC systems, we operate a 'premium-acess' project.
+Please refer to `Premium access to ShARC <hpc/RSE-project>`_ for more details.
+
 Language and technology specific resources
 ------------------------------------------
 * `Fortran <languages/fortran>`_: Details on site licensed compilers, training, numerical libraries and high performance computing in Fortran.
@@ -25,6 +30,8 @@ The University of Sheffield provides a range of site licensed software to its st
 High Performance Computing at Sheffield
 ---------------------------------------
 The University of Sheffield provides staff and students with access to two High Performance Computing (HPC) systems called ShARC and Iceberg.
+ShARC is the new system and the one we recommend for new users.
 
 * http://docs.hpc.shef.ac.uk/en/latest/index.html - ShARC and Iceberg documentation
 * http://shef.ac.uk/cics/research-storage - Information on applying for research storage at Sheffield
+
