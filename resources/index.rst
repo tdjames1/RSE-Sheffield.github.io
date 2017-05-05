@@ -9,11 +9,6 @@
 
 Here you'll find details of hardware and software resources that will be of interest to computational researchers and research software engineers at The University of Sheffield.
 
-Premium access to Sheffield's HPC systems
------------------------------------------
-For those who need access to more computational resources than those generally available on Sheffield's HPC systems, we operate a 'premium-acess' project.
-Please refer to `Premium access to ShARC <hpc/RSE-project>`_ for more details.
-
 Language and technology specific resources
 ------------------------------------------
 * `Fortran <languages/fortran>`_: Details on site licensed compilers, training, numerical libraries and high performance computing in Fortran.
