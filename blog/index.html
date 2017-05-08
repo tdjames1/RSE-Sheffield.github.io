@@ -76,7 +76,31 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sge-job-validation-2/" class="u-url">Job validation with Grid Engine: false negatives</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="spark-scala-sheffield-hpc/" class="u-url">Spark and Scala on Sheffield HPC systems</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/mike-croucher/">Mike Croucher</a>
+            </span></p>
+            <p class="dateline"><a href="spark-scala-sheffield-hpc/" rel="bookmark"><time class="published dt-published" datetime="2017-05-08T11:17:05Z" title="2017-05-08 11:17">2017-05-08 11:17</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>As part of our support for a Large scale machine learning MSc course in Computer Science, the Sheffield RSE group put together a tutorial for how to use <a href="http://spark.apache.org/">Spark</a> and Scala on <a href="http://docs.hpc.shef.ac.uk/en/latest/">Sheffields HPC systems</a>.
+We are sharing with the rest of the community in case its useful to you <a href="https://github.com/mikecroucher/Intro_to_HPC/blob/gh-pages/README.md">https://github.com/mikecroucher/Intro_to_HPC/blob/gh-pages/README.md</a> </p>
+<p>Its for people whove never used a HPC system before. By the time theyve finished, they are able to submit their own Spark jobs to the HPC cluster.
+If anyone is interested in us re-running this as a workshop (it takes around 2 hours) let us know.</p>
+<p>Some notes on our current implementation of Spark on HPC:-</p>
+<ul>
+<li>
+<p>We are currently restricted to jobs that run on one node. This is because Sheffields HPC clusters are not traditional Hadoop/Spark clusters and so some level of integration is required between Sun Grid Engine and Spark. We've only managed to get as far as implementing this across single nodes at the moment.</p>
+</li>
+<li>
+<p>One way weve fudged this is to make sure that we provide our students with access to nodes with a LOT of memory  768 GB per node in fact, 12 times as much as you get on a normal node on ShARC or Iceberg. We are experimenting with allowing others access to our kit via a contribution based model. See <a href="http://rse.shef.ac.uk/resources/hpc/premium-hpc">http://rse.shef.ac.uk/resources/hpc/premium-hpc/</a> for details.</p>
+</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sge-job-validation-2/" class="u-url">Job validation with Grid Engine: false negatives</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/will-furnass/">Will Furnass</a>
@@ -713,20 +737,6 @@ The same is equally true of <a href="https://nanochemistry.curtin.edu.au/gulp/">
 <p>Personally I fall into that last category of users. While I can write a paper in <a href="https://www.latex-project.org/">LaTeX</a>, I really don’t like it compared to the WYSIWYG world of Word, and of course with word I can use my favourite citation manager, Zotero (which by the way the work around using Dropbox is also good fun). That impact on workflow is an important thing, especially if you are dealing with final year students who you want to work on your research. Ideally you want to get them up and running ASAP where the only teaching you need to do is how to run the simulation packages. I don’t want to have to teach them how to use and entirely new OS, and in the case of Linux, perhaps entirely new ways to write documents and make spreadsheets. This is especially true if the university course from the first year onwards has included access to MS Office, and has done teaching using those tools.</p>
 <p>By being able to now run many of these simulation packages through the Windows Bash Linux subsystem there are minimal hoops to jump through. All students now have easy access to a machine that can run the simulation programs, and without having to switch OS, or log into a dedicated UNIX server which is maintained for PhD and postdoc research. That lack of need to use a virtual machine, or emulator, also means much less impact on resources on personal machines, and less peculiarities with the allocation of computing resources on those machine. Furthermore, with respect to workflows, inputs and outputs from those simulation packages all can happen under the one roof of the Windows 10 OS, and lead to greater productivity.</p>
 <p>Bash in Windows 10 has trampled down a barrier which makes the use of the OS far more competitive, cost effective and productive for computational chemistry.</p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="mozhgankch_intro/" class="u-url">A new member of the team: Mozhgan Kabiri Chimeh</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/mozhgan-kabiri-chimeh/">Mozhgan Kabiri Chimeh</a>
-            </span></p>
-            <p class="dateline"><a href="mozhgankch_intro/" rel="bookmark"><time class="published dt-published" datetime="2016-10-28T08:09:22Z" title="2016-10-28 08:09">2016-10-28 08:09</time></a></p>
-        </div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>My name is <strong>Mozhgan Kabiri Chimeh</strong> and I am a <a href="http://www.rse.ac.uk/">Research Associate/Research Software Engineer</a> who specialises in performance acceleration targeting Many-core and Multi-core architectures. Research is my passion and I have carefully developed my education with research and teaching in mind. I completed my PhD in computer science in 2016 at the University of Glasgow where my area of research was accelerating logic gate circuit simulation targeting heterogeneous architectures.  As part of my PhD project, I optimised and accelerated simulation algorithms and applied them to various parallel architectures (SIMD enabled machines, clusters, and GPUs). I have practical experience with parallel programming using High Performance Computing languages and models including OpenMP and CUDA.</p>
-<p>I am glad to be a part of RSE team as well as working as a researcher in Computer Graphic and simulation modelling group here at the University of Sheffield. Feel free to get in touch with me via my email address (m.kabiri-chimeh (at) sheffield.ac.uk) or my <a href="https://uk.linkedin.com/in/mozhgankch">LinkedIn</a>.</p>
-<p>When not working I divide my time between family, movie, artwork and macro-photography!</p>
 </div>
     </div>
     </article>
