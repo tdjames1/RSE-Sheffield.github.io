@@ -87,18 +87,30 @@ Only those who have financially contribute">
 <p>The Sheffield RSE group, along with a few other research groups around the University, have purchased some additional hardware and integrated it into ShARC. 
 Only those who have financially contributed to this hardware can access it.
 This is part of an experiment to try to make better use of computational resources at Sheffield and also an attempt to build more of a community around the HPC systems here.</p>
-<p>Sheffield RSE is an academically-led group. We, and our collaborators, had computational needs that weren't addressed by Sheffield's HPC systems. Rather than build our own, separate system, we teamed up with the guys at CiCS to make Sheffield's HPC better for everyone.</p>
+<h2>How are you related to CiCS?</h2>
+<p>Sheffield RSE is an academically-led group in the department of computer science. We collaborate closely with CiCS but are a separate entity. We, and our collaborators, had computational needs that weren't addressed by Sheffield's HPC systems. Rather than build our own, separate system, we teamed up with the guys at CiCS to make Sheffield's HPC better for everyone.</p>
 <h2>How does it work?</h2>
 <p>Research groups give us money to buy additional hardware and we purchase and integrate it via the Research Computing Group at CiCS.<br>
 This will take time but we'll give you access to the current pool immediately.
 We've seeded the process with ~£100,000 and already have nodes that provide capability not available elsewhere on ShARC or Iceberg.</p>
 <h2>What's the advantage of doing it this way?</h2>
-<p>We find that the workloads of most research groups is 'spiky'. That is, much of the time you might not need any compute at all but when you <em>do</em> need it, you need a <strong>lot</strong> -- a lot more than you can afford to actually buy! By pooling resources in this way, it's more likely that you'll have the resource you need when you need it.</p>
+<p>We find that the workloads of most research groups are 'spiky'. That is, much of the time you might not need any compute at all but when you <em>do</em> need it, you need a <strong>lot</strong> -- a lot more than you can afford to actually buy! By pooling resources in this way, it's more likely that you'll have the resource you need when you need it.</p>
 <p>A similar model is in use at <a href="http://ri.itservices.manchester.ac.uk/csf/">The University of Manchester</a> and has helped them build a system much bigger than the one at Sheffield. 
 We believe that part of their success is due to the fact that academics and central IT are <em>co-investing</em> in a system rather than IT simply providing a service.
 This is our attempt to replicate the same success here at Sheffield.</p>
 <p>Traditionally, HPC at Sheffield has always been 'Free At Point of Use' and although this allows everyone to have <em>some</em> HPC access for 'free' (It really comes out of overheads), it usually leaves most people wanting more. You'll know what we mean if you've ever waited in the queues for longer than it takes your job to run! </p>
 <p>Free at Point of Use is great and we don't expect this to change but we want to offer our collaborators something more.</p>
+<h2>Support</h2>
+<p>We are Research Software Engineers who work with a diverse group of researchers. Their needs are driving what can be done on Sheffield's HPC systems and we are helping them do it. Some of the support we've given to HPC users over the last couple of years includes:-</p>
+<ul>
+<li>
+<strong>Improved documentation</strong> We moved the documentation to <a href="https://github.com/rcgsheffield/sheffield_hpc">GitHub</a> and opened up the install process. Now, users can see exactly how every application was installed and can also contribute to improving the documentation in a way that ensures that they get credit for their work.</li>
+<li>
+<strong>New compute models</strong> HPC is changing. It's no longer confined to OpenMP and MPI for Fortran and C users. We've worked to allow <a href="https://github.com/mikecroucher/Intro_to_HPC">Apache Spark workloads</a> run on the cluster, <a href="https://github.com/mikecroucher/Intro_to_HPC">compiled optimised versions of R</a>, <a href="http://rse.shef.ac.uk/blog/willfurnass_intro/">developed access via Jupyter notebook</a>, improved GPU support and installed dozens of applications.</li>
+<li>
+<strong>Made your code faster</strong> You use HPC because you need your results more quickly. We have helped <a href="http://rse.shef.ac.uk/testimonials/">dozens of researchers</a> make their code <strong>hundreds</strong> of times faster. </li>
+</ul>
+<p>Some of our support services are Free At Point of Use but we also offer paid-for support. <a href="http://rse.shef.ac.uk/contact/">Contact us</a> to start discussing this.</p>
 <h2>Can you guarantee me access to <em>my</em> hardware exactly when I need it?</h2>
 <p>No (with caveats). The idea of this particular model is that you give up the convenience of guaranteed access at all times in exchange for access to much more hardware than you could otherwise afford. We can occasionally give our collaborators guaranteed access to certain nodes for short periods for mission critical work but we strongly discourage it. If you really must have guaranteed access to your nodes at all times, this may not be the model for you.</p>
 <h2>What if I join the pool but find it doesn't work for me?</h2>
@@ -138,8 +150,8 @@ ologies/deep-learning/pdf/61681-DB2-Launch-Datasheet-Deep-Learning-Letter-WEB.pd
 This makes them ideal for shared-memory parallel workloads that can scale beyond what is currently available on ShARC.</p>
 <p>We are in the process of buying these right now so they are not available just yet. We currently propose to buy:</p>
 <ul>
-<li>3 nodes</li>
-<li>Each node has 32 CPU cores</li>
+<li>4 nodes</li>
+<li>Each node has 32 CPU cores (so 128 cores in total in this part of the pool)</li>
 <li>Each node has 128GB RAM</li>
 </ul>
 <h2>What are the alternatives to this premium queue?</h2>
