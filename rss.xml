@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Wed, 10 May 2017 22:08:03 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Building Linux GPU Code with NSIGHT in Windows</title><link>http://rse.shef.ac.uk/blog/building-linux-gpu-code-with-nsight-in-windows/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;Why would you possibly want to build and execute CUDA GPU applications within NSight Eclipse for Linux within Microsoft Windows? Well if you use windows as your main OS there are plenty of reasons but the most obvious is that you may be developing cross platform code and want to build and test it without dual booting. If you are thinking about virtual machines then forget about it. Most (except some very expensive enterprise options) do not have the ability to access a GPU device (e.g GPU pass-through) from within a virtual machine. &lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link type="application/rss+xml" href="http://rse.shef.ac.uk/rss.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 17 May 2017 12:50:07 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Coffee and Cakes Event</title><link>http://rse.shef.ac.uk/blog/coffee-and-cakes-event-2nd/</link><dc:creator>Mozhgan Kabiri Chimeh</dc:creator><description>&lt;div&gt;&lt;p&gt;RSE Sheffield is hosting another coffee and cakes event on &lt;strong&gt;May 31st at 14:00 in the Ada Lovelace room&lt;/strong&gt; on 1st floor of the Computer Science Department (Regents Court East). Attendance is free, but you need to register via &lt;a href="https://goo.gl/forms/L2dRQNvSUvkIbtSm2"&gt;this link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Take the opportunity to come and have an informal chat about research software.&lt;/p&gt;
+&lt;p&gt;This event is a community event for anyone, not just computer science or members of the RSE team. If you work on software development are an RSE or simply want to talk about some aspect of software or software in teaching then come along.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/coffee-and-cakes-event-2nd/</guid><pubDate>Wed, 17 May 2017 11:12:12 GMT</pubDate></item><item><title>Building Linux GPU Code with NSIGHT in Windows</title><link>http://rse.shef.ac.uk/blog/building-linux-gpu-code-with-nsight-in-windows/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;Why would you possibly want to build and execute CUDA GPU applications within NSight Eclipse for Linux within Microsoft Windows? Well if you use windows as your main OS there are plenty of reasons but the most obvious is that you may be developing cross platform code and want to build and test it without dual booting. If you are thinking about virtual machines then forget about it. Most (except some very expensive enterprise options) do not have the ability to access a GPU device (e.g GPU pass-through) from within a virtual machine. &lt;/p&gt;
 &lt;p&gt;The purpose of this post is to describe how to install the necessary tools to permit local GPU development inside the Linux NSight IDE from within Windows. The advantages of which are not only cross platform development but also the ability to locally develop in powerful Linux IDE with remote execution and graphical debugging. This is particularly helpful if you want to execute or debug your code on a HPC system (like Sheffield's ShARC system) from Windows. The post focuses on the use of the new Windows 10 Linux subsystem, however you could use the approach to install CUDA tools on a lightweight Linux virtual machine. The concept is the same either way. i.e. build and debug locally execute remotely.&lt;/p&gt;
 &lt;h3&gt;Configuring the Linux Windows Subsystem for CUDA compilation&lt;/h3&gt;
 &lt;p&gt;The Windows 10 subsystem for Linux is available in the anniversary update. You can install it from the "Turn on or off windows features" dialogue. It is listed under "Windows subsystem for Linux (beta)". This alone is not enough to build our GPU applications as we will need to install CUDA. A normal CUDA install will require a local GPU and the installation of a CUDA compatible graphics driver. Fire up the Windows Bash Shell (or a Linux virtual machine). You can then use the following commands to install the CUDA toolkit without installing a graphics driver. This will install the core NVIDIA CUDA compiler (nvcc) and NSight. You can update the &lt;code&gt;CUDA_REPO_PKG&lt;/code&gt; variable to install a different CUDA version.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update
-CUDA_REPO_PKG=cuda-repo-ubuntu1404_8.0.44-1_amd64.deb
-wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG
-sudo dpkg -i $CUDA_REPO_PKG
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends cuda-core-8-0 cuda-cudart-dev-8-0 nsight
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt-get update&lt;/span&gt;
+&lt;span class="x"&gt;CUDA_REPO_PKG=cuda-repo-ubuntu1404_8.0.44-1_amd64.deb&lt;/span&gt;
+&lt;span class="x"&gt;wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CUDA_REPO_PKG&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;sudo dpkg -i &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CUDA_REPO_PKG&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;sudo apt-get update&lt;/span&gt;
+&lt;span class="x"&gt;sudo apt-get install -y --no-install-recommends cuda-core-8-0 cuda-cudart-dev-8-0 nsight&lt;/span&gt;
 &lt;/pre&gt;
 
 
 &lt;p&gt;You can now create a symbolic link to a generic CUDA install. This will permit the addition and fast swapping of different CUDA versions.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda 
-export PATH=$PATH:/usr/local/cuda/bin
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda &lt;/span&gt;
+&lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;:/usr/local/cuda/bin&lt;/span&gt;
 &lt;/pre&gt;
 
 
@@ -47,11 +49,11 @@ export PATH=$PATH:/usr/local/cuda/bin
 &lt;p&gt;Future blog posts will cover how remote execution and debugging can be achieved on the University of Sheffield ShARC system. ShARC has a typical of job based HPC system which encourages job submission rather than execution of code on worker nodes via SSH logins. &lt;/p&gt;
 &lt;h3&gt;Summary of Bash Profile Changes&lt;/h3&gt;
 &lt;p&gt;I added the following to my .bashrc profile (located in the home directory) to ensure that NSight could be launched straight after starting the Bash shell in Windows.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;# add cuda bin dir to path
-export PATH=$PATH:/usr/local/cuda/bin
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; add cuda bin dir to path&lt;/span&gt;
+&lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;:/usr/local/cuda/bin&lt;/span&gt;
 
-# export the display environment variable
-export DISPLAY=:0
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; export the display environment variable&lt;/span&gt;
+&lt;span class="x"&gt;export DISPLAY=:0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/building-linux-gpu-code-with-nsight-in-windows/</guid><pubDate>Mon, 08 May 2017 16:03:00 GMT</pubDate></item><item><title>Spark and Scala on Sheffield HPC systems</title><link>http://rse.shef.ac.uk/blog/spark-scala-sheffield-hpc/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;As part of our support for a Large scale machine learning MSc course in Computer Science, the Sheffield RSE group put together a tutorial for how to use &lt;a href="http://spark.apache.org/"&gt;Spark&lt;/a&gt; and Scala on &lt;a href="http://docs.hpc.shef.ac.uk/en/latest/"&gt;Sheffields HPC systems&lt;/a&gt;.
 We are sharing with the rest of the community in case its useful to you &lt;a href="https://github.com/mikecroucher/Intro_to_HPC/blob/gh-pages/README.md"&gt;https://github.com/mikecroucher/Intro_to_HPC/blob/gh-pages/README.md&lt;/a&gt; &lt;/p&gt;
 &lt;p&gt;Its for people whove never used a HPC system before. By the time theyve finished, they are able to submit their own Spark jobs to the HPC cluster.
@@ -208,13 +210,13 @@ For example, let's use &lt;a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/sche
 to submit a job where we ask for 1000 hours of run time and 4 GiB of RAM:&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;will@mysofa ~&lt;span class="o"&gt;]&lt;/span&gt;$ ssh sharc
 ...
-&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qsub -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
+&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qsub -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
 
 Your job &lt;span class="m"&gt;236268&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"STDIN"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; has been submitted
 &lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qstat -u &lt;span class="nv"&gt;$USER&lt;/span&gt;
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
- &lt;span class="m"&gt;217834&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;.00000 longtask   te1st        qw    &lt;span class="m"&gt;03&lt;/span&gt;/20/2017 &lt;span class="m"&gt;10&lt;/span&gt;:48:39                                    &lt;span class="m"&gt;1&lt;/span&gt;        
+ &lt;span class="m"&gt;217834&lt;/span&gt; 0.00000 longtask   te1st        qw    03/20/2017 10:48:39                                    &lt;span class="m"&gt;1&lt;/span&gt;        
 &lt;/pre&gt;
 
 
@@ -260,14 +262,14 @@ te1st has deleted job &lt;span class="m"&gt;217834&lt;/span&gt;
 
 &lt;p&gt;...then consult the cluster's documentation to discover the maximum possible run-time and resubmit using more sensible resource requests.  &lt;/p&gt;
 &lt;p&gt;Alternatively we can use &lt;strong&gt;qalter&lt;/strong&gt; to modify the resource requests associated with a queueing job:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;96&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;96:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
 &lt;/pre&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt;: using &lt;code&gt;qalter&lt;/code&gt; in this fashion will change &lt;strong&gt;all&lt;/strong&gt; resource requests for the job so here we need to re-specify the &lt;code&gt;rmem&lt;/code&gt; request.&lt;/p&gt;
 &lt;h3&gt;Job validation at submission time&lt;/h3&gt;
 &lt;p&gt;You can also perform the same type of job validation &lt;strong&gt;at job submission time&lt;/strong&gt; using &lt;code&gt;-w v&lt;/code&gt; e.g.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -w v -l &lt;span class="m"&gt;1000&lt;/span&gt;:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -w v -l 1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
 &lt;/pre&gt;
 
 
@@ -567,10 +569,4 @@ You can contact me via:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Email: w.furnass (at) sheffield.ac.uk&lt;/li&gt;
 &lt;li&gt;Twitter: &lt;a class="reference external" href="https://twitter.com/willfurnass"&gt;@willfurnass&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/willfurnass_intro/</guid><pubDate>Mon, 30 Jan 2017 10:56:00 GMT</pubDate></item><item><title>£1 million grant to shed light on how we learn languages</title><link>http://rse.shef.ac.uk/blog/linuistics_grant_2016/</link><dc:creator>Mike Croucher</dc:creator><description>&lt;div&gt;&lt;p&gt;A £1 million grant to help researchers understand what speakers know about languages, in order to help make learning foreign languages easier, has been awarded to the University of Sheffield's Faculty of Arts and Humanities.  &lt;/p&gt;
-&lt;p&gt;Over five years, the Research Leadership Award from the Leverhulme Trust will allow experts to develop new, accurate ways of describing speakers’ linguistic knowledge, by using machine-learning techniques that mimic the way in which humans learn.&lt;/p&gt;
-&lt;p&gt;The patterns they find will be verified in laboratory settings and then tested on adult foreign language learners to see if such patterns can help them learn a foreign language in a way that resembles how they learned their mother tongue.&lt;/p&gt;
-&lt;p&gt;The aim is to lead a step-change in research on language and language learning by capturing the linguistic knowledge adult speakers build up when they are exposed to a language in natural settings. These insights will help with the development of strategic language teaching materials to transform the way in which we teach foreign languages.&lt;/p&gt;
-&lt;p&gt;The team will be led by Dr Dagmar Divjak from the University’s School of Languages and Cultures, in close collaboration with Dr Petar Milin, Department of Journalism Studies, and with Research Software Engineering support from Dr Mike Croucher, Department of Computer Science.&lt;/p&gt;
-&lt;p&gt;Sheffield's Research Software Engineering Group are collaborators on the project and will provide support in High Performance Computing, software engineering and data management. This will help ensure that all developed software is efficient, correct, citable, easy to use and openly available. The aim is to maximise research impact and reproducibility through the application of modern software engineering methodologies.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="The out of our minds team" src="http://rse.shef.ac.uk/images/DSC03577.jpg"&gt;&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/linuistics_grant_2016/</guid><pubDate>Tue, 03 Jan 2017 15:22:11 GMT</pubDate></item></channel></rss>
+&lt;/ul&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/willfurnass_intro/</guid><pubDate>Mon, 30 Jan 2017 10:56:00 GMT</pubDate></item></channel></rss>
