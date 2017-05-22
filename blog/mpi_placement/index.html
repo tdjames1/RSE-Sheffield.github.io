@@ -2,13 +2,10 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://rse.shef.ac.uk/blog/mpi_placement/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Determining MPI placement on the HPC clusters | RSE at Sheffield</title>
-<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/mpi_placement/">
@@ -126,7 +123,7 @@
 12
 13</pre></div></td>
 <td class="code">
-<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
+<pre class="code literal-block"><span class="ch">#!/bin/bash</span>
 <span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
 <span class="c1">#$ -l h_rt=1:00:00</span>
 <span class="c1">#Request 16 slots</span>
@@ -162,7 +159,7 @@ mpirun  ./MPI_hello_world
 15
 16</pre></div></td>
 <td class="code">
-<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
+<pre class="code literal-block"><span class="ch">#!/bin/bash</span>
 <span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
 <span class="c1">#$ -l h_rt=1:00:00</span>
 <span class="c1">#Request 16 slots</span>
@@ -175,14 +172,14 @@ module load dev/gcc/4.9.4
 module load mpi/openmpi/2.0.1/gcc-4.9.4
 
 <span class="c1">#Put placement information into node_info.txt</span>
-cat <span class="nv">$PE_HOSTFILE</span>  &gt; node_info.txt
+cat $PE_HOSTFILE  &gt; node_info.txt
 
 mpirun  ./MPI_hello_world
 </pre>
 </td>
 </tr></table>
 <p>You'll now get a file called <code>node_info.txt</code> that contains information about which nodes your MPI slots were placed. For example</p>
-<pre class="code literal-block"><span></span>sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
+<pre class="code literal-block">sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
 sharc-node069.shef.ac.uk 1 shortint.q@sharc-node069.shef.ac.uk UNDEFINED
 sharc-node112.shef.ac.uk 1 shortint.q@sharc-node112.shef.ac.uk UNDEFINED
 sharc-node108.shef.ac.uk 1 shortint.q@sharc-node108.shef.ac.uk UNDEFINED
@@ -216,7 +213,7 @@ sharc-node059.shef.ac.uk 4 shortint.q@sharc-node059.shef.ac.uk UNDEFINED
 </div>
 
 
-            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/moment-with-locales.min.js"></script><script src="../../assets/js/fancydates.js"></script><script src="../../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->

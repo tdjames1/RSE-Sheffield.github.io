@@ -2,13 +2,10 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://rse.shef.ac.uk/blog/fun-with-strace/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fun with strace | RSE at Sheffield</title>
-<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/fun-with-strace/">
@@ -114,13 +111,13 @@ Turns out <code>LESS</code> isn't set.
 What is going wrong with my <code>.profile</code>?</p>
 <p>I'm becoming a fan of <code>strace</code> for this sort of debugging.</p>
 <p>Have a look at this. When I run this command:</p>
-<pre class="code literal-block"><span></span>strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
+<pre class="code literal-block">strace -e signal= -e open bash -l -c 'echo SCRIPT GOT HERE'
 </pre>
 
 
 <p>I get this output (long and boring, skip and come back to the
 bits I refer to):</p>
-<pre class="code literal-block"><span></span>open("/etc/ld.so.cache", O_RDONLY)      = 3
+<pre class="code literal-block">open("/etc/ld.so.cache", O_RDONLY)      = 3
 open("/lib64/libtinfo.so.5", O_RDONLY)  = 3
 open("/lib64/libdl.so.2", O_RDONLY)     = 3
 open("/lib64/libc.so.6", O_RDONLY)      = 3
@@ -255,7 +252,7 @@ something about <code>strace</code> and system calls (I did!).</p>
 </div>
 
 
-            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/moment-with-locales.min.js"></script><script src="../../assets/js/fancydates.js"></script><script src="../../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->

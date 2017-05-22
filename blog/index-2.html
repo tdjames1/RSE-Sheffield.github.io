@@ -2,14 +2,11 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://rse.shef.ac.uk/blog/index-2.html">
 <meta name="description" content="RSE at Sheffield">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RSE at Sheffield (old posts, page 2) | RSE at Sheffield</title>
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/index-2.html">
@@ -78,9 +75,112 @@
             
             
 
-    
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="linuistics_grant_2016/" class="u-url">£1 million grant to shed light on how we learn languages</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="willfurnass_intro/" class="u-url">Will Furnass joins to work on Jupyter and Grid Engine integration</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                <a href="../authors/will-furnass/">Will Furnass</a>
+            </span></p>
+            <p class="dateline"><a href="willfurnass_intro/" rel="bookmark"><time class="published dt-published" datetime="2017-01-30T10:56:00Z" title="2017-01-30 10:56">2017-01-30 10:56</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<img alt="Will Furnass" class="align-right" src="../images/willfurnass.png"><p>The Research Software Engineering team at the University of Sheffield has gained a new member!
+I joined at the start of January and
+will primarily be working on <a class="reference external" href="http://opendreamkit.org/">OpenDreamKit</a>
+which is a <a class="reference external" href="https://ec.europa.eu/programmes/horizon2020/">Horizon 2020</a>
+European <a class="reference external" href="https://ec.europa.eu/programmes/horizon2020/en/h2020-section/european-research-infrastructures-including-e-infrastructures">Research Infrastructure</a> project
+with the aim of furthering the open-source computational mathematics ecosystem.</p>
+<p>My contribution to this project is to extend work previously started at the University of Sheffield
+to allow researchers to more easily run interactive workflows on <a class="reference external" href="https://en.wikipedia.org/wiki/High-performance_computing">High-Performance Computing</a> clusters,
+specifically to make it easy, robust and intuitive to run <a class="reference external" href="http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Jupyter Notebooks</a> on
+clusters running job scheduling software from the <a class="reference external" href="https://arc.liv.ac.uk/trac/SGE">Grid Engine</a> family.</p>
+<p>Jupyter Notebooks are <strong>runnable documents</strong> containing code snippets
+that are viewed and manipulated from a web browser.
+They are an increasingly popular way of encapsulating, presenting and sharing a coding-oriented workflow.
+A Notebook comprises a column of cells, where each cell can contain:</p>
+<ul class="simple">
+<li>some code or</li>
+<li>explanatory text (that can be formatted using <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>) and/or mathematical expressions (formatted using <a class="reference external" href="https://www.mathjax.org/">MathJax</a>).</li>
+</ul>
+<p>When a code cell is executed by the user it can return anything renderable by a modern web browser:</p>
+<ul class="simple">
+<li>a single value,</li>
+<li>a table of data,</li>
+<li>a figure or</li>
+<li>a mathematical expression.</li>
+</ul>
+<p>For example:</p>
+<img alt="/images/jupyter_notebook_example.png" src="../images/jupyter_notebook_example.png"><p>The code cells of a Notebook can be (re)run in any order, so Notebooks are very useful for interactive exploration.</p>
+<p>The structure of Jupyter is typically as follows:</p>
+<pre class="literal-block">
+[Notebook in browser] &lt;---&gt; [Jupyter server] &lt;---&gt; [Kernel]
+</pre>
+<p>where the kernel is the part that executes code cells.  There are <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">kernels for many different programming languages</a>!</p>
+<p>The server and kernel can run on the same machine as the web browser
+but the architecture allows them to also run on remote machines.
+These remote systems could be:</p>
+<ul class="simple">
+<li>a research group's central server,</li>
+<li>a Jupyter-aware cloud service (e.g. <a class="reference external" href="https://cloud.sagemath.com/settings">SageMathCloud</a> or <a class="reference external" href="https://notebooks.azure.com/">Azure Notebooks</a>) or ...</li>
+<li>
+<strong>the HPC clusters operated by so many academic institutions</strong>.</li>
+</ul>
+<p>This is where my part of OpenDreamKit comes in.
+Computer clusters such as <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/index.html">Iceberg</a> and <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/sharc/index.html">ShARC</a> here at the University of Sheffield allow users to
+run computational jobs with more resources than typically available in researchers' own machines.
+Jobs can have parallel threads of execution running on up to sixteen cores per node
+and/or running over multiple nodes,
+jobs can use hundreds of MB of RAM and
+can make use of the latest generation of GPUs for things like
+accelerated <a class="reference external" href="http://www.acrc.com/deep-learning/">deep learning workflows</a>.
+However, the need to request resources, then submit and monitor jobs from the command-line can be a steep barrier to entry for some.
+Being able to easily run Jupyter Notebooks on our clusters and
+request the necessary resources for our interactive explorations via an intuitive web interface
+could help make HPC more accessible and useful to those without a strong understanding of Linux and the command-line.</p>
+<p>We already have <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/accessing/jupyterhub.html">an instance of JupyterHub running</a> to allow users to start Jupyter sessions on our <a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/iceberg/index.html">Iceberg</a> cluster
+thanks to the efforts of <a class="reference external" href="http://stuartmumford.uk/">Stuart Mumford</a>.
+I will be working on:</p>
+<ul class="simple">
+<li>Upgrading this to use the latest version of JupyterHub;</li>
+<li>Setting up JupyterHub on our new cluster (<a class="reference external" href="http://docs.hpc.shef.ac.uk/en/latest/sharc/index.html">ShARC</a>);</li>
+<li>Developing a mechanism for easily requesting resources (more RAM / CPU cores / GPUs) from the Grid Engine scheduler;</li>
+<li>Making the JupyterHub and Grid Engine integration more robust.</li>
+<li>Looking at how JupyterHub could be set up on HPC clusters at other institutions (possibly using different schedulers) for research/teaching.</li>
+</ul>
+<p>I'm rather excited about this new role.  One nice aspect to it is that I am now according to my contract officially a <a class="reference external" href="http://www.rse.ac.uk/">Research Software Engineer</a>:</p>
+<blockquote>
+<p>Dear Dr Furnass</p>
+<p>Further to recent discussions, I am pleased to confirm the change in your appointment with the University of Sheffield.
+The details of your offer are provided below:</p>
+<p>Appointment Details:
+You, Dr William Furnass, shall be employed by the University of Sheffield as a Research Software Engineer
+in the Department of Computer Science with effect from 1 January 2017.
+This position is offered on a fixed term basis.</p>
+</blockquote>
+<p>This demonstrates that research institutions have started recognising <a class="reference external" href="http://www.rse.ac.uk/who.html">Research Software Engineering</a> as an alternative career path in academia
+(something the <a class="reference external" href="https://www.software.ac.uk/">Software Sustainability Institute</a> have been pushing for for some time) and
+RSEs aren't simply post-doctoral researchers who happen to write software.</p>
+<p>The path to this point has not been particularly direct:
+I have a <a class="reference external" href="https://engineering.leeds.ac.uk/computing">computer scence degree</a>,
+worked as a IT systems engineer in the film industry,
+have a PhD plus post-doc experience in <a class="reference external" href="http://www.shef.ac.uk/civil/">water engineering</a>
+(where I developed semi-physical and data-driven models of water quality in water distribution networks) and
+I have provided support to the users of the University of Sheffield's <a class="reference external" href="http://docs.hpc.shef.ac.uk/">HPC clusters</a>.
+In addition I taught or helped run RSE, water engineering and study skills workshops.</p>
+<p>My interests include
+helping researchers optimise data analysis workflows (primarily using higher-level languages),
+providing training in RSE best practices and
+systems administration.
+You can contact me via:</p>
+<ul class="simple">
+<li>Email: w.furnass (at) sheffield.ac.uk</li>
+<li>Twitter: <a class="reference external" href="https://twitter.com/willfurnass">@willfurnass</a>
+</li>
+</ul>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="linuistics_grant_2016/" class="u-url">£1 million grant to shed light on how we learn languages</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 <a href="../authors/mike-croucher/">Mike Croucher</a>
@@ -443,7 +543,7 @@ It may be that the aspect of your code that's accelerated by this build doesn't 
 </div>
 
 
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->
