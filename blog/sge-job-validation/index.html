@@ -2,11 +2,11 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://rse.shef.ac.uk/blog/sge-job-validation/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Job validation with Grid Engine | RSE at Sheffield</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/sge-job-validation/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Will Furnass">
@@ -85,7 +85,7 @@ However, s">
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Job validation with Grid Engine</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     <a href="../../authors/will-furnass/">Will Furnass</a>
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-03-20T10:44:00Z" itemprop="datePublished" title="2017-03-20 10:44">2017-03-20 10:44</time></a></p>
@@ -106,12 +106,12 @@ if you request a longer run-time than is permitted by any of the cluster's job q
 then your job will sit there queueing indefinitely until you or someone else deletes it.<br>
 For example, let's use <a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/scheduler/sge.html#running-batch-jobs-on-iceberg">qsub</a> 
 to submit a job where we ask for 1000 hours of run time and 4 GiB of RAM:</p>
-<pre class="code literal-block"><span class="o">[</span>will@mysofa ~<span class="o">]</span>$ ssh sharc
+<pre class="code literal-block"><span></span><span class="o">[</span>will@mysofa ~<span class="o">]</span>$ ssh sharc
 ...
 <span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qsub -l <span class="nv">h_rt</span><span class="o">=</span>1000:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
 
 Your job <span class="m">236268</span> <span class="o">(</span><span class="s2">"STDIN"</span><span class="o">)</span> has been submitted
-<span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qstat -u $USER
+<span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qstat -u <span class="nv">$USER</span>
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
  <span class="m">217834</span> 0.00000 longtask   te1st        qw    03/20/2017 10:48:39                                    <span class="m">1</span>        
@@ -125,7 +125,7 @@ you won't be given <em>any</em> notification that the job will not run.</p>
 One way of doing this is to run '<code>qalter -w v &lt;myjobid&gt;</code>' after job submission 
 if say you think that a job has now been queueing for longer 
 than previously-submitted jobs of a similar nature:</p>
-<pre class="code literal-block">[te1st@sharc-login1 ~]$ qalter -w v 217834
+<pre class="code literal-block"><span></span>[te1st@sharc-login1 ~]$ qalter -w v 217834
 Job 217834 (-l h_rt=3600000) cannot run in queue "flybrain.q" because of cluster queue
 Job 217834 (-l h_rt=3600000) cannot run in queue "gpu.q" because of cluster queue
 Job 217834 (-l h_rt=3600000) cannot run in queue "gen2reg.q" because of cluster queue
@@ -153,21 +153,21 @@ there is specific mention of our 1000 hour (3600000s) run-time resource request.
 We can therefore deduce that our run-time resource request wasn't satisfiable.</p>
 <h3>Modifying a resource request post-submission</h3>
 <p>Once we know that our job can't run we could then delete our job...</p>
-<pre class="code literal-block"><span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qdel <span class="m">217834</span> 
+<pre class="code literal-block"><span></span><span class="o">[</span>te1st@sharc-login1 ~<span class="o">]</span>$ qdel <span class="m">217834</span> 
 te1st has deleted job <span class="m">217834</span> 
 </pre>
 
 
 <p>...then consult the cluster's documentation to discover the maximum possible run-time and resubmit using more sensible resource requests.  </p>
 <p>Alternatively we can use <strong>qalter</strong> to modify the resource requests associated with a queueing job:</p>
-<pre class="code literal-block">qalter -l <span class="nv">h_rt</span><span class="o">=</span>96:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G <span class="m">217834</span> 
+<pre class="code literal-block"><span></span>qalter -l <span class="nv">h_rt</span><span class="o">=</span>96:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G <span class="m">217834</span> 
 </pre>
 
 
 <p><strong>Important</strong>: using <code>qalter</code> in this fashion will change <strong>all</strong> resource requests for the job so here we need to re-specify the <code>rmem</code> request.</p>
 <h3>Job validation at submission time</h3>
 <p>You can also perform the same type of job validation <strong>at job submission time</strong> using <code>-w v</code> e.g.</p>
-<pre class="code literal-block">qsub -w v -l 1000:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G myjobscript.sge
+<pre class="code literal-block"><span></span>qsub -w v -l 1000:00:00 -l <span class="nv">rmem</span><span class="o">=</span>4G myjobscript.sge
 </pre>
 
 
@@ -184,7 +184,7 @@ you ask for 100 GPUs, 9999GB of RAM or 10000 cores
 you'll observe the same behaviour: jobs that make requests unsatisfiable under the current cluster configuration can be submitted but will never run.</p>
 <p>Again, job validation can help here but depending on the type of resource the validation error messages can be more or less cryptic.<br>
 For example, if you try to validate a 100000-'slot' (core) MPI job using <code>-w v</code> you get the following:</p>
-<pre class="code literal-block">qsub -pe mpi 100000 -w v somejob.sge
+<pre class="code literal-block"><span></span>qsub -pe mpi 100000 -w v somejob.sge
 ...
 Job 311838 cannot run in PE "mpi" because it only offers 0 slots
 </pre>

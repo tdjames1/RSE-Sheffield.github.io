@@ -2,11 +2,11 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://rse.shef.ac.uk/training/intel/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Intel Training Workshop | RSE at Sheffield</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/training/intel/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Mike Croucher and Paul Richmond">
@@ -78,7 +78,7 @@ This workshop comprises two half-day sessions that will show you how to program 
         <div class="row">
             
             
-<article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Intel Training Workshop</a></h1>
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Intel Training Workshop</a></h1>
 
         
 
@@ -90,41 +90,41 @@ This workshop comprises two half-day sessions that will show you how to program 
 <h2>Getting started with Iceberg</h2>
 <p>The workshop will utilise Iceberg, the University of Sheffield HPC system. Everyone should have completed the user-name request form and as a result you have been added to a special project group and queue. This will enable us to access some dedicated nodes which have been put aside for us to use. If you did not supply your user-name you can still take part however you may need to queue (wait) for an interactive session if the rest of iceberg is busy.</p>
 <p>To log into iceberg use SSH from Linux use the following command where <em>username</em> is your CICS and iceberg username.</p>
-<pre class="code literal-block">ssh username@iceberg.shef.ac.uk
+<pre class="code literal-block"><span></span>ssh username@iceberg.shef.ac.uk
 </pre>
 
 
 <p>To log into Iceberg from Windows use the Putty SSH client. Putty should be available from the software centre on managed desktop. You only need to enter <code>iceberg.shef.ac.uk</code> into the Host Name (or IP address) box in the session view and then click Open. You will be promoted for your username and password.</p>
 <p>You should now be connected to a head (login) node. Do not use the head node for any of the exercises! You should instead use the dedicated nodes by requesting an interactive session. This requires specifying the special project group (<code>-P</code>) and queue (<code>-q</code>). As we are running parallel code we will also need to request more than a single processing core using the <code>-pe openmp [number of cores]</code> command. E.g.</p>
-<pre class="code literal-block">qrsh -pe openmp 4 -P training -q training.q
+<pre class="code literal-block"><span></span>qrsh -pe openmp 4 -P training -q training.q
 </pre>
 
 
 <p>Your command window will change from the head node to one of the dedicated nodes. I.e.</p>
-<pre class="code literal-block">[co1pr@iceberg-login1 ~]$
+<pre class="code literal-block"><span></span>[co1pr@iceberg-login1 ~]$
 </pre>
 
 
 <p>Will change to</p>
-<pre class="code literal-block">[co1pr@node119 ~]$
+<pre class="code literal-block"><span></span>[co1pr@node119 ~]$
 </pre>
 
 
 <p>This indicates that you are on Node 119.</p>
 <h2>Getting the Source Material</h2>
 <p>Each of the course content links below provide a downloadable link containing the starting code. You can either download this on your desktop and upload it to iceberg using SFTP (port 22) or fetch it directly from  the web using wget. E.g. From your interactive session type:</p>
-<pre class="code literal-block">wget http:/somelocation.com/a_file.tgz
+<pre class="code literal-block"><span></span>wget http:/somelocation.com/a_file.tgz
 </pre>
 
 
 <h2>Modules Required</h2>
 <p>Once you are in an interactive session you will need to load a number of modules to set up the compilers and libraries used in the exercises. Load a GCC compiler with the following command (other version are availble but are untested).</p>
-<pre class="code literal-block"><span class="k">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">5.4</span>
+<pre class="code literal-block"><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">gcc</span><span class="o">/</span><span class="mf">5.4</span>
 </pre>
 
 
 <p>Load the Intel TBB library with the following command</p>
-<pre class="code literal-block"><span class="k">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">binlibs</span><span class="o">/</span><span class="n">intel-tbb</span><span class="o">/</span><span class="mf">2017.0</span>
+<pre class="code literal-block"><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">libs</span><span class="o">/</span><span class="n">binlibs</span><span class="o">/</span><span class="n">intel-tbb</span><span class="o">/</span><span class="mf">2017.0</span>
 </pre>
 
 

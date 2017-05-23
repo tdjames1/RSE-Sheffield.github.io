@@ -2,11 +2,11 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://rse.shef.ac.uk/blog/mpi_placement/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Determining MPI placement on the HPC clusters | RSE at Sheffield</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://rse.shef.ac.uk/blog/mpi_placement/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Mike Croucher">
@@ -96,7 +96,7 @@
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Determining MPI placement on the HPC clusters</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     <a href="../../authors/mike-croucher/">Mike Croucher</a>
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-04-01T16:03:00Z" itemprop="datePublished" title="2017-04-01 16:03">2017-04-01 16:03</time></a></p>
@@ -123,7 +123,7 @@
 12
 13</pre></div></td>
 <td class="code">
-<pre class="code literal-block"><span class="ch">#!/bin/bash</span>
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
 <span class="c1">#$ -l h_rt=1:00:00</span>
 <span class="c1">#Request 16 slots</span>
@@ -159,7 +159,7 @@ mpirun  ./MPI_hello_world
 15
 16</pre></div></td>
 <td class="code">
-<pre class="code literal-block"><span class="ch">#!/bin/bash</span>
+<pre class="code literal-block"><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#Tell the scheduler that maximum runtime is 1 hour</span>
 <span class="c1">#$ -l h_rt=1:00:00</span>
 <span class="c1">#Request 16 slots</span>
@@ -172,14 +172,14 @@ module load dev/gcc/4.9.4
 module load mpi/openmpi/2.0.1/gcc-4.9.4
 
 <span class="c1">#Put placement information into node_info.txt</span>
-cat $PE_HOSTFILE  &gt; node_info.txt
+cat <span class="nv">$PE_HOSTFILE</span>  &gt; node_info.txt
 
 mpirun  ./MPI_hello_world
 </pre>
 </td>
 </tr></table>
 <p>You'll now get a file called <code>node_info.txt</code> that contains information about which nodes your MPI slots were placed. For example</p>
-<pre class="code literal-block">sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
+<pre class="code literal-block"><span></span>sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
 sharc-node069.shef.ac.uk 1 shortint.q@sharc-node069.shef.ac.uk UNDEFINED
 sharc-node112.shef.ac.uk 1 shortint.q@sharc-node112.shef.ac.uk UNDEFINED
 sharc-node108.shef.ac.uk 1 shortint.q@sharc-node108.shef.ac.uk UNDEFINED

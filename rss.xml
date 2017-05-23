@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link rel="self" href="http://rse.shef.ac.uk/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Mon, 22 May 2017 17:49:42 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Research Software Engineer in High Performance Computing</title><link>http://rse.shef.ac.uk/blog/research_software_engineer_in_high_performance_computing/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;A job opportunity within the RSE Sheffield group is available under the job title of "Research Software Engineer in High Performance Computing (HPC) enabled Multi-Scale Modelling".&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RSE at Sheffield</title><link>http://rse.shef.ac.uk/</link><description>RSE at Sheffield</description><atom:link href="http://rse.shef.ac.uk/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 23 May 2017 08:38:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Research Software Engineer in High Performance Computing</title><link>http://rse.shef.ac.uk/blog/research_software_engineer_in_high_performance_computing/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;A job opportunity within the RSE Sheffield group is available under the job title of "Research Software Engineer in High Performance Computing (HPC) enabled Multi-Scale Modelling".&lt;/p&gt;
 &lt;p&gt;The purpose of the Research Software Engineer post is to enhance The University’s capability and expertise in developing Research Software. This role will be based in the newly formed &lt;a href="http://rse.shef.ac.uk/"&gt;Research Software Engineering group&lt;/a&gt;, which aims to improve all aspects of research software including reproducibility, usability, efficiency and correctness.&lt;/p&gt;
 &lt;p&gt;The primary function of this role is to support the EC funded CompBioMed project. A user-driven Centre of Excellence in Computational Biomedicine, to nurture and promote the uptake and exploitation of high performance computing within the biomedical modelling community. &lt;/p&gt;
 &lt;p&gt;The post is fixed-term with an end date of 30 September 2019. The deadline for applications is 19th June 2017.&lt;/p&gt;
 &lt;h3&gt;Links and More Information&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.jobs.ac.uk/job/BBN749/research-software-engineer-in-high-performance-computing-hpc-enabled-multi-scale-modelling/"&gt;Jobs.ac.uk posting&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jobs.shef.ac.uk/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=cG9zdF9pbnN0X2d1aWQ9MzMwNjJBRkQ4MDQ5MUVFNzhGOEY4MkE0ODgzRjg4MEYmY2FuZF90eXBlPUVYVA%3d%3d&amp;amp;sap-client=400&amp;amp;sap-language=EN&amp;amp;sap-accessibility=X&amp;amp;sap-ep-themeroot=%2fSAP%2fPUBLIC%2fBC%2fUR%2fuos#"&gt;University of Sheffield Application Link&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>jobs</category><guid>http://rse.shef.ac.uk/blog/research_software_engineer_in_high_performance_computing/</guid><pubDate>Mon, 22 May 2017 17:30:00 GMT</pubDate></item><item><title>Coffee and Cakes Event</title><link>http://rse.shef.ac.uk/blog/coffee-and-cakes-event-2nd/</link><dc:creator>Mozhgan Kabiri Chimeh</dc:creator><description>&lt;div&gt;&lt;p&gt;RSE Sheffield is hosting another coffee and cakes event on &lt;strong&gt;May 31st at 14:00 in the Ada Lovelace room&lt;/strong&gt; on 1st floor of the Computer Science Department (Regents Court East). Attendance is free, but you need to register via &lt;a href="https://goo.gl/forms/L2dRQNvSUvkIbtSm2"&gt;this link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jobs.shef.ac.uk/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=cG9zdF9pbnN0X2d1aWQ9MzMwNjJBRkQ4MDQ5MUVFNzhGOEY4MkE0ODgzRjg4MEYmY2FuZF90eXBlPUVYVA%3d%3d&amp;amp;sap-client=400&amp;amp;sap-language=EN&amp;amp;sap-accessibility=X&amp;amp;sap-ep-themeroot=%2fSAP%2fPUBLIC%2fBC%2fUR%2fuos#"&gt;University of Sheffield Application Link&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>jobs</category><guid>http://rse.shef.ac.uk/blog/research_software_engineer_in_high_performance_computing/</guid><pubDate>Mon, 22 May 2017 17:30:00 GMT</pubDate></item><item><title>Sheffield Code First:girls</title><link>http://rse.shef.ac.uk/blog/sheffield-code-firstgirls/</link><dc:creator>Tania Allard</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="python1" src="http://rse.shef.ac.uk/images/CF_python1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Anyone working on any STEM area knows, as a fact, that we are facing a digital and technical skills gap.  In the governement's digital strategy &lt;a href="http://www.bbc.co.uk/news/business-36510266"&gt;report&lt;/a&gt; last year it
+was highlighted that we would need an extra 745,000 workers with digital skills by 2017, as 90% of jobs require digital skills to some degree.
+On top of this, many technical areas suffer a diversity deficit (cultural and gender based).
+With the UK being among the European countries with the smaller number of female
+professionals in STEM areas.&lt;/p&gt;
+&lt;p&gt;Being this a rather complex problem, many people and organisations work hard to provide a solution to this issue.  Some approaches adopted by such individuals and organisations are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Encourage the hiring of highly skilled immigrants&lt;/li&gt;
+&lt;li&gt;Provide wider support for underrepresented minorities&lt;/li&gt;
+&lt;li&gt;Leverage inclusive and encouraging environments for those who
+demonstrate an interest in STEM areas&lt;/li&gt;
+&lt;li&gt;Support and train those willing to make a career change/or follow non-traditonal career paths&lt;/li&gt;
+&lt;li&gt;Approach the new generations and provide them with useful skills that would help them
+make an informed career choice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;... and the list goes on.&lt;/p&gt;
+&lt;p&gt;I do believe, however, that the most fruitful approach is to work with the upcoming generations and provide them with useful technical and personal skills early on. This would not only make them better qualified for their future but would enable them to make informed decisions with regards to their professional future.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.codefirstgirls.org.uk"&gt;Code First: girls&lt;/a&gt; is a multi-award organization that aims to tackle the gender imbalance in three ways: training women, building a strong and supportive community, and helping companies to train, recruit, and retain their female force.&lt;/p&gt;
+&lt;p&gt;Belonging to a minority within STEM has lead me to take an active role as an equality and diversity ambassador, which eventually lead me to volunteer as a Python instructor for the Code First courses.&lt;/p&gt;
+&lt;p&gt;Over the course of 8 weeks we teach and guide groups of around 30 women with various levels of coding experience in CSS/HTML, Python, or Ruby. These courses are a mixture of in-person classes and self-learning, at the same time the ladies involved work in teams of 2-4 people to build a project of their own interest.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="python1" src="http://rse.shef.ac.uk/images/CF_python3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;The idea behind these workshops is rather simple: train people and provide them with practical use of the skills they are learning. Having as a final objective to develop a fully deployed RESTful app. But the whole CF:girls thing goes way beyond that. Over those 8 weeks the girls form a strong, motivating, and supportive community, in which they can acquire new skills, meet like-minded people, learn from other women working in STEM areas, and even attend external women in tech events!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="python1" src="http://rse.shef.ac.uk/images/CF_python2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;I find rather interesting the mixture of apps and projects pursued, as well as the high quality of the presented final products. But beyond that, I find this to be an excellent opportunity to give back to the amazing community that has adopted and welcome me as a professional in a STEM area. Thus I can say for sure I will be getting involved in more Code First events/workshops.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/sheffield-code-firstgirls/</guid><pubDate>Thu, 18 May 2017 08:32:49 GMT</pubDate></item><item><title>Coffee and Cakes Event</title><link>http://rse.shef.ac.uk/blog/coffee-and-cakes-event-2nd/</link><dc:creator>Mozhgan Kabiri Chimeh</dc:creator><description>&lt;div&gt;&lt;p&gt;RSE Sheffield is hosting another coffee and cakes event on &lt;strong&gt;May 31st at 14:00 in the Ada Lovelace room&lt;/strong&gt; on 1st floor of the Computer Science Department (Regents Court East). Attendance is free, but you need to register via &lt;a href="https://goo.gl/forms/L2dRQNvSUvkIbtSm2"&gt;this link&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Take the opportunity to come and have an informal chat about research software.&lt;/p&gt;
 &lt;p&gt;This event is a community event for anyone, not just computer science or members of the RSE team. If you work on software development are an RSE or simply want to talk about some aspect of software or software in teaching then come along.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/coffee-and-cakes-event-2nd/</guid><pubDate>Wed, 17 May 2017 11:12:12 GMT</pubDate></item><item><title>Building Linux GPU Code with NSIGHT in Windows</title><link>http://rse.shef.ac.uk/blog/building-linux-gpu-code-with-nsight-in-windows/</link><dc:creator>Paul Richmond</dc:creator><description>&lt;div&gt;&lt;p&gt;Why would you possibly want to build and execute CUDA GPU applications within NSight Eclipse for Linux within Microsoft Windows? Well if you use windows as your main OS there are plenty of reasons but the most obvious is that you may be developing cross platform code and want to build and test it without dual booting. If you are thinking about virtual machines then forget about it. Most (except some very expensive enterprise options) do not have the ability to access a GPU device (e.g GPU pass-through) from within a virtual machine. &lt;/p&gt;
 &lt;p&gt;The purpose of this post is to describe how to install the necessary tools to permit local GPU development inside the Linux NSight IDE from within Windows. The advantages of which are not only cross platform development but also the ability to locally develop in powerful Linux IDE with remote execution and graphical debugging. This is particularly helpful if you want to execute or debug your code on a HPC system (like Sheffield's ShARC system) from Windows. The post focuses on the use of the new Windows 10 Linux subsystem, however you could use the approach to install CUDA tools on a lightweight Linux virtual machine. The concept is the same either way. i.e. build and debug locally execute remotely.&lt;/p&gt;
 &lt;h3&gt;Configuring the Linux Windows Subsystem for CUDA compilation&lt;/h3&gt;
 &lt;p&gt;The Windows 10 subsystem for Linux is available in the anniversary update. You can install it from the "Turn on or off windows features" dialogue. It is listed under "Windows subsystem for Linux (beta)". This alone is not enough to build our GPU applications as we will need to install CUDA. A normal CUDA install will require a local GPU and the installation of a CUDA compatible graphics driver. Fire up the Windows Bash Shell (or a Linux virtual machine). You can then use the following commands to install the CUDA toolkit without installing a graphics driver. This will install the core NVIDIA CUDA compiler (nvcc) and NSight. You can update the &lt;code&gt;CUDA_REPO_PKG&lt;/code&gt; variable to install a different CUDA version.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="x"&gt;sudo apt-get update&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo apt-get update&lt;/span&gt;
 &lt;span class="x"&gt;CUDA_REPO_PKG=cuda-repo-ubuntu1404_8.0.44-1_amd64.deb&lt;/span&gt;
 &lt;span class="x"&gt;wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CUDA_REPO_PKG&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;sudo dpkg -i &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;CUDA_REPO_PKG&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
@@ -21,18 +45,18 @@
 
 
 &lt;p&gt;You can now create a symbolic link to a generic CUDA install. This will permit the addition and fast swapping of different CUDA versions.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="x"&gt;sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda &lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda &lt;/span&gt;
 &lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;:/usr/local/cuda/bin&lt;/span&gt;
 &lt;/pre&gt;
 
 
 &lt;p&gt;Note: if you want the CUDA bin location to be persistently on the PATH (after you reboot the Bash shell) then you will need to add the &lt;code&gt;export PATH&lt;/code&gt; line to your .bashrc profile. Test that the install was successful by running nvcc.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;nvcc --version
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;nvcc --version
 &lt;/pre&gt;
 
 
 &lt;p&gt;This should give you some information on the nvcc version. e.g. &lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;nvcc&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NVIDIA&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Cuda&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;nvcc&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NVIDIA&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Cuda&lt;/span&gt; &lt;span class="n"&gt;compiler&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;
 &lt;span class="n"&gt;Copyright&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2016&lt;/span&gt; &lt;span class="n"&gt;NVIDIA&lt;/span&gt; &lt;span class="n"&gt;Corporation&lt;/span&gt;
 &lt;span class="n"&gt;Built&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;Tue_Jan_10_13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="n"&gt;_CST_2017&lt;/span&gt;
 &lt;span class="n"&gt;Cuda&lt;/span&gt; &lt;span class="n"&gt;compilation&lt;/span&gt; &lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;release&lt;/span&gt; &lt;span class="mf"&gt;8.0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;V8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.61&lt;/span&gt;
@@ -42,12 +66,12 @@
 &lt;p&gt;The CUDA toolkit is now installed so you can build (but not execute) CUDA GPU programs using the Linux bash shell.&lt;/p&gt;
 &lt;h3&gt;Graphical editing with Nsight IDE&lt;/h3&gt;
 &lt;p&gt;To be able to run a graphical NSight IDE from within the Windows subsystem for Linux you will need to be running a X server within Windows. You can install the &lt;strong&gt;free&lt;/strong&gt; &lt;a href="https://sourceforge.net/projects/xming/"&gt;XMing&lt;/a&gt; application for this purpose. If you would rather use a Linux virtual machine then you can avoid this step as the virtual machine will most likely have an X server included. The advantage of the Windows subsystem approach is that it is very lightweight. From within your Bash terminal you will need to set the following environment variable.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;export DISPLAY=:0
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;export DISPLAY=:0
 &lt;/pre&gt;
 
 
 &lt;p&gt;The display variable is an environment variable passed to graphical applications. In this case, the value of &lt;code&gt;:0&lt;/code&gt; it tells the application to use the first display on the local system (our XMing server in this case). If you want to make this environment variable change permanent then you should add it to your .bashrc profile. You can now run the NSight application from Bash.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;nsight
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;nsight
 &lt;/pre&gt;
 
 
@@ -55,7 +79,7 @@
 &lt;p&gt;Future blog posts will cover how remote execution and debugging can be achieved on the University of Sheffield ShARC system. ShARC has a typical of job based HPC system which encourages job submission rather than execution of code on worker nodes via SSH logins. &lt;/p&gt;
 &lt;h3&gt;Summary of Bash Profile Changes&lt;/h3&gt;
 &lt;p&gt;I added the following to my .bashrc profile (located in the home directory) to ensure that NSight could be launched straight after starting the Bash shell in Windows.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; add cuda bin dir to path&lt;/span&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; add cuda bin dir to path&lt;/span&gt;
 &lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;:/usr/local/cuda/bin&lt;/span&gt;
 
 &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; export the display environment variable&lt;/span&gt;
@@ -78,7 +102,7 @@ you can perform 'dry-run' job validation:
 by passing &lt;code&gt;-w v&lt;/code&gt; as arguments to &lt;code&gt;qrsh&lt;/code&gt;/&lt;code&gt;qrshx&lt;/code&gt;/&lt;code&gt;qsh&lt;/code&gt;/&lt;code&gt;qalter&lt;/code&gt; you can ask the SGE scheduler software 
 if your job could ever run if the cluster were entirely empty of other jobs.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;    qsub -pe smp 2 -l rmem=10000G -w v myjob.sge
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    qsub -pe smp 2 -l rmem=10000G -w v myjob.sge
 &lt;/pre&gt;
 
 
@@ -90,14 +114,14 @@ this his job validation mechanism sometimes results in &lt;em&gt;false negatives
 This is something that the HPC sysadmin team at the University of Leeds alerted us to.&lt;/p&gt;
 &lt;p&gt;Here's an example of a false positive (using our &lt;a href="https://docs.hpc.shef.ac.uk/en/latest/sharc/"&gt;ShARC&lt;/a&gt; cluster.&lt;br&gt;
 If you ask for a single-core interactive session with access to four GPUs then dry-run validation fails:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 -w v
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 -w v
     ...
     verification: no suitable queues
 &lt;/pre&gt;
 
 
 &lt;p&gt;yet (without validation) the resource request can be satisfied:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;    [te1st@sharc-login1 ~]$ qrsh -l gpu=4 
     [te1st@sharc-node100 ~]$   # works!
 &lt;/pre&gt;
 
@@ -139,7 +163,7 @@ it does not take into consideration changes made to a job by Job Submission Veri
 10
 11
 12
-13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="c1"&gt;#Tell the scheduler that maximum runtime is 1 hour&lt;/span&gt;
 &lt;span class="c1"&gt;#$ -l h_rt=1:00:00&lt;/span&gt;
 &lt;span class="c1"&gt;#Request 16 slots&lt;/span&gt;
@@ -172,7 +196,7 @@ mpirun  ./MPI_hello_world
 13
 14
 15
-16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="c1"&gt;#Tell the scheduler that maximum runtime is 1 hour&lt;/span&gt;
 &lt;span class="c1"&gt;#$ -l h_rt=1:00:00&lt;/span&gt;
 &lt;span class="c1"&gt;#Request 16 slots&lt;/span&gt;
@@ -185,14 +209,14 @@ module load dev/gcc/4.9.4
 module load mpi/openmpi/2.0.1/gcc-4.9.4
 
 &lt;span class="c1"&gt;#Put placement information into node_info.txt&lt;/span&gt;
-cat $PE_HOSTFILE  &amp;gt; node_info.txt
+cat &lt;span class="nv"&gt;$PE_HOSTFILE&lt;/span&gt;  &amp;gt; node_info.txt
 
 mpirun  ./MPI_hello_world
 &lt;/pre&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;You'll now get a file called &lt;code&gt;node_info.txt&lt;/code&gt; that contains information about which nodes your MPI slots were placed. For example&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;sharc-node031.shef.ac.uk 1 shortint.q@sharc-node031.shef.ac.uk UNDEFINED
 sharc-node069.shef.ac.uk 1 shortint.q@sharc-node069.shef.ac.uk UNDEFINED
 sharc-node112.shef.ac.uk 1 shortint.q@sharc-node112.shef.ac.uk UNDEFINED
 sharc-node108.shef.ac.uk 1 shortint.q@sharc-node108.shef.ac.uk UNDEFINED
@@ -214,12 +238,12 @@ if you request a longer run-time than is permitted by any of the cluster's job q
 then your job will sit there queueing indefinitely until you or someone else deletes it.&lt;br&gt;
 For example, let's use &lt;a href="http://docs.hpc.shef.ac.uk/en/latest/hpc/scheduler/sge.html#running-batch-jobs-on-iceberg"&gt;qsub&lt;/a&gt; 
 to submit a job where we ask for 1000 hours of run time and 4 GiB of RAM:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="o"&gt;[&lt;/span&gt;will@mysofa ~&lt;span class="o"&gt;]&lt;/span&gt;$ ssh sharc
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;will@mysofa ~&lt;span class="o"&gt;]&lt;/span&gt;$ ssh sharc
 ...
 &lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qsub -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G -m bea -M w.furnass@sheffield.ac.uk -N longtask myjobscript.sge
 
 Your job &lt;span class="m"&gt;236268&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"STDIN"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; has been submitted
-&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qstat -u $USER
+&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qstat -u &lt;span class="nv"&gt;$USER&lt;/span&gt;
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
  &lt;span class="m"&gt;217834&lt;/span&gt; 0.00000 longtask   te1st        qw    03/20/2017 10:48:39                                    &lt;span class="m"&gt;1&lt;/span&gt;        
@@ -233,7 +257,7 @@ you won't be given &lt;em&gt;any&lt;/em&gt; notification that the job will not r
 One way of doing this is to run '&lt;code&gt;qalter -w v &amp;lt;myjobid&amp;gt;&lt;/code&gt;' after job submission 
 if say you think that a job has now been queueing for longer 
 than previously-submitted jobs of a similar nature:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;[te1st@sharc-login1 ~]$ qalter -w v 217834
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;[te1st@sharc-login1 ~]$ qalter -w v 217834
 Job 217834 (-l h_rt=3600000) cannot run in queue "flybrain.q" because of cluster queue
 Job 217834 (-l h_rt=3600000) cannot run in queue "gpu.q" because of cluster queue
 Job 217834 (-l h_rt=3600000) cannot run in queue "gen2reg.q" because of cluster queue
@@ -261,21 +285,21 @@ there is specific mention of our 1000 hour (3600000s) run-time resource request.
 We can therefore deduce that our run-time resource request wasn't satisfiable.&lt;/p&gt;
 &lt;h3&gt;Modifying a resource request post-submission&lt;/h3&gt;
 &lt;p&gt;Once we know that our job can't run we could then delete our job...&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qdel &lt;span class="m"&gt;217834&lt;/span&gt; 
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;te1st@sharc-login1 ~&lt;span class="o"&gt;]&lt;/span&gt;$ qdel &lt;span class="m"&gt;217834&lt;/span&gt; 
 te1st has deleted job &lt;span class="m"&gt;217834&lt;/span&gt; 
 &lt;/pre&gt;
 
 
 &lt;p&gt;...then consult the cluster's documentation to discover the maximum possible run-time and resubmit using more sensible resource requests.  &lt;/p&gt;
 &lt;p&gt;Alternatively we can use &lt;strong&gt;qalter&lt;/strong&gt; to modify the resource requests associated with a queueing job:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;96:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qalter -l &lt;span class="nv"&gt;h_rt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;96:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G &lt;span class="m"&gt;217834&lt;/span&gt; 
 &lt;/pre&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt;: using &lt;code&gt;qalter&lt;/code&gt; in this fashion will change &lt;strong&gt;all&lt;/strong&gt; resource requests for the job so here we need to re-specify the &lt;code&gt;rmem&lt;/code&gt; request.&lt;/p&gt;
 &lt;h3&gt;Job validation at submission time&lt;/h3&gt;
 &lt;p&gt;You can also perform the same type of job validation &lt;strong&gt;at job submission time&lt;/strong&gt; using &lt;code&gt;-w v&lt;/code&gt; e.g.&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;qsub -w v -l 1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -w v -l 1000:00:00 -l &lt;span class="nv"&gt;rmem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4G myjobscript.sge
 &lt;/pre&gt;
 
 
@@ -292,7 +316,7 @@ you ask for 100 GPUs, 9999GB of RAM or 10000 cores
 you'll observe the same behaviour: jobs that make requests unsatisfiable under the current cluster configuration can be submitted but will never run.&lt;/p&gt;
 &lt;p&gt;Again, job validation can help here but depending on the type of resource the validation error messages can be more or less cryptic.&lt;br&gt;
 For example, if you try to validate a 100000-'slot' (core) MPI job using &lt;code&gt;-w v&lt;/code&gt; you get the following:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;qsub -pe mpi 100000 -w v somejob.sge
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;qsub -pe mpi 100000 -w v somejob.sge
 ...
 Job 311838 cannot run in PE "mpi" because it only offers 0 slots
 &lt;/pre&gt;
@@ -464,23 +488,4 @@ please &lt;a class="reference external" href="https://github.com/mikecroucher/ju
 &lt;p&gt;This was the first time I'd been to a conference where the emphasis was very much on sharing ideas and working together:
 the academic conferences I'd attended prior to this had previously had an air of competition about them.
 Looking forward to meeting up with the OpenDreamKit gang again!&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>conference</category><guid>http://rse.shef.ac.uk/blog/icms-2017/</guid><pubDate>Sun, 12 Mar 2017 22:00:00 GMT</pubDate></item><item><title>A new member of the team: Tania Allard</title><link>http://rse.shef.ac.uk/blog/tania_allard/</link><dc:creator>Tania Allard</dc:creator><description>&lt;div&gt;&lt;h3&gt;About my research&lt;/h3&gt;
-&lt;p&gt;I recently completed a PhD in &lt;a href="http://www.materials.manchester.ac.uk/"&gt;Materials Science at the University of Manchester&lt;/a&gt; which focused on computational nanomechanics. The primary goal was to develop a robust characterisation technique for very small volumes of biocompatible materials and biological tissues.&lt;/p&gt;
-&lt;p&gt;Since such materials exhibit highly complex mechanical responses, the extraction of the values of constitutive parameters from test outputs is not straightforward and often requires inverse analysis. For such purposes I used an iterative &lt;a href="https://en.wikipedia.org/wiki/Finite_element_method"&gt;Finite Element Analysis&lt;/a&gt; approach to extract meaningful constitutive parameters from the experimental data.&lt;/p&gt;
-&lt;p&gt;The Finite Element simulations were performed using &lt;a href="https://www.3ds.com/products-services/simulia/products/abaqus/"&gt;ABAQUS&lt;/a&gt; while the optimisation based iterative approach was enforced by a series of codes in MATLAB (MATLAB was chosen as it provides a compatible interface to FE codes via multiple programming languages) and Python. The material constitutive laws were prescribed using either user-developed Fortran subroutines or Abaqus-built-in material models. For the case of hydrated materials an additional Fortran subroutine for surface flow conditions was used.&lt;/p&gt;
-&lt;p&gt;The workflow was as follows:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Python scripts were used to generate the Abaqus input files with user provided variables (e.g. geometrical and boundary conditions identical to the experimental set up)&lt;/li&gt;
-&lt;li&gt;The mean experimental response was fit to an analytical expression for time-dependent creep using MATLAB's &lt;a href="https://uk.mathworks.com/help/optim/ug/lsqnonlin.html?requestedDomain=uk.mathworks.com"&gt;lsqnonlin&lt;/a&gt; algorithm. The parameters obtained from the initial fit were then used as the initial  guesses for the optimisation algorithm, after which the Fortran (UMAT) subroutine and/or the input files were updated.&lt;/li&gt;
-&lt;li&gt;The FEA was performed  and upon completion the relevant data was extracted using a Python script.&lt;/li&gt;
-&lt;li&gt;The MATLAB code was then used to fit the data obtained from FEA to the experimental observations, the parameters of the constitutive model were adjusted by means of the lsqnonlin algorithm. The quality of  the parameter set was evaluated by the minimization of the root mean square error between the experimental and numerical data.&lt;/li&gt;
-&lt;li&gt;The parameters are further iteratively refined until the objective function satisfied a given convergence criterion.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Once the constitutive material parameters were obtained different parametric studies were performed using the HPC facilites at the University of Manchester (e.g. to study the effect of sample thickness, water content, and support material on the mechanical response).&lt;/p&gt;
-&lt;h3&gt;Research Software Engineering&lt;/h3&gt;
-&lt;p&gt;I believe there are various reasons which led me to pursue a career as a RSE. While doing my PhD I realized how important research software is, especially when are dealing with highly complex physical systems and when the use of experimental techniques is not enough/too complex/to expensive/unsuitable for what you are studying. Also, I became very frustrated by the lack of Open Source software in my area, especially when we contacted researchers in other institutes, which demanded us signing a waiver to have access to their software. Whenever I found or were passed codes, scripts, or subroutines which would "help" with my research I spent an incredible amount of time going through badly commented (if commented at all!), badly documented scripts with no version control whatsoever. I then imagined it could not only be me getting this frustrated and wasting valuable time trying to make sense of poor code so I started using version control (and forcing people in my lab to do it) and producing code that could be passed to others (more than likely people in my lab).&lt;/p&gt;
-&lt;p&gt;Eventually I realized this was a bit of what RSE's do, and it turned out I enjoyed a bit more the software development side of research than the experimental bits, so pursuing a RSE career was pretty much a natural thing to do (and I suppose I wanted to prevent people from getting frustrated when accessing others' scripts). Also, I started realizing the RSE community in the UK is relatively small (albeit constantly growing) so when I saw the advertisement for the position at Sheffield I asked a couple of people at the University of Manchester if they knew the team, I received good comments (mainly on how enthusiastic &lt;a href="http://www.walkingrandomly.com/"&gt;Mike Croucher&lt;/a&gt; is). I did my own research about the University, the RSE team, the projects in different groups, and it seemed both the University and the RSE would provide not only interesting projects to work on but also valuable insight (and mentoring) from experienced RSE's. Also, after realizing that the team was also quite small I figured it would allow for plenty of opportunities to learn loads of new skills while using my current  expertise.&lt;/p&gt;
-&lt;p&gt;Last year I volunteered at the &lt;a href="https://www.software.ac.uk/news/2016-05-09-first-ever-conference-research-software-engineers-call-participation"&gt;national RSE conference&lt;/a&gt;, I thought this would be an excellent opportunity to get to know the community, talk to RSE's from different places/universities about the projects they do and why they pursued a career like this. It definitely opened my eyes to the diversity of projects they work in and how collaborative this environment actually is, and if anything it just made me feel more excited and confident about my career post-PhD.&lt;/p&gt;
-&lt;p&gt;So when I had the chance to be in the committee for the RSE2017 conference I decided to get involved. Last year was a great experience for me and I think I might have one or two ideas to make this year's event better (even if only a little).&lt;/p&gt;
-&lt;p&gt;So far, my experience as a member of the RSE community has been quite pleasant. We always hear about the computer science and STEM communities being not so diverse, but I can see many groups working hard to be more inclusive and working hard to support junior RSE's, like me. The community is filled with very enthusiastic people, often working in very very interesting stuff. The Sheffield RSE team has been very welcoming and supportive over the few months I have been there, so I can truly say that I am very happy to be part of this team.&lt;/p&gt;
-&lt;p&gt;I am not 100% sure what my future career looks like, but I would certainly like to help raise awareness of how important software actually is for research, and how important it is for that software to be developed under good practices and with sufficient resources. Many people are aware now how important open data sources are, and I hope people would see research code in a similar way, that it needs to be open and made available for whoever needs it, or just to demonstrate how reproducible their studies are. So I believe I will be making my part by setting/maintaining software standards within the RSE team and spreading the word. Also, I am massively interested in the so-called big-data/data science areas so I would definitely like to get involved in more projects concerning those areas.&lt;/p&gt;&lt;/div&gt;</description><guid>http://rse.shef.ac.uk/blog/tania_allard/</guid><pubDate>Thu, 09 Feb 2017 21:37:12 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>conference</category><guid>http://rse.shef.ac.uk/blog/icms-2017/</guid><pubDate>Sun, 12 Mar 2017 22:00:00 GMT</pubDate></item></channel></rss>
