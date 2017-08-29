@@ -27,12 +27,19 @@
 
 ## An admin's view
 
+### Anna
 
 ## Helpers view
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">And of course, super friendly <a href="https://twitter.com/swcarpentry">@swcarpentry</a> backup by these fine folk <a href="https://twitter.com/jezcope">@jezcope</a> <a href="https://twitter.com/jamesbraders">@jamesbraders</a> <a href="https://twitter.com/WillFurnass">@WillFurnass</a> <a href="https://twitter.com/katkoler">@katkoler</a>! <a href="https://t.co/PN6sG1fc7N">pic.twitter.com/PN6sG1fc7N</a></p>&mdash; annakrystalli (@annakrystalli) <a href="https://twitter.com/annakrystalli/status/898113024816533504">August 17, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+### Kat
+
+
+### James
+
+### Jez
 
 
 ## Outro
